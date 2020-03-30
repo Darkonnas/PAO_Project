@@ -39,8 +39,12 @@ public class SoldProductService {
         return soldProductRepository.add(sp);
     }
     
-    public boolean removeSoldProducts(int id) {
-        return soldProductRepository.remove(id);
+    public boolean removeSoldProduct(int receiptId, int productId) {
+        return soldProductRepository.remove(receiptId, productId);
+    }
+    
+    public SoldProduct getSoldProductByReceiptIdAndProductId(int receiptId, int productId) {
+        return soldProductRepository.getSoldProductByReceiptIdAndProductId(receiptId, productId);
     }
     
     public List<SoldProduct> getSoldProductsByReceiptId(int receiptId) {

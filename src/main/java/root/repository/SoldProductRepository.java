@@ -33,12 +33,21 @@ public class SoldProductRepository {
         return soldProducts.add(sp);
     }
     
-    public boolean remove(int id) {
-        List<SoldProduct> result = getSoldProductsByProductId(id);
-        if (result == null) {
+    public boolean remove(int receiptId, int productId) {
+        SoldProduct sp = getSoldProductByReceiptIdAndProductId(receiptId, productId);
+        if (sp == null) {
             return false;
         }
-        return soldProducts.removeAll(result);
+        return soldProducts.remove(sp);
+    }
+    
+    public SoldProduct getSoldProductByReceiptIdAndProductId(int receiptId, int productId) {
+        for(SoldProduct sp: soldProducts) {
+            if(receiptId == sp.getReceiptId() && productId == sp.getProductId()) {
+                return sp;
+            }
+        }
+        return null;
     }
     
     public List<SoldProduct> getSoldProductsByReceiptId(int receiptId) {
