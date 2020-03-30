@@ -24,7 +24,7 @@ The ProductCategory model:
 
 - fields: id PK, name UNIQUE
 - methods: setters and getters, equals(), compareTo(), toString()
-Via ProductCategoryService, SQL Linkage with ProductCategoryRepository:
+Via ProductCategoryService, SQL Linkage via ProductCategoryRepository:
 - services: gell all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
             set category name 
             add category, remove category
@@ -33,7 +33,7 @@ The SoldProduct model:
 
 - fields: (receiptId + productId) PK, count
 - methods: setters and getters, equals(), compareTo(), toString()
-Via SoldProductService, SQL Linkage with SoldProductRepository:
+Via SoldProductService, SQL Linkage via SoldProductRepository:
 - services: get all sold products, get sold products by receiptId/productId/count (returned as List<SoldProduct> implemented with Vector)
             add sold product, remove sold product
             
@@ -41,33 +41,33 @@ The Cashier model:
 
 - fields: id PK, first_name, last_name
 - methods: setters and getters, equals(), compareTo(), toString()
-Via CashierService, SQL Linkage with CashierRepository:
+Via CashierService, SQL Linkage via CashierRepository:
 - services: get all cashiers, get cashiers by id/first_name/last_name (returned as Set<Cashier> implemented with TreeSet)
             set cashier first_name, cashier set last_name
             add cashier, remove cashier
             
 The AssistedRegister model:
 
-- fields: id, active, inUse -> inherited from Register base, cashierId (which is -1 if the Register doesn't have one currently i.e active = false)
+- fields: id PK, active, inUse -> inherited from Register base, cashierId (which is -1 if the Register doesn't have one currently i.e active = false)
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
-Via RegisterService, SQL Linkage with RegisterRepository:
+Via RegisterService, SQL Linkage via RegisterRepository:
 - services: get assisted registers (returned as Set<Register>, implemented with TreeSet) assign new cashier, drop current cashier 
           + get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
           set register active state/inUse state
           
 The SelfRegister model:
 
-- fields: id, active, inUse -> inherited from Register base, active is always true
+- fields: id PK, active, inUse -> inherited from Register base, active is always true
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
-Via RegisterService, SQL Linkage with RegisterRepository:
+Via RegisterService, SQL Linkage via RegisterRepository:
 - services: get self registers (returned as Set<Register>, implemented with TreeSet) 
           + get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
           set register active state/inUse state
 
 The Receipt model:
 
-- fields: id, registerId, cashierId (last is -1 if the receipt was printed from a SelfRegister)
+- fields: id PK, registerId, cashierId (last is -1 if the receipt was printed from a SelfRegister)
 - methods: setters and getters, equals(), compareTo(), to String()
-Via ReceiptService, SQL Linkage with ReceiptRepository:
+Via ReceiptService, SQL Linkage via ReceiptRepository:
 - services: get all receipts, get receipts by id/registerId/cashierId
             add receipt, remove receipt
