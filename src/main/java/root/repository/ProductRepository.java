@@ -26,6 +26,9 @@ public class ProductRepository {
     }
     
     public boolean add(Product p) {
+        if(getProductById(p.getId()) != null) {
+            return false;
+        }
         return products.add(p);
     }
     
