@@ -13,7 +13,7 @@ Model list:
 
 The Product model:
 
-- fields: id PK, name UNIQUE, category, price, sale, count
+- fields: id PK, name UNIQUE, category_id FK, price, sale, count
 - methods: setters and getters, equals(), compareTo(), toString()
 Via ProductService, SQL Linkage with ProductRepository:
 - services: get all products, get products by id/name/category/price/sale/count (returned as Set<Product> implemented with TreeSet)
@@ -31,7 +31,7 @@ Via ProductCategoryService, SQL Linkage via ProductCategoryRepository:
             
 The SoldProduct model:
 
-- fields: (receiptId + productId) PK, count
+- fields: (receiptId FK + productId FK) PK, count
 - methods: setters and getters, equals(), compareTo(), toString()
 Via SoldProductService, SQL Linkage via SoldProductRepository:
 - services: get all sold products, get sold products by receiptId/productId/count (returned as List<SoldProduct> implemented with Vector)
@@ -48,7 +48,7 @@ Via CashierService, SQL Linkage via CashierRepository:
             
 The AssistedRegister model:
 
-- fields: id PK, active, inUse -> inherited from Register base, cashierId (which is -1 if the Register doesn't have one currently i.e active = false)
+- fields: id PK, active, inUse -> inherited from Register base, cashierId FK(which is -1 if the Register doesn't have one currently i.e active = false)
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
 Via RegisterService, SQL Linkage via RegisterRepository:
 - services: get assisted registers (returned as Set<Register>, implemented with TreeSet) assign new cashier, drop current cashier 
@@ -66,7 +66,7 @@ Via RegisterService, SQL Linkage via RegisterRepository:
 
 The Receipt model:
 
-- fields: id PK, registerId, cashierId (last is -1 if the receipt was printed from a SelfRegister)
+- fields: id PK, registerId FK, cashierId FK (last is -1 if the receipt was printed from a SelfRegister)
 - methods: setters and getters, equals(), compareTo(), to String()
 Via ReceiptService, SQL Linkage via ReceiptRepository:
 - services: get all receipts, get receipts by id/registerId/cashierId
