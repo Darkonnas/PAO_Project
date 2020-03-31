@@ -42,8 +42,8 @@ public class SoldProductRepository {
     }
     
     public SoldProduct getSoldProductByReceiptIdAndProductId(int receiptId, int productId) {
-        for(SoldProduct sp: soldProducts) {
-            if(receiptId == sp.getReceiptId() && productId == sp.getProductId()) {
+        for (SoldProduct sp : soldProducts) {
+            if (receiptId == sp.getReceiptId() && productId == sp.getProductId()) {
                 return sp;
             }
         }

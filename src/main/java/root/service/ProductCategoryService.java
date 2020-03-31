@@ -14,7 +14,7 @@ public class ProductCategoryService {
     }
     
     public static ProductCategoryService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new ProductCategoryService();
         }
         return instance;

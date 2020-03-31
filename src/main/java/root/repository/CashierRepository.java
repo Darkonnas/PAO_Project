@@ -27,15 +27,15 @@ public class CashierRepository {
     
     public boolean remove(int id) {
         Cashier c = getCashierById(id);
-        if(c == null) {
+        if (c == null) {
             return false;
         }
         return cashiers.remove(c);
     }
     
     public Cashier getCashierById(int id) {
-        for(Cashier c: cashiers) {
-            if(id == c.getId()) {
+        for (Cashier c : cashiers) {
+            if (id == c.getId()) {
                 return c;
             }
         }
@@ -44,9 +44,9 @@ public class CashierRepository {
     
     public Set<Cashier> getCashiersByFirstName(String firstName) {
         Set<Cashier> result = null;
-        for(Cashier c: cashiers) {
-            if(firstName.equals(c.getFirstName())) {
-                if(result == null) {
+        for (Cashier c : cashiers) {
+            if (firstName.equals(c.getFirstName())) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(c);
@@ -57,7 +57,7 @@ public class CashierRepository {
     
     public boolean setCashierFirstName(int id, String firstName) {
         Cashier c = getCashierById(id);
-        if(c == null) {
+        if (c == null) {
             return false;
         }
         c.setFirstName(firstName);
@@ -66,9 +66,9 @@ public class CashierRepository {
     
     public Set<Cashier> getCashiersByLastName(String lastName) {
         Set<Cashier> result = null;
-        for(Cashier c: cashiers) {
-            if(lastName.equals(c.getLastName())) {
-                if(result == null) {
+        for (Cashier c : cashiers) {
+            if (lastName.equals(c.getLastName())) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(c);
@@ -79,10 +79,10 @@ public class CashierRepository {
     
     public boolean setCashierLastName(int id, String lastName) {
         Cashier c = getCashierById(id);
-        if(c == null) {
+        if (c == null) {
             return false;
         }
-        c.setFirstName(lastName);
+        c.setLastName(lastName);
         return true;
     }
 }

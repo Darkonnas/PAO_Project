@@ -31,15 +31,15 @@ public class RegisterRepository {
     
     public boolean remove(int id) {
         Register r = getRegisterById(id);
-        if(r == null) {
+        if (r == null) {
             return false;
         }
         return registers.remove(r);
     }
     
     public Register getRegisterById(int id) {
-        for(Register r:registers) {
-            if(id == r.getId()) {
+        for (Register r : registers) {
+            if (id == r.getId()) {
                 return r;
             }
         }
@@ -48,9 +48,9 @@ public class RegisterRepository {
     
     public Set<Register> getRegistersByActiveState(boolean state) {
         Set<Register> result = null;
-        for(Register r: registers) {
-            if(r.isActive() == state) {
-                if(result == null) {
+        for (Register r : registers) {
+            if (r.isActive() == state) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(r);
@@ -61,7 +61,7 @@ public class RegisterRepository {
     
     public boolean setRegisterActiveState(int id, boolean state) {
         Register r = getRegisterById(id);
-        if(r == null) {
+        if (r == null) {
             return false;
         }
         r.setActive(state);
@@ -70,9 +70,9 @@ public class RegisterRepository {
     
     public Set<Register> getRegistersByInUseState(boolean state) {
         Set<Register> result = null;
-        for(Register r: registers) {
-            if(r.isInUse() == state) {
-                if(result == null) {
+        for (Register r : registers) {
+            if (r.isInUse() == state) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(r);
@@ -83,7 +83,7 @@ public class RegisterRepository {
     
     public boolean setRegisterInUseState(int id, boolean state) {
         Register r = getRegisterById(id);
-        if(r == null) {
+        if (r == null) {
             return false;
         }
         r.setInUse(state);
@@ -92,9 +92,9 @@ public class RegisterRepository {
     
     public Set<Register> getCashierRegisters() {
         Set<Register> result = null;
-        for(Register r: registers) {
-            if(r.getClass() == CashierRegister.class) {
-                if(result == null) {
+        for (Register r : registers) {
+            if (r.getClass() == CashierRegister.class) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(r);
@@ -105,7 +105,7 @@ public class RegisterRepository {
     
     public boolean assignCashier(int id, int cashierId) {
         Register r = getRegisterById(id);
-        if(r == null || r.getClass() != CashierRegister.class) {
+        if (r == null || r.getClass() != CashierRegister.class) {
             return false;
         }
         CashierRegister cashierRegister = (CashierRegister) r;
@@ -116,7 +116,7 @@ public class RegisterRepository {
     
     public boolean dropCashier(int id) {
         Register r = getRegisterById(id);
-        if(r == null || r.getClass() != CashierRegister.class) {
+        if (r == null || r.getClass() != CashierRegister.class) {
             return false;
         }
         CashierRegister cashierRegister = (CashierRegister) r;
@@ -127,9 +127,9 @@ public class RegisterRepository {
     
     public Set<Register> getSelfRegisters() {
         Set<Register> result = null;
-        for(Register r:registers) {
-            if(r.getClass() == SelfRegister.class) {
-                if(result == null) {
+        for (Register r : registers) {
+            if (r.getClass() == SelfRegister.class) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(r);

@@ -35,15 +35,15 @@ public class ProductCategory implements Comparable<ProductCategory> {
     }
     
     @Override
+    public String toString() {
+        return "ProductCategory{" + "id=" + id + ", name='" + name + '\'' + '}';
+    }
+    
+    @Override
     public int compareTo(ProductCategory productCategory) throws NullPointerException {
         if (productCategory == null) {
             throw new NullPointerException();
         }
         return Integer.compare(id, productCategory.id);
-    }
-    
-    @Override
-    public String toString() {
-        return "ProductCategory{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

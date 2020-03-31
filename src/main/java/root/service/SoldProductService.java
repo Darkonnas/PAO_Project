@@ -8,19 +8,15 @@ import java.util.Set;
 
 public class SoldProductService {
     private static SoldProductService instance;
-    private static ProductService productService;
-    private static ReceiptService receiptService;
     private SoldProductRepository soldProductRepository;
     
     private SoldProductService() {
         soldProductRepository = new SoldProductRepository();
     }
     
-    public static SoldProductService getInstance(ProductService productInstance,ReceiptService receiptInstance) {
-        if(instance == null) {
+    public static SoldProductService getInstance() {
+        if (instance == null) {
             instance = new SoldProductService();
-            productService = productInstance;
-            receiptService = receiptInstance;
         }
         return instance;
     }
@@ -30,10 +26,10 @@ public class SoldProductService {
     }
     
     public boolean addSoldProduct(SoldProduct sp) {
-        if(productService.getProductById(sp.getReceiptId()) == null) {
+        if (ProductService.getInstance().getProductById(sp.getReceiptId()) == null) {
             return false;
         }
-        if(receiptService.getReceiptById(sp.getProductId()) == null) {
+        if (ReceiptService.getInstance().getReceiptById(sp.getProductId()) == null) {
             return false;
         }
         return soldProductRepository.add(sp);

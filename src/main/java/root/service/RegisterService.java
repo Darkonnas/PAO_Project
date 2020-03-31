@@ -8,17 +8,15 @@ import java.util.Set;
 
 public class RegisterService {
     private static RegisterService instance;
-    private static CashierService cashierService;
     private RegisterRepository registerRepository;
     
     private RegisterService() {
         registerRepository = new RegisterRepository();
     }
     
-    public static RegisterService getInstance(CashierService cashierInstance) {
+    public static RegisterService getInstance() {
         if (instance == null) {
             instance = new RegisterService();
-            cashierService = cashierInstance;
         }
         return instance;
     }
@@ -30,7 +28,7 @@ public class RegisterService {
     public boolean addRegister(Register r) {
         if (r.getClass() == CashierRegister.class) {
             CashierRegister cashierRegister = (CashierRegister) r;
-            if (cashierService.getCashierById(cashierRegister.getCashierId()) == null) {
+            if (CashierService.getInstance().getCashierById(cashierRegister.getCashierId()) == null) {
                 return false;
             }
         }
@@ -66,7 +64,7 @@ public class RegisterService {
     }
     
     public boolean assignCashier(int id, int cashierId) {
-        if (cashierService.getCashierById(cashierId) == null) {
+        if (CashierService.getInstance().getCashierById(cashierId) == null) {
             return false;
         }
         return registerRepository.assignCashier(id, cashierId);

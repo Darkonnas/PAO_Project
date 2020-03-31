@@ -1,7 +1,5 @@
 package root.model;
 
-import java.util.Objects;
-
 public class Cashier implements Comparable<Cashier> {
     private static int availableId = 0;
     private final int id;
@@ -45,15 +43,15 @@ public class Cashier implements Comparable<Cashier> {
     }
     
     @Override
-    public int compareTo(Cashier c) throws NullPointerException{
-        if(c == null) {
-            throw new NullPointerException();
-        }
-        return Integer.compare(this.id, c.id);
+    public String toString() {
+        return "Cashier{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + '}';
     }
     
     @Override
-    public String toString() {
-        return "Cashier{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + '}';
+    public int compareTo(Cashier c) throws NullPointerException {
+        if (c == null) {
+            throw new NullPointerException();
+        }
+        return Integer.compare(this.id, c.id);
     }
 }

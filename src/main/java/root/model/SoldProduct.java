@@ -34,29 +34,21 @@ public class SoldProduct implements Comparable<SoldProduct> {
     }
     
     @Override
-    public int compareTo(SoldProduct soldProduct) throws NullPointerException {
-        if(soldProduct == null) {
-            throw new NullPointerException();
-        }
-        if(receiptId < soldProduct.receiptId) {
-            return -1;
-        }
-        if(receiptId == soldProduct.receiptId) {
-            if(receiptId < soldProduct.productId) {
-                return -1;
-            }
-            if(receiptId == soldProduct.productId) {
-                return 0;
-            }
-            if(receiptId > soldProduct.productId) {
-                return 1;
-            }
-        }
-        return 1;
+    public String toString() {
+        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", count=" + count + '}';
     }
     
     @Override
-    public String toString() {
-        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", count=" + count + '}';
+    public int compareTo(SoldProduct soldProduct) throws NullPointerException {
+        if (soldProduct == null) {
+            throw new NullPointerException();
+        }
+        if (receiptId < soldProduct.receiptId) {
+            return -1;
+        }
+        if (receiptId == soldProduct.receiptId) {
+            return Integer.compare(receiptId, soldProduct.productId);
+        }
+        return 1;
     }
 }

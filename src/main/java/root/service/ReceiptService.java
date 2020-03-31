@@ -7,19 +7,15 @@ import java.util.Set;
 
 public class ReceiptService {
     private static ReceiptService instance;
-    private static RegisterService registerService;
-    private static CashierService cashierService;
     private ReceiptRepository receiptRepository;
     
     private ReceiptService() {
         receiptRepository = new ReceiptRepository();
     }
     
-    public static ReceiptService getInstance(RegisterService registerInstance, CashierService cashierInstance) {
-        if(instance == null) {
+    public static ReceiptService getInstance() {
+        if (instance == null) {
             instance = new ReceiptService();
-            registerService = registerInstance;
-            cashierService = cashierInstance;
         }
         return instance;
     }
@@ -29,10 +25,10 @@ public class ReceiptService {
     }
     
     public boolean addReceipt(Receipt r) {
-        if(registerService.getRegisterById(r.getId()) == null) {
+        if (RegisterService.getInstance().getRegisterById(r.getId()) == null) {
             return false;
         }
-        if(r.getCashierId() != -1 && cashierService.getCashierById(r.getCashierId()) == null) {
+        if (r.getCashierId() != -1 && CashierService.getInstance().getCashierById(r.getCashierId()) == null) {
             return false;
         }
         return receiptRepository.add(r);

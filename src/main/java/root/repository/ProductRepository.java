@@ -14,7 +14,7 @@ public class ProductRepository {
         products.add(new Product(0, "Banana", 7.59F, 20));
         products.add(new Product(1, "Blue Shirt", 10.69F, 30F, 10));
         products.add(new Product(2, "The New York Times", 5.99F, 50));
-        products.add(new Product(2, "The Sun", 6.39F,46));
+        products.add(new Product(2, "The Sun", 6.39F, 46));
         products.add(new Product(3, "Domestos", 7.99F, 35));
         products.add(new Product(3, "Mr Proper", 9.29F, 10F, 20));
         products.add(new Product(4, "Soy milk", 5.49F, 20));
@@ -26,18 +26,10 @@ public class ProductRepository {
     }
     
     public boolean add(Product p) {
-        if(getProductById(p.getId()) != null) {
+        if (getProductById(p.getId()) != null) {
             return false;
         }
         return products.add(p);
-    }
-    
-    public boolean remove(int id) {
-        Product p = getProductById(id);
-        if (p == null) {
-            return false;
-        }
-        return products.remove(p);
     }
     
     public Product getProductById(int id) {
@@ -47,6 +39,14 @@ public class ProductRepository {
             }
         }
         return null;
+    }
+    
+    public boolean remove(int id) {
+        Product p = getProductById(id);
+        if (p == null) {
+            return false;
+        }
+        return products.remove(p);
     }
     
     public Set<Product> getProductsByCategoryId(int categoryId) {
@@ -152,7 +152,7 @@ public class ProductRepository {
     
     public boolean setProductCount(int id, int count) {
         Product p = getProductById(id);
-        if(p == null) {
+        if (p == null) {
             return false;
         }
         p.setCount(count);

@@ -8,6 +8,10 @@ public class Product implements Comparable<Product> {
     private float sale;
     private int count;
     
+    public Product(int categoryId, String name, float price, int count) {
+        this(categoryId, name, price, 0F, count);
+    }
+    
     public Product(int categoryId, String name, float price, float sale, int count) {
         this.id = categoryId + name.hashCode();
         this.name = name;
@@ -15,10 +19,6 @@ public class Product implements Comparable<Product> {
         this.price = price;
         this.sale = sale;
         this.count = count;
-    }
-    
-    public Product(int categoryId, String name, float price, int count) {
-        this(categoryId, name, price, 0F, count);
     }
     
     public int getId() {
@@ -76,6 +76,11 @@ public class Product implements Comparable<Product> {
     }
     
     @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", price=" + price + ", sale=" + sale + ", count=" + count + '}';
+    }
+    
+    @Override
     public int compareTo(Product product) throws NullPointerException {
         if (product == null) {
             throw new NullPointerException();
@@ -86,10 +91,5 @@ public class Product implements Comparable<Product> {
         } else {
             return Integer.compare(id, product.id);
         }
-    }
-    
-    @Override
-    public String toString() {
-        return "Product{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", price=" + price + ", sale=" + sale + ", count=" + count + '}';
     }
 }

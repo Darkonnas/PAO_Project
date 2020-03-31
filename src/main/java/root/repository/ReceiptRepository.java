@@ -27,7 +27,7 @@ public class ReceiptRepository {
     
     public boolean remove(int id) {
         Receipt r = getReceiptById(id);
-        if(r == null) {
+        if (r == null) {
             return false;
         }
         return receipts.remove(r);
@@ -58,8 +58,8 @@ public class ReceiptRepository {
     public Set<Receipt> getReceiptsByCashierId(int cashierId) {
         Set<Receipt> result = null;
         for (Receipt r : receipts) {
-            if(cashierId == r.getCashierId()) {
-                if(result == null) {
+            if (cashierId == r.getCashierId()) {
+                if (result == null) {
                     result = new TreeSet<>();
                 }
                 result.add(r);

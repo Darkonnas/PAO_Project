@@ -7,17 +7,15 @@ import java.util.Set;
 
 public class ProductService {
     private static ProductService instance;
-    private static ProductCategoryService productCategoryService;
     private ProductRepository productRepository;
     
     private ProductService() {
         productRepository = new ProductRepository();
     }
     
-    public static ProductService getInstance(ProductCategoryService productCategoryInstance) {
-        if(instance == null) {
+    public static ProductService getInstance() {
+        if (instance == null) {
             instance = new ProductService();
-            productCategoryService = productCategoryInstance;
         }
         return instance;
     }
@@ -27,7 +25,7 @@ public class ProductService {
     }
     
     public boolean addProduct(Product p) {
-        if(productCategoryService.getProductCategoryById(p.getCategoryId()) == null) {
+        if (ProductCategoryService.getInstance().getProductCategoryById(p.getCategoryId()) == null) {
             return false;
         }
         return productRepository.add(p);
@@ -46,7 +44,7 @@ public class ProductService {
     }
     
     public boolean setProductCategoryId(int id, int categoryId) {
-        if(productCategoryService.getProductCategoryById(categoryId) == null) {
+        if (ProductCategoryService.getInstance().getProductCategoryById(categoryId) == null) {
             return false;
         }
         return productRepository.setProductCategoryId(id, categoryId);
@@ -76,7 +74,11 @@ public class ProductService {
         return productRepository.setProductSale(id, sale);
     }
     
-    public Set<Product> getProductsByCount(int count) { return productRepository.getProductsByCount(count);}
+    public Set<Product> getProductsByCount(int count) {
+        return productRepository.getProductsByCount(count);
+    }
     
-    public boolean setProductCount(int id, int count) { return productRepository.setProductCount(id, count);}
+    public boolean setProductCount(int id, int count) {
+        return productRepository.setProductCount(id, count);
+    }
 }

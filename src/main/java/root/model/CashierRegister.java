@@ -3,15 +3,15 @@ package root.model;
 public class CashierRegister extends Register {
     private int cashierId;
     
+    public CashierRegister() {
+        this(-1);
+        this.active = false;
+    }
+    
     public CashierRegister(int cashierId) {
         super();
         this.cashierId = cashierId;
         this.active = true;
-    }
-    
-    public CashierRegister() {
-        this(-1);
-        this.active = false;
     }
     
     public int getCashierId() {

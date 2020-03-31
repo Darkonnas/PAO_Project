@@ -6,14 +6,14 @@ public class Receipt implements Comparable<Receipt> {
     private final int registerId;
     private final int cashierId;
     
+    public Receipt(int registerId) {
+        this(registerId, -1);
+    }
+    
     public Receipt(int registerId, int cashierId) {
         this.id = availableId++;
         this.registerId = registerId;
         this.cashierId = cashierId;
-    }
-    
-    public Receipt(int registerId) {
-        this(registerId, -1);
     }
     
     public int getId() {
@@ -39,15 +39,15 @@ public class Receipt implements Comparable<Receipt> {
     }
     
     @Override
-    public int compareTo(Receipt receipt) throws NullPointerException {
-        if(receipt == null) {
-            throw new NullPointerException();
-        }
-        return Integer.compare(id, receipt.id);
+    public String toString() {
+        return "Receipt{" + "id=" + id + ", registerId=" + registerId + ", cashierId=" + cashierId + '}';
     }
     
     @Override
-    public String toString() {
-        return "Receipt{" + "id=" + id + ", registerId=" + registerId + ", cashierId=" + cashierId + '}';
+    public int compareTo(Receipt receipt) throws NullPointerException {
+        if (receipt == null) {
+            throw new NullPointerException();
+        }
+        return Integer.compare(id, receipt.id);
     }
 }

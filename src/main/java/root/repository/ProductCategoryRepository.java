@@ -23,10 +23,19 @@ public class ProductCategoryRepository {
     }
     
     public boolean add(ProductCategory pc) {
-        if(getProductCategoryByName(pc.getName()) != null) {
+        if (getProductCategoryByName(pc.getName()) != null) {
             return false;
         }
         return productCategories.add(pc);
+    }
+    
+    public ProductCategory getProductCategoryByName(String name) {
+        for (ProductCategory pc : productCategories) {
+            if (name.equals(pc.getName())) {
+                return pc;
+            }
+        }
+        return null;
     }
     
     public boolean remove(int id) {
@@ -40,15 +49,6 @@ public class ProductCategoryRepository {
     public ProductCategory getProductCategoryById(int id) {
         for (ProductCategory pc : productCategories) {
             if (id == pc.getId()) {
-                return pc;
-            }
-        }
-        return null;
-    }
-    
-    public ProductCategory getProductCategoryByName(String name) {
-        for (ProductCategory pc : productCategories) {
-            if (name.equals(pc.getName())) {
                 return pc;
             }
         }

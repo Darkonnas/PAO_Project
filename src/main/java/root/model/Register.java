@@ -45,15 +45,15 @@ public abstract class Register implements Comparable<Register> {
     }
     
     @Override
+    public String toString() {
+        return "Register{" + "id=" + id + ", active=" + active + ", inUse=" + inUse + '}';
+    }
+    
+    @Override
     public int compareTo(Register register) throws NullPointerException {
         if (register == null) {
             throw new NullPointerException();
         }
         return Integer.compare(id, register.id);
-    }
-    
-    @Override
-    public String toString() {
-        return "Register{" + "id=" + id + ", active=" + active + ", inUse=" + inUse + '}';
     }
 }

@@ -14,7 +14,7 @@ public class CashierService {
     }
     
     public static CashierService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new CashierService();
         }
         return instance;
