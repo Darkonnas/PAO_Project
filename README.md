@@ -12,7 +12,8 @@ Model list:
 - Coupon
 - Receipt
 
-The Product model:
+
+### The `Product` model:
 
 - fields: id PK, name UNIQUE, category_id FK, price, sale, count
 - methods: setters and getters, equals(), compareTo(), toString()
@@ -22,7 +23,7 @@ The Product model:
       - change product name/category/price/sale/count
       - add product, remove product
 
-The ProductCategory model:
+### The `ProductCategory` model:
 
 - fields: id PK, name UNIQUE
 - methods: setters and getters, equals(), compareTo(), toString()
@@ -32,7 +33,7 @@ The ProductCategory model:
       - set category name 
       - add category, remove category
             
-The SoldProduct model:
+### The `SoldProduct` model:
 
 - fields: (receiptId FK + productId FK) PK, count
 - methods: setters and getters, equals(), compareTo(), toString()
@@ -41,7 +42,7 @@ The SoldProduct model:
     - get all sold products, get sold products by receiptId/productId/count (returned as List<SoldProduct> implemented with Vector)
     - add sold product, remove sold product
             
-The Cashier model:
+### The `Cashier` model:
 
 - fields: id PK, first_name, last_name
 - methods: setters and getters, equals(), compareTo(), toString()
@@ -51,7 +52,7 @@ The Cashier model:
     - set cashier first_name, cashier set last_name
     - add cashier, remove cashier
             
-The AssistedRegister model:
+### The `AssistedRegister` model:
 
 - fields: id PK, active, inUse -> inherited from Register base, cashierId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
@@ -63,7 +64,7 @@ The AssistedRegister model:
     - set register active state/inUse state
     - add register, remove register
           
-The SelfRegister model:
+### The `SelfRegister` model:
 
 - fields: id PK, active, inUse -> inherited from Register base, active is always true
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
@@ -74,7 +75,7 @@ The SelfRegister model:
     - set register active state/inUse state
     - add register, remove register
 
-The Coupon model:
+### The `Coupon` model:
 
 - fields: id PK, sale, used -> usage check when id is used as FK
 - methods: setters and getters, equals(), ciompareTo(), toString()
@@ -84,7 +85,7 @@ The Coupon model:
     - set coupon sale/usedState
     - add coupon, remove coupon
 
-The Receipt model:
+### The `Receipt` model:
 
 - fields: id PK, registerId FK, cashierId OPTIONAL FK, couponId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo(), to String()
