@@ -1,5 +1,6 @@
 package root.service;
 
+import root.model.Coupon;
 import root.model.Receipt;
 import root.repository.ReceiptRepository;
 
@@ -25,11 +26,21 @@ public class ReceiptService {
     }
     
     public boolean addReceipt(Receipt r) {
-        if (RegisterService.getInstance().getRegisterById(r.getId()) == null) {
+        if (RegisterService.getInstance().getRegisterById(r.getRegisterId()) == null) {
             return false;
         }
         if (r.getCashierId() != -1 && CashierService.getInstance().getCashierById(r.getCashierId()) == null) {
             return false;
+        }
+        if (r.getCouponId() != -1) {
+            Coupon c = CouponService.getInstance().getCouponById(r.getCouponId());
+            if (c == null) {
+                return false;
+            }
+            if (c.isUsed()) {
+                return false;
+            }
+            c.setUsed(true);
         }
         return receiptRepository.add(r);
     }
@@ -50,4 +61,7 @@ public class ReceiptService {
         return receiptRepository.getReceiptsByCashierId(cashierId);
     }
     
+    public Receipt getReceiptByCouponId(int id) {
+        return receiptRepository.getReceiptByCouponId(id);
+    }
 }

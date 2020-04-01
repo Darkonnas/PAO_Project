@@ -5,15 +5,13 @@ public class Receipt implements Comparable<Receipt> {
     private final int id;
     private final int registerId;
     private final int cashierId;
+    private final int couponId;
     
-    public Receipt(int registerId) {
-        this(registerId, -1);
-    }
-    
-    public Receipt(int registerId, int cashierId) {
+    public Receipt(int registerId, int cashierId, int couponId) {
         this.id = availableId++;
         this.registerId = registerId;
         this.cashierId = cashierId;
+        this.couponId = couponId;
     }
     
     public int getId() {
@@ -28,6 +26,10 @@ public class Receipt implements Comparable<Receipt> {
         return cashierId;
     }
     
+    public int getCouponId() {
+        return couponId;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -40,7 +42,7 @@ public class Receipt implements Comparable<Receipt> {
     
     @Override
     public String toString() {
-        return "Receipt{" + "id=" + id + ", registerId=" + registerId + ", cashierId=" + cashierId + '}';
+        return "Receipt{" + "id=" + id + ", registerId=" + registerId + ", cashierId=" + cashierId + ", couponId=" + couponId + '}';
     }
     
     @Override

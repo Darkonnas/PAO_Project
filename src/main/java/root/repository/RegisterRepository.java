@@ -12,13 +12,6 @@ public class RegisterRepository {
     
     public RegisterRepository() {
         registers = new TreeSet<>();
-        registers.add(new CashierRegister());
-        registers.add(new CashierRegister());
-        registers.add(new CashierRegister());
-        registers.add(new CashierRegister());
-        registers.add(new SelfRegister());
-        registers.add(new SelfRegister());
-        registers.add(new SelfRegister());
     }
     
     public Set<Register> getRegisters() {

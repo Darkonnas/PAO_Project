@@ -10,11 +10,6 @@ public class CashierRepository {
     
     public CashierRepository() {
         cashiers = new TreeSet<>();
-        cashiers.add(new Cashier("Emily", "Flores"));
-        cashiers.add(new Cashier("Lily", "Tang"));
-        cashiers.add(new Cashier("Ethan", "Duffy"));
-        cashiers.add(new Cashier("Emma", "Wiles"));
-        cashiers.add(new Cashier("Owen", "Regan"));
     }
     
     public Set<Cashier> getCashiers() {

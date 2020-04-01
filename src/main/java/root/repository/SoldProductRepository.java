@@ -12,17 +12,6 @@ public class SoldProductRepository {
     
     public SoldProductRepository() {
         soldProducts = new TreeSet<>();
-        soldProducts.add(new SoldProduct(0, 63476538, 5));
-        soldProducts.add(new SoldProduct(0, 1982479237, 6));
-        soldProducts.add(new SoldProduct(1, 1485382747, 2));
-        soldProducts.add(new SoldProduct(2, 1802160646, 1));
-        soldProducts.add(new SoldProduct(2, 111220270, 2));
-        soldProducts.add(new SoldProduct(2, 63476538, 3));
-        soldProducts.add(new SoldProduct(3, 468349617, 2));
-        soldProducts.add(new SoldProduct(3, 312642015, 1));
-        soldProducts.add(new SoldProduct(3, 1982479237, 3));
-        soldProducts.add(new SoldProduct(3, 1850062050, 4));
-        soldProducts.add(new SoldProduct(3, 1485382747, 2));
     }
     
     public Set<SoldProduct> getSoldProducts() {

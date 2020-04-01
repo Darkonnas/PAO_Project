@@ -10,15 +10,6 @@ public class ProductRepository {
     
     public ProductRepository() {
         products = new TreeSet<>();
-        products.add(new Product(0, "Apple", 4.99F, 30));
-        products.add(new Product(0, "Banana", 7.59F, 20));
-        products.add(new Product(1, "Blue Shirt", 10.69F, 30F, 10));
-        products.add(new Product(2, "The New York Times", 5.99F, 50));
-        products.add(new Product(2, "The Sun", 6.39F, 46));
-        products.add(new Product(3, "Domestos", 7.99F, 35));
-        products.add(new Product(3, "Mr Proper", 9.29F, 10F, 20));
-        products.add(new Product(4, "Soy milk", 5.49F, 20));
-        products.add(new Product(5, "Graham Bread", 3.49F, 25));
     }
     
     public Set<Product> getProducts() {

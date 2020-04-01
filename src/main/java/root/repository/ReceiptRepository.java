@@ -10,11 +10,6 @@ public class ReceiptRepository {
     
     public ReceiptRepository() {
         receipts = new TreeSet<>();
-        receipts.add(new Receipt(0, 0));
-        receipts.add(new Receipt(2, 2));
-        receipts.add(new Receipt(4));
-        receipts.add(new Receipt(5));
-        receipts.add(new Receipt(3, 3));
     }
     
     public Set<Receipt> getReceipts() {
@@ -68,4 +63,12 @@ public class ReceiptRepository {
         return result;
     }
     
+    public Receipt getReceiptByCouponId(int couponId) {
+        for (Receipt r : receipts) {
+            if (couponId == r.getCouponId()) {
+                return r;
+            }
+        }
+        return null;
+    }
 }

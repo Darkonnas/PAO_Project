@@ -10,12 +10,7 @@ public class ProductCategoryRepository {
     
     public ProductCategoryRepository() {
         productCategories = new TreeSet<>();
-        productCategories.add(new ProductCategory("Fruit and vegetables"));
-        productCategories.add(new ProductCategory("Clothing"));
-        productCategories.add(new ProductCategory("Newspapers and magazines"));
-        productCategories.add(new ProductCategory("Cleaning products"));
-        productCategories.add(new ProductCategory("Milk"));
-        productCategories.add(new ProductCategory("Bread"));
+    
     }
     
     public Set<ProductCategory> getProductCategories() {

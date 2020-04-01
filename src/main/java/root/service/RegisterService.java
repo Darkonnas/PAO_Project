@@ -28,7 +28,7 @@ public class RegisterService {
     public boolean addRegister(Register r) {
         if (r.getClass() == CashierRegister.class) {
             CashierRegister cashierRegister = (CashierRegister) r;
-            if (CashierService.getInstance().getCashierById(cashierRegister.getCashierId()) == null) {
+            if (cashierRegister.getCashierId() != -1 && CashierService.getInstance().getCashierById(cashierRegister.getCashierId()) == null) {
                 return false;
             }
         }

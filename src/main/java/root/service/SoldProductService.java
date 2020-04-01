@@ -26,10 +26,10 @@ public class SoldProductService {
     }
     
     public boolean addSoldProduct(SoldProduct sp) {
-        if (ProductService.getInstance().getProductById(sp.getReceiptId()) == null) {
+        if (ReceiptService.getInstance().getReceiptById(sp.getReceiptId()) == null) {
             return false;
         }
-        if (ReceiptService.getInstance().getReceiptById(sp.getProductId()) == null) {
+        if (ProductService.getInstance().getProductById(sp.getProductId()) == null) {
             return false;
         }
         return soldProductRepository.add(sp);
