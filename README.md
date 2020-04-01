@@ -1,7 +1,7 @@
 # PAO_Project
 Java Project for PAO Laboratory
 
-### Model list:
+## Model list:
 
 - [Product](https://github.com/Darkonnas/PAO_Project#the-product-model)
 - [ProductCategory](https://github.com/Darkonnas/PAO_Project#the-productcategory-model)
