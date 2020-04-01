@@ -9,6 +9,7 @@ Model list:
 - Cashier
 - AssistedRegister
 - SelfRegister
+- Coupon
 - Receipt
 
 The Product model:
@@ -48,7 +49,7 @@ The Cashier model:
             
 The AssistedRegister model:
 
-- fields: id PK, active, inUse -> inherited from Register base, cashierId FK(which is -1 if the Register doesn't have one currently i.e active = false)
+- fields: id PK, active, inUse -> inherited from Register base, cashierId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
 - Via RegisterService, SQL Linkage via RegisterRepository:
   - services: get assisted registers (returned as Set<Register>, implemented with TreeSet) assign new cashier, drop current cashier 
@@ -64,9 +65,16 @@ The SelfRegister model:
           + get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
           set register active state/inUse state
 
+The Coupon model:
+
+- fields: id PK, sale, used -> usage check when id is used as FK
+- methods: setters and getters, equals(), ciompareTo(), toString()
+- Via CouponService, SQL Linkage via CouponRepository:
+  - services: get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/sale/used state, set coupon sale/usedState, add or remove coupon
+
 The Receipt model:
 
-- fields: id PK, registerId FK, cashierId FK (last is -1 if the receipt was printed from a SelfRegister)
+- fields: id PK, registerId FK, cashierId OPTIONAL FK, couponId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo(), to String()
 - Via ReceiptService, SQL Linkage via ReceiptRepository:
   - services: get all receipts, get receipts by id/registerId/cashierId
