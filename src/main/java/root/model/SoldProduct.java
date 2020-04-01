@@ -3,12 +3,12 @@ package root.model;
 public class SoldProduct implements Comparable<SoldProduct> {
     private final int receiptId;
     private final int productId;
-    private final int count;
+    private final int quantity;
     
-    public SoldProduct(int receiptId, int productId, int count) {
+    public SoldProduct(int receiptId, int productId, int quantity) {
         this.receiptId = receiptId;
         this.productId = productId;
-        this.count = count;
+        this.quantity = quantity;
     }
     
     public int getReceiptId() {
@@ -19,8 +19,8 @@ public class SoldProduct implements Comparable<SoldProduct> {
         return productId;
     }
     
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
     
     @Override
@@ -35,7 +35,7 @@ public class SoldProduct implements Comparable<SoldProduct> {
     
     @Override
     public String toString() {
-        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", count=" + count + '}';
+        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", count=" + quantity + '}';
     }
     
     @Override

@@ -15,13 +15,13 @@ Java Project for PAO Laboratory
 
 ### The `Product` model:
 
-- fields: id PK, name UNIQUE, category_id FK, price, sale, count
+- fields: id PK, name UNIQUE, category_id FK, price, discount, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via ProductService, SQL Linkage with ProductRepository:
   - services: 
-      - get all products, get products by id/name/category/price/sale/count (returned as Set<Product> implemented with TreeSet)
-      - change product name/category/price/sale/count
-      - add product, remove product
+      - get all products, get products by id/name/category/price/discount/quantity (returned as Set<Product> implemented with TreeSet)
+      - change product name/category/price/discount/quantity
+      - add a product, remove a product
 
 ### The `ProductCategory` model:
 
@@ -29,18 +29,18 @@ Java Project for PAO Laboratory
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via ProductCategoryService, SQL Linkage via ProductCategoryRepository:
   - services: 
-      - gell all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
+      - get all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
       - set category name 
-      - add category, remove category
+      - add a category, remove a category
             
 ### The `SoldProduct` model:
 
-- fields: (receiptId FK + productId FK) PK, count
+- fields: (receiptId FK + productId FK) PK, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via SoldProductService, SQL Linkage via SoldProductRepository:
   - services:
-    - get all sold products, get sold products by receiptId/productId/count (returned as List<SoldProduct> implemented with Vector)
-    - add sold product, remove sold product
+    - get all sold products, get sold products by receiptId/productId/quantity (returned as List<SoldProduct> implemented with Vector)
+    - add a sold product, remove a sold product
             
 ### The `Cashier` model:
 
@@ -50,7 +50,7 @@ Java Project for PAO Laboratory
   - services: 
     - get all cashiers, get cashiers by id/first_name/last_name (returned as Set<Cashier> implemented with TreeSet)
     - set cashier first_name, cashier set last_name
-    - add cashier, remove cashier
+    - add a cashier, remove a cashier
             
 ### The `AssistedRegister` model:
 
@@ -59,10 +59,10 @@ Java Project for PAO Laboratory
 - Via RegisterService, SQL Linkage via RegisterRepository:
   - services: 
     - get assisted registers (returned as Set<Register>, implemented with TreeSet)
-    - assign new cashier, drop current cashier 
+    - assign a new cashier, drop the current cashier 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
-    - add register, remove register
+    - add a register, remove a register
           
 ### The `SelfRegister` model:
 
@@ -73,17 +73,17 @@ Java Project for PAO Laboratory
     - get self registers (returned as Set<Register>, implemented with TreeSet) 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
-    - add register, remove register
+    - add a register, remove a register
 
 ### The `Coupon` model:
 
-- fields: id PK, sale, used -> usage check when id is used as FK
-- methods: setters and getters, equals(), ciompareTo(), toString()
+- fields: id PK, discount, used -> usage check when id used as FK
+- methods: setters and getters, equals(), compareTo(), toString()
 - Via CouponService, SQL Linkage via CouponRepository:
   - services: 
-    - get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/sale/used state
-    - set coupon sale/usedState
-    - add coupon, remove coupon
+    - get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/discount/used state
+    - set coupon discount/usedState
+    - add a coupon, remove a coupon
 
 ### The `Receipt` model:
 
@@ -92,4 +92,4 @@ Java Project for PAO Laboratory
 - Via ReceiptService, SQL Linkage via ReceiptRepository:
   - services: 
     - get all receipts, get receipts by id/registerId/cashierId
-    - add receipt, remove receipt
+    - add a receipt, remove a receipt

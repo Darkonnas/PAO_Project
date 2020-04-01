@@ -65,10 +65,10 @@ public class SoldProductRepository {
         return result;
     }
     
-    public List<SoldProduct> getSoldProductsByCount(int count) {
+    public List<SoldProduct> getSoldProductsByQuantity(int quantity) {
         List<SoldProduct> result = null;
         for (SoldProduct sp : soldProducts) {
-            if (count == sp.getCount()) {
+            if (quantity == sp.getQuantity()) {
                 if (result == null) {
                     result = new Vector<>();
                 }

@@ -106,10 +106,10 @@ public class ProductRepository {
         return true;
     }
     
-    public Set<Product> getProductsBySale(float sale) {
+    public Set<Product> getProductsByDiscount(float discount) {
         Set<Product> result = null;
         for (Product p : products) {
-            if (Float.compare(sale, p.getSale()) == 0) {
+            if (Float.compare(discount, p.getDiscount()) == 0) {
                 if (result == null) {
                     result = new TreeSet<>();
                 }
@@ -119,19 +119,19 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductSale(int id, float sale) {
+    public boolean setProductDiscount(int id, float discount) {
         Product p = getProductById(id);
         if (p == null) {
             return false;
         }
-        p.setSale(sale);
+        p.setDiscount(discount);
         return true;
     }
     
-    public Set<Product> getProductsByCount(int count) {
+    public Set<Product> getProductsByQuantity(int quantity) {
         Set<Product> result = null;
         for (Product p : products) {
-            if (count == p.getCount()) {
+            if (quantity == p.getQuantity()) {
                 if (result == null) {
                     result = new TreeSet<>();
                 }
@@ -141,12 +141,12 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductCount(int id, int count) {
+    public boolean setProductQuantity(int id, int quantity) {
         Product p = getProductById(id);
         if (p == null) {
             return false;
         }
-        p.setCount(count);
+        p.setQuantity(quantity);
         return true;
     }
 }

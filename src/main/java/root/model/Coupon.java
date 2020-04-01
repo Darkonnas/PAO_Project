@@ -3,12 +3,12 @@ package root.model;
 public class Coupon implements Comparable<Coupon> {
     private static int availableId = 0;
     private final int id;
-    private float sale;
+    private float discount;
     private boolean used;
     
-    public Coupon(float sale) {
+    public Coupon(float discount) {
         this.id = availableId++;
-        this.sale = sale;
+        this.discount = discount;
         this.used = false;
     }
     
@@ -16,12 +16,12 @@ public class Coupon implements Comparable<Coupon> {
         return id;
     }
     
-    public float getSale() {
-        return sale;
+    public float getDiscount() {
+        return discount;
     }
     
-    public void setSale(float sale) {
-        this.sale = sale;
+    public void setDiscount(float discount) {
+        this.discount = discount;
     }
     
     public boolean isUsed() {
@@ -44,7 +44,7 @@ public class Coupon implements Comparable<Coupon> {
     
     @Override
     public String toString() {
-        return "Coupon{" + "id=" + id + ", sale=" + sale + ", used=" + used + '}';
+        return "Coupon{" + "id=" + id + ", sale=" + discount + ", used=" + used + '}';
     }
     
     @Override

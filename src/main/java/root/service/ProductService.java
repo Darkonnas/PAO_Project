@@ -66,19 +66,19 @@ public class ProductService {
         return productRepository.setProductPrice(id, price);
     }
     
-    public Set<Product> getProductsBySale(float sale) {
-        return productRepository.getProductsBySale(sale);
+    public Set<Product> getProductsByDiscount(float discount) {
+        return productRepository.getProductsByDiscount(discount);
     }
     
-    public boolean setProductSale(int id, float sale) {
-        return productRepository.setProductSale(id, sale);
+    public boolean setProductDiscount(int id, float discount) {
+        return productRepository.setProductDiscount(id, discount);
     }
     
-    public Set<Product> getProductsByCount(int count) {
-        return productRepository.getProductsByCount(count);
+    public Set<Product> getProductsByQuantity(int quantity) {
+        return productRepository.getProductsByQuantity(quantity);
     }
     
-    public boolean setProductCount(int id, int count) {
-        return productRepository.setProductCount(id, count);
+    public boolean setProductQuantity(int id, int quantity) {
+        return productRepository.setProductQuantity(id, quantity);
     }
 }

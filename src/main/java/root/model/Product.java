@@ -5,20 +5,20 @@ public class Product implements Comparable<Product> {
     private int categoryId;
     private String name;
     private float price;
-    private float sale;
-    private int count;
+    private float discount;
+    private int quantity;
     
-    public Product(int categoryId, String name, float price, int count) {
-        this(categoryId, name, price, 0F, count);
+    public Product(int categoryId, String name, float price, int quantity) {
+        this(categoryId, name, price, 0F, quantity);
     }
     
-    public Product(int categoryId, String name, float price, float sale, int count) {
+    public Product(int categoryId, String name, float price, float discount, int quantity) {
         this.id = categoryId + name.hashCode();
         this.name = name;
         this.categoryId = categoryId;
         this.price = price;
-        this.sale = sale;
-        this.count = count;
+        this.discount = discount;
+        this.quantity = quantity;
     }
     
     public int getId() {
@@ -49,20 +49,20 @@ public class Product implements Comparable<Product> {
         this.price = price;
     }
     
-    public float getSale() {
-        return sale;
+    public float getDiscount() {
+        return discount;
     }
     
-    public void setSale(float sale) {
-        this.sale = sale;
+    public void setDiscount(float discount) {
+        this.discount = discount;
     }
     
-    public int getCount() {
-        return count;
+    public int getQuantity() {
+        return quantity;
     }
     
-    public void setCount(int count) {
-        this.count = count;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     @Override
@@ -77,7 +77,7 @@ public class Product implements Comparable<Product> {
     
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", price=" + price + ", sale=" + sale + ", count=" + count + '}';
+        return "Product{" + "id=" + id + ", categoryId=" + categoryId + ", name='" + name + '\'' + ", price=" + price + ", sale=" + discount + ", count=" + quantity + '}';
     }
     
     @Override

@@ -37,10 +37,10 @@ public class CouponRepository {
         return null;
     }
     
-    public Set<Coupon> getCouponsBySale(float sale) {
+    public Set<Coupon> getCouponsByDiscount(float discount) {
         Set<Coupon> result = null;
         for (Coupon c : coupons) {
-            if (Float.compare(sale, c.getSale()) == 0) {
+            if (Float.compare(discount, c.getDiscount()) == 0) {
                 if (result == null) {
                     result = new TreeSet<>();
                 }
@@ -50,12 +50,12 @@ public class CouponRepository {
         return result;
     }
     
-    public boolean setCouponSale(int id, float sale) {
+    public boolean setCouponDiscount(int id, float discount) {
         Coupon c = getCouponById(id);
         if (c == null) {
             return false;
         }
-        c.setSale(sale);
+        c.setDiscount(discount);
         return true;
     }
     

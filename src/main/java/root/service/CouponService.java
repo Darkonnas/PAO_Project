@@ -36,12 +36,12 @@ public class CouponService {
         return couponRepository.getCouponById(id);
     }
     
-    public Set<Coupon> getCouponsBySale(float sale) {
-        return couponRepository.getCouponsBySale(sale);
+    public Set<Coupon> getCouponsByDiscount(float discount) {
+        return couponRepository.getCouponsByDiscount(discount);
     }
     
-    public boolean setCouponSale(int id, float sale) {
-        return couponRepository.setCouponSale(id, sale);
+    public boolean setCouponDiscount(int id, float discount) {
+        return couponRepository.setCouponDiscount(id, discount);
     }
     
     public Set<Coupon> getCouponsByUsedState(boolean state) {

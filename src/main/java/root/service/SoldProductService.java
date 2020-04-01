@@ -51,7 +51,7 @@ public class SoldProductService {
         return soldProductRepository.getSoldProductsByProductId(productId);
     }
     
-    public List<SoldProduct> getSoldProductsByCount(int count) {
-        return soldProductRepository.getSoldProductsByCount(count);
+    public List<SoldProduct> getSoldProductsByQuantity(int quantity) {
+        return soldProductRepository.getSoldProductsByQuantity(quantity);
     }
 }
