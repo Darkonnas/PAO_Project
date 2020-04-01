@@ -3,14 +3,14 @@ Java Project for PAO Laboratory
 
 Model list:
 
-- Product
-- ProductCategory
-- SoldProduct
-- Cashier
-- AssistedRegister
-- SelfRegister
-- Coupon
-- Receipt
+- [Product](https://github.com/Darkonnas/PAO_Project#the-product-model)
+- [ProductCategory](https://github.com/Darkonnas/PAO_Project#the-productcategory-model)
+- [SoldProduct](https://github.com/Darkonnas/PAO_Project#the-soldproduct-model)
+- [Cashier](https://github.com/Darkonnas/PAO_Project#the-cashier-model)
+- [AssistedRegister](https://github.com/Darkonnas/PAO_Project#the-assistedregister-model)
+- [SelfRegister](https://github.com/Darkonnas/PAO_Project#the-selfregister-model)
+- [Coupon](https://github.com/Darkonnas/PAO_Project#the-coupon-model)
+- [Receipt](https://github.com/Darkonnas/PAO_Project#the-receipt-model)
 
 
 ### The `Product` model:
