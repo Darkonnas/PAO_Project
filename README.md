@@ -97,8 +97,8 @@ Java Project for PAO Laboratory
     - set coupon discount/usedState
     - add a coupon, remove a coupon
 - Via CouponIOService:
-    - load coupons from *Coupons.csv*
-    - save coupons to *Coupons.csv*
+    - load coupons from *Coupon.csv*
+    - save coupons to *Coupon.csv*
 
 ### The `Receipt` model:
 
