@@ -83,7 +83,7 @@ public class RegisterRepository {
         return true;
     }
     
-    public Set<Register> getCashierRegisters() {
+    public Set<Register> getAssistedRegisters() {
         Set<Register> result = null;
         for (Register r : registers) {
             if (r.getClass() == AssistedRegister.class) {
