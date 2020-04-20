@@ -59,8 +59,8 @@ public class RegisterService {
         return registerRepository.setRegisterInUseState(id, state);
     }
     
-    public Set<Register> getCashierRegisters() {
-        return registerRepository.getCashierRegisters();
+    public Set<Register> getAssistedRegisters() {
+        return registerRepository.getAssistedRegisters();
     }
     
     public boolean assignCashier(int id, int cashierId) {
