@@ -7,6 +7,10 @@ public class Coupon implements Comparable<Coupon> {
     private boolean used;
     
     public Coupon(float discount) {
+        this(discount, false);
+    }
+    
+    public Coupon(float discount, boolean used) {
         this.id = availableId++;
         this.discount = discount;
         this.used = false;

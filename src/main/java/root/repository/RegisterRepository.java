@@ -1,6 +1,6 @@
 package root.repository;
 
-import root.model.CashierRegister;
+import root.model.AssistedRegister;
 import root.model.Register;
 import root.model.SelfRegister;
 
@@ -86,7 +86,7 @@ public class RegisterRepository {
     public Set<Register> getCashierRegisters() {
         Set<Register> result = null;
         for (Register r : registers) {
-            if (r.getClass() == CashierRegister.class) {
+            if (r.getClass() == AssistedRegister.class) {
                 if (result == null) {
                     result = new TreeSet<>();
                 }
@@ -98,23 +98,29 @@ public class RegisterRepository {
     
     public boolean assignCashier(int id, int cashierId) {
         Register r = getRegisterById(id);
-        if (r == null || r.getClass() != CashierRegister.class) {
+        if (r == null || r.getClass() != AssistedRegister.class) {
             return false;
         }
-        CashierRegister cashierRegister = (CashierRegister) r;
-        cashierRegister.setCashierId(cashierId);
-        cashierRegister.setActive(true);
+        AssistedRegister assistedRegister = (AssistedRegister) r;
+        if (assistedRegister.getCashierId() != -1) {
+            return false;
+        }
+        assistedRegister.setCashierId(cashierId);
+        assistedRegister.setActive(true);
         return true;
     }
     
     public boolean dropCashier(int id) {
         Register r = getRegisterById(id);
-        if (r == null || r.getClass() != CashierRegister.class) {
+        if (r == null || r.getClass() != AssistedRegister.class) {
             return false;
         }
-        CashierRegister cashierRegister = (CashierRegister) r;
-        cashierRegister.setCashierId(-1);
-        cashierRegister.setActive(false);
+        AssistedRegister assistedRegister = (AssistedRegister) r;
+        if (assistedRegister.getCashierId() == -1) {
+            return false;
+        }
+        assistedRegister.setCashierId(-1);
+        assistedRegister.setActive(false);
         return true;
     }
     

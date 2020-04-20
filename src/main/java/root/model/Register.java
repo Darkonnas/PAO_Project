@@ -7,9 +7,13 @@ public abstract class Register implements Comparable<Register> {
     protected boolean inUse;
     
     public Register() {
+        this(false, false);
+    }
+    
+    public Register(boolean active, boolean inUse) {
         this.id = availableId++;
-        this.active = false;
-        this.inUse = false;
+        this.active = active;
+        this.inUse = inUse;
     }
     
     public int getId() {

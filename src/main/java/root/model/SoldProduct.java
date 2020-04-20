@@ -35,7 +35,7 @@ public class SoldProduct implements Comparable<SoldProduct> {
     
     @Override
     public String toString() {
-        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", count=" + quantity + '}';
+        return "SoldProduct{" + "receiptId=" + receiptId + ", productId=" + productId + ", quantity=" + quantity + '}';
     }
     
     @Override

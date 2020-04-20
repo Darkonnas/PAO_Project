@@ -1,9 +1,12 @@
 package root.model;
 
 public class SelfRegister extends Register {
+    public SelfRegister(boolean active, boolean inUse) {
+        super(active, inUse);
+    }
+    
     public SelfRegister() {
         super();
-        this.active = true;
     }
     
     @Override

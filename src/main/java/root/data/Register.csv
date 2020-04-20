@@ -1,0 +1,8 @@
+cashierId,id,active,inUse
+-1       ,0 ,false ,false
+-1       ,1 ,false ,false
+-1       ,2 ,false ,false
+-1       ,3 ,false ,false
+null     ,4 ,true  ,false
+null     ,5 ,true  ,false
+null     ,6 ,true  ,false

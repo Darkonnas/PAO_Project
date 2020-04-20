@@ -4,7 +4,6 @@ import root.model.SoldProduct;
 import root.repository.SoldProductRepository;
 
 import java.util.List;
-import java.util.Set;
 
 public class SoldProductService {
     private static SoldProductService instance;
@@ -21,7 +20,7 @@ public class SoldProductService {
         return instance;
     }
     
-    public Set<SoldProduct> getSoldProducts() {
+    public List<SoldProduct> getSoldProducts() {
         return soldProductRepository.getSoldProducts();
     }
     

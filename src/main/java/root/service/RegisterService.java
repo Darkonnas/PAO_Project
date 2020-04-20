@@ -1,6 +1,6 @@
 package root.service;
 
-import root.model.CashierRegister;
+import root.model.AssistedRegister;
 import root.model.Register;
 import root.repository.RegisterRepository;
 
@@ -26,9 +26,9 @@ public class RegisterService {
     }
     
     public boolean addRegister(Register r) {
-        if (r.getClass() == CashierRegister.class) {
-            CashierRegister cashierRegister = (CashierRegister) r;
-            if (cashierRegister.getCashierId() != -1 && CashierService.getInstance().getCashierById(cashierRegister.getCashierId()) == null) {
+        if (r.getClass() == AssistedRegister.class) {
+            AssistedRegister assistedRegister = (AssistedRegister) r;
+            if (assistedRegister.getCashierId() != -1 && CashierService.getInstance().getCashierById(assistedRegister.getCashierId()) == null) {
                 return false;
             }
         }

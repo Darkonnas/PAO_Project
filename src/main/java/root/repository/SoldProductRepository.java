@@ -3,18 +3,16 @@ package root.repository;
 import root.model.SoldProduct;
 
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.Vector;
 
 public class SoldProductRepository {
-    private Set<SoldProduct> soldProducts;
+    private List<SoldProduct> soldProducts;
     
     public SoldProductRepository() {
-        soldProducts = new TreeSet<>();
+        soldProducts = new Vector<>();
     }
     
-    public Set<SoldProduct> getSoldProducts() {
+    public List<SoldProduct> getSoldProducts() {
         return soldProducts;
     }
     

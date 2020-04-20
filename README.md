@@ -18,78 +18,95 @@ Java Project for PAO Laboratory
 - fields: id PK, name UNIQUE, category_id FK, price, discount, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via ProductService, SQL Linkage with ProductRepository:
-  - services: 
-      - get all products, get products by id/name/category/price/discount/quantity (returned as Set<Product> implemented with TreeSet)
-      - change product name/category/price/discount/quantity
-      - add a product, remove a product
+    - get all products, get products by id/name/category/price/discount/quantity (returned as Set<Product> implemented with TreeSet)
+    - change product name/category/price/discount/quantity
+    - add a product, remove a product
+- Via ProductIOService:
+    - load products from *Product.csv*
+    - save products to *Product.csv*
+  
 
 ### The `ProductCategory` model:
 
 - fields: id PK, name UNIQUE
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via ProductCategoryService, SQL Linkage via ProductCategoryRepository:
-  - services: 
-      - get all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
-      - set category name 
-      - add a category, remove a category
+    - get all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
+    - set category name 
+    - add a category, remove a category
+- Via ProductCategoryIOService:
+    - load product categories from *ProductCategory.csv*
+    - save product categories to *ProductCategory.csv*
             
 ### The `SoldProduct` model:
 
 - fields: (receiptId FK + productId FK) PK, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via SoldProductService, SQL Linkage via SoldProductRepository:
-  - services:
     - get all sold products, get sold products by receiptId/productId/quantity (returned as List<SoldProduct> implemented with Vector)
     - add a sold product, remove a sold product
+- Via SoldProductIOService:
+    - load sold products from *SoldProduct.csv*
+    - save sold products to *SoldProduct.csv*
             
 ### The `Cashier` model:
 
 - fields: id PK, first_name, last_name
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via CashierService, SQL Linkage via CashierRepository:
-  - services: 
     - get all cashiers, get cashiers by id/first_name/last_name (returned as Set<Cashier> implemented with TreeSet)
     - set cashier first_name, cashier set last_name
     - add a cashier, remove a cashier
+- Via CashierIOService:
+    - load cashiers from *Cashier.csv*
+    - save cashiers to *Cashier.csv*
             
 ### The `AssistedRegister` model:
 
 - fields: id PK, active, inUse -> inherited from Register base, cashierId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
 - Via RegisterService, SQL Linkage via RegisterRepository:
-  - services: 
     - get assisted registers (returned as Set<Register>, implemented with TreeSet)
     - assign a new cashier, drop the current cashier 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
     - add a register, remove a register
+- Via RegisterIOService:
+    - load registers from *Register.csv*
+    - save registers to *Register.csv*
           
 ### The `SelfRegister` model:
 
 - fields: id PK, active, inUse -> inherited from Register base, active is always true
 - methods: setters and getters, equals(), compareTo() -> inherited from Register base, toString()
 - Via RegisterService, SQL Linkage via RegisterRepository:
-  - services: 
     - get self registers (returned as Set<Register>, implemented with TreeSet) 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
     - add a register, remove a register
+- Via RegisterIOService:
+    - load registers from *Register.csv*
+    - save registers to *Register.csv*
 
 ### The `Coupon` model:
 
 - fields: id PK, discount, used -> usage check when id used as FK
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via CouponService, SQL Linkage via CouponRepository:
-  - services: 
     - get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/discount/used state
     - set coupon discount/usedState
     - add a coupon, remove a coupon
+- Via CouponIOService:
+    - load coupons from *Coupons.csv*
+    - save coupons to *Coupons.csv*
 
 ### The `Receipt` model:
 
 - fields: id PK, registerId FK, cashierId OPTIONAL FK, couponId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo(), to String()
 - Via ReceiptService, SQL Linkage via ReceiptRepository:
-  - services: 
     - get all receipts, get receipts by id/registerId/cashierId
     - add a receipt, remove a receipt
+- Via ReceiptIOService:
+    - load receipts from *Receipt.csv*
+    - save receipts to *Receipt.csv*

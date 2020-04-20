@@ -1,6 +1,8 @@
 package root.model;
 
-public class Cashier implements Comparable<Cashier> {
+import java.io.Serializable;
+
+public class Cashier implements Comparable<Cashier>, Serializable {
     private static int availableId = 0;
     private final int id;
     private String firstName;
