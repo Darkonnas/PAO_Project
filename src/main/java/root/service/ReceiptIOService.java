@@ -7,8 +7,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class ReceiptIOService {
+public final class ReceiptIOService {
     private static final String DATA_PATH = "src/main/java/root/data/";
     private static final String FILE_HEADER = "id,registerId,cashierId,couponId";
     private static ReceiptIOService instance;
@@ -17,36 +18,37 @@ public class ReceiptIOService {
     }
     
     public static ReceiptIOService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new ReceiptIOService();
         }
         return instance;
     }
     
-    public void loadReceipts() {
-        ReceiptService receiptService = ReceiptService.getInstance();
+    public final Set<Receipt> loadReceipts() {
+        final Set<Receipt> receipts = new TreeSet<>();
         BufferedReader fileReader = null;
         try {
             String line;
             fileReader = new BufferedReader(new FileReader(DATA_PATH + "Receipt.csv"));
             fileReader.readLine();
-            while ((line = fileReader.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length > 0) {
-                    receiptService.addReceipt(new Receipt(Integer.parseInt(fields[1]), Integer.parseInt(fields[2]), Integer.parseInt(fields[3])));
+            while (null != (line = fileReader.readLine())) {
+                final String[] fields = line.split("\\s*,");
+                if (0 < fields.length) {
+                    receipts.add(new Receipt(Integer.parseInt(fields[1]), Integer.parseInt(fields[2]), Integer.parseInt(fields[3])));
                 }
             }
-        } catch (IOException exception) {
+        } catch (final IOException exception) {
             exception.printStackTrace();
         } finally {
             try {
-                if (fileReader != null) {
+                if (null != fileReader) {
                     fileReader.close();
                 }
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 e.printStackTrace();
             }
         }
+        return receipts;
     }
     
     public void saveReceipts() {
@@ -54,22 +56,22 @@ public class ReceiptIOService {
         try {
             fileWriter = new FileWriter(DATA_PATH + "Receipt.csv");
             fileWriter.write(FILE_HEADER + '\n');
-            Set<Receipt> receipts = ReceiptService.getInstance().getReceipts();
-            for (Receipt receipt : receipts) {
+            final Set<Receipt> receipts = ReceiptService.getInstance().getReceipts();
+            for (final Receipt receipt : receipts) {
                 fileWriter.append(String.valueOf(receipt.getId())).append(",");
                 fileWriter.append(String.valueOf(receipt.getRegisterId())).append(",");
                 fileWriter.append(String.valueOf(receipt.getCashierId())).append(",");
                 fileWriter.append(String.valueOf(receipt.getCouponId())).append("\n");
             }
-        } catch (IOException exception) {
+        } catch (final IOException exception) {
             exception.printStackTrace();
         } finally {
             try {
-                if (fileWriter != null) {
+                if (null != fileWriter) {
                     fileWriter.flush();
                     fileWriter.close();
                 }
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 e.printStackTrace();
             }
         }

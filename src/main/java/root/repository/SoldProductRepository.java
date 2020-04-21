@@ -1,35 +1,37 @@
 package root.repository;
 
 import root.model.SoldProduct;
+import root.service.SoldProductIOService;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 public class SoldProductRepository {
-    private List<SoldProduct> soldProducts;
+    private final List<SoldProduct> soldProducts;
     
     public SoldProductRepository() {
-        soldProducts = new Vector<>();
+        soldProducts = SoldProductIOService.getInstance().loadSoldProducts();
     }
     
     public List<SoldProduct> getSoldProducts() {
-        return soldProducts;
+        return Collections.unmodifiableList(soldProducts);
     }
     
-    public boolean add(SoldProduct sp) {
+    public boolean add(final SoldProduct sp) {
         return soldProducts.add(sp);
     }
     
-    public boolean remove(int receiptId, int productId) {
-        SoldProduct sp = getSoldProductByReceiptIdAndProductId(receiptId, productId);
-        if (sp == null) {
+    public boolean remove(final int receiptId, final int productId) {
+        final SoldProduct sp = getSoldProductByReceiptIdAndProductId(receiptId, productId);
+        if (null == sp) {
             return false;
         }
         return soldProducts.remove(sp);
     }
     
-    public SoldProduct getSoldProductByReceiptIdAndProductId(int receiptId, int productId) {
-        for (SoldProduct sp : soldProducts) {
+    public SoldProduct getSoldProductByReceiptIdAndProductId(final int receiptId, final int productId) {
+        for (final SoldProduct sp : soldProducts) {
             if (receiptId == sp.getReceiptId() && productId == sp.getProductId()) {
                 return sp;
             }
@@ -37,12 +39,12 @@ public class SoldProductRepository {
         return null;
     }
     
-    public List<SoldProduct> getSoldProductsByReceiptId(int receiptId) {
+    public List<SoldProduct> getSoldProductsByReceiptId(final int receiptId) {
         List<SoldProduct> result = null;
-        for (SoldProduct sp : soldProducts) {
+        for (final SoldProduct sp : soldProducts) {
             if (receiptId == sp.getProductId()) {
-                if (result == null) {
-                    result = new Vector<>();
+                if (null == result) {
+                    result = new ArrayList<>();
                 }
                 result.add(sp);
             }
@@ -50,12 +52,12 @@ public class SoldProductRepository {
         return result;
     }
     
-    public List<SoldProduct> getSoldProductsByProductId(int productId) {
+    public List<SoldProduct> getSoldProductsByProductId(final int productId) {
         List<SoldProduct> result = null;
-        for (SoldProduct sp : soldProducts) {
+        for (final SoldProduct sp : soldProducts) {
             if (productId == sp.getReceiptId()) {
-                if (result == null) {
-                    result = new Vector<>();
+                if (null == result) {
+                    result = new ArrayList<>();
                 }
                 result.add(sp);
             }
@@ -63,12 +65,12 @@ public class SoldProductRepository {
         return result;
     }
     
-    public List<SoldProduct> getSoldProductsByQuantity(int quantity) {
+    public List<SoldProduct> getSoldProductsByQuantity(final int quantity) {
         List<SoldProduct> result = null;
-        for (SoldProduct sp : soldProducts) {
+        for (final SoldProduct sp : soldProducts) {
             if (quantity == sp.getQuantity()) {
-                if (result == null) {
-                    result = new Vector<>();
+                if (null == result) {
+                    result = new ArrayList<>();
                 }
                 result.add(sp);
             }

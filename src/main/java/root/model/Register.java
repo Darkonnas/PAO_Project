@@ -1,17 +1,17 @@
 package root.model;
 
 public abstract class Register implements Comparable<Register> {
-    protected static int availableId = 0;
-    protected final int id;
-    protected boolean active;
-    protected boolean inUse;
+    private static int availableId;
+    final int id;
+    boolean active;
+    boolean inUse;
     
-    public Register() {
+    Register() {
         this(false, false);
     }
     
-    public Register(boolean active, boolean inUse) {
-        this.id = availableId++;
+    Register(final boolean active, final boolean inUse) {
+        id = availableId++;
         this.active = active;
         this.inUse = inUse;
     }
@@ -24,7 +24,7 @@ public abstract class Register implements Comparable<Register> {
         return active;
     }
     
-    public void setActive(boolean active) {
+    public void setActive(final boolean active) {
         this.active = active;
     }
     
@@ -32,32 +32,13 @@ public abstract class Register implements Comparable<Register> {
         return inUse;
     }
     
-    public void setInUse(boolean inUse) {
+    public void setInUse(final boolean inUse) {
         this.inUse = inUse;
     }
     
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || this.getClass() != obj.getClass()) {
-            return false;
-        }
-        Register register = (Register) obj;
-        return this.id == register.id;
-    }
+    public abstract int hashCode();
     
     @Override
-    public String toString() {
-        return "Register{" + "id=" + id + ", active=" + active + ", inUse=" + inUse + '}';
-    }
-    
-    @Override
-    public int compareTo(Register register) throws NullPointerException {
-        if (register == null) {
-            throw new NullPointerException();
-        }
-        return Integer.compare(id, register.id);
-    }
+    public abstract boolean equals(final Object obj);
 }

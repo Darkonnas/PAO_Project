@@ -1,5 +1,7 @@
 package root.model;
 
+import java.util.Objects;
+
 public class Product implements Comparable<Product> {
     private final int id;
     private int categoryId;
@@ -8,12 +10,12 @@ public class Product implements Comparable<Product> {
     private float discount;
     private int quantity;
     
-    public Product(int categoryId, String name, float price, int quantity) {
-        this(categoryId, name, price, 0F, quantity);
+    public Product(final int categoryId, final String name, final float price, final int quantity) {
+        this(categoryId, name, price, 0.0F, quantity);
     }
     
-    public Product(int categoryId, String name, float price, float discount, int quantity) {
-        this.id = categoryId + name.hashCode();
+    public Product(final int categoryId, final String name, final float price, final float discount, final int quantity) {
+        id = categoryId + name.hashCode();
         this.name = name;
         this.categoryId = categoryId;
         this.price = price;
@@ -29,7 +31,7 @@ public class Product implements Comparable<Product> {
         return categoryId;
     }
     
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(final int categoryId) {
         this.categoryId = categoryId;
     }
     
@@ -37,7 +39,7 @@ public class Product implements Comparable<Product> {
         return name;
     }
     
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
     
@@ -45,7 +47,7 @@ public class Product implements Comparable<Product> {
         return price;
     }
     
-    public void setPrice(float price) {
+    public void setPrice(final float price) {
         this.price = price;
     }
     
@@ -53,7 +55,7 @@ public class Product implements Comparable<Product> {
         return discount;
     }
     
-    public void setDiscount(float discount) {
+    public void setDiscount(final float discount) {
         this.discount = discount;
     }
     
@@ -61,18 +63,16 @@ public class Product implements Comparable<Product> {
         return quantity;
     }
     
-    public void setQuantity(int quantity) {
+    public void setQuantity(final int quantity) {
         this.quantity = quantity;
     }
     
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Product product = (Product) o;
-        return id == product.id;
+    public int compareTo(final Product t) throws NullPointerException {
+        if (null == t) {
+            throw new NullPointerException();
+        }
+        return Integer.compare(id, t.id);
     }
     
     @Override
@@ -81,15 +81,17 @@ public class Product implements Comparable<Product> {
     }
     
     @Override
-    public int compareTo(Product product) throws NullPointerException {
-        if (product == null) {
-            throw new NullPointerException();
-        }
-        int firstOrder = Integer.compare(categoryId, product.categoryId);
-        if (firstOrder != 0) {
-            return firstOrder;
-        } else {
-            return Integer.compare(id, product.id);
-        }
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (null == obj || getClass() != obj.getClass())
+            return false;
+        final Product product = (Product) obj;
+        return id == product.id;
     }
 }

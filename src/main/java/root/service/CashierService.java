@@ -5,16 +5,16 @@ import root.repository.CashierRepository;
 
 import java.util.Set;
 
-public class CashierService {
+public final class CashierService {
     private static CashierService instance;
-    private CashierRepository cashierRepository;
+    private final CashierRepository cashierRepository;
     
     private CashierService() {
         cashierRepository = new CashierRepository();
     }
     
     public static CashierService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new CashierService();
         }
         return instance;
@@ -24,31 +24,31 @@ public class CashierService {
         return cashierRepository.getCashiers();
     }
     
-    public boolean addCashier(Cashier c) {
-        return cashierRepository.add(c);
+    public boolean addCashier(final Cashier cashier) {
+        return cashierRepository.add(cashier);
     }
     
-    public boolean removeCashier(int id) {
+    public boolean removeCashier(final int id) {
         return cashierRepository.remove(id);
     }
     
-    public Cashier getCashierById(int id) {
+    public Cashier getCashierById(final int id) {
         return cashierRepository.getCashierById(id);
     }
     
-    public Set<Cashier> getCashiersByFirstName(String firstName) {
+    public Set<Cashier> getCashiersByFirstName(final String firstName) {
         return cashierRepository.getCashiersByFirstName(firstName);
     }
     
-    public boolean setCashierFirstName(int id, String firstName) {
+    public boolean setCashierFirstName(final int id, final String firstName) {
         return cashierRepository.setCashierFirstName(id, firstName);
     }
     
-    public Set<Cashier> getCashiersByLastName(String lastName) {
+    public Set<Cashier> getCashiersByLastName(final String lastName) {
         return cashierRepository.getCashiersByLastName(lastName);
     }
     
-    public boolean setCashierLastName(int id, String lastName) {
+    public boolean setCashierLastName(final int id, final String lastName) {
         return cashierRepository.setCashierLastName(id, lastName);
     }
 }

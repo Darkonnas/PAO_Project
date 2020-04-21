@@ -1,10 +1,10 @@
-id        ,categoryId,name              ,price,discount,quantity
-63476538  ,0         ,Apple             ,4.99 ,0.0     ,30
-1982479237,0         ,Banana            ,7.59 ,0.0     ,20
-468349617 ,1         ,Blue Shirt        ,10.69,30.0    ,10
-312642015 ,2         ,The Sun           ,6.39 ,0.0     ,46
-1802160646,2         ,The New York Times,5.99 ,0.0     ,50
-111220270 ,3         ,Mr Proper         ,9.29 ,10.0    ,20
-1198073355,3         ,Domestos          ,7.99 ,0.0     ,35
-1850062050,4         ,Soy milk          ,5.49 ,0.0     ,20
-1485382747,5         ,Graham Bread      ,3.49 ,0.0     ,25
+id,categoryId,name,price,discount,quantity
+63476538,0,Apple,4.99,0.0,30
+111220270,3,Mr Proper,9.29,10.0,20
+312642015,2,The Sun,6.39,0.0,46
+468349617,1,Blue Shirt,10.69,30.0,10
+1198073355,3,Domestos,7.99,0.0,35
+1485382747,5,Graham Bread,3.49,0.0,25
+1802160646,2,The New York Times,5.99,0.0,50
+1850062050,4,Soy milk,5.49,0.0,20
+1982479237,0,Banana,7.59,0.0,20

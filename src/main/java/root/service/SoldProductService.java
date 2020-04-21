@@ -5,16 +5,16 @@ import root.repository.SoldProductRepository;
 
 import java.util.List;
 
-public class SoldProductService {
+public final class SoldProductService {
     private static SoldProductService instance;
-    private SoldProductRepository soldProductRepository;
+    private final SoldProductRepository soldProductRepository;
     
     private SoldProductService() {
         soldProductRepository = new SoldProductRepository();
     }
     
     public static SoldProductService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new SoldProductService();
         }
         return instance;
@@ -24,33 +24,33 @@ public class SoldProductService {
         return soldProductRepository.getSoldProducts();
     }
     
-    public boolean addSoldProduct(SoldProduct sp) {
-        if (ReceiptService.getInstance().getReceiptById(sp.getReceiptId()) == null) {
+    public boolean addSoldProduct(final SoldProduct sp) {
+        if (null == ReceiptService.getInstance().getReceiptById(sp.getReceiptId())) {
             return false;
         }
-        if (ProductService.getInstance().getProductById(sp.getProductId()) == null) {
+        if (null == ProductService.getInstance().getProductById(sp.getProductId())) {
             return false;
         }
         return soldProductRepository.add(sp);
     }
     
-    public boolean removeSoldProduct(int receiptId, int productId) {
+    public boolean removeSoldProduct(final int receiptId, final int productId) {
         return soldProductRepository.remove(receiptId, productId);
     }
     
-    public SoldProduct getSoldProductByReceiptIdAndProductId(int receiptId, int productId) {
+    public SoldProduct getSoldProductByReceiptIdAndProductId(final int receiptId, final int productId) {
         return soldProductRepository.getSoldProductByReceiptIdAndProductId(receiptId, productId);
     }
     
-    public List<SoldProduct> getSoldProductsByReceiptId(int receiptId) {
+    public List<SoldProduct> getSoldProductsByReceiptId(final int receiptId) {
         return soldProductRepository.getSoldProductsByReceiptId(receiptId);
     }
     
-    public List<SoldProduct> getSoldProductsByProductId(int productId) {
+    public List<SoldProduct> getSoldProductsByProductId(final int productId) {
         return soldProductRepository.getSoldProductsByProductId(productId);
     }
     
-    public List<SoldProduct> getSoldProductsByQuantity(int quantity) {
+    public List<SoldProduct> getSoldProductsByQuantity(final int quantity) {
         return soldProductRepository.getSoldProductsByQuantity(quantity);
     }
 }

@@ -5,16 +5,16 @@ import root.repository.CouponRepository;
 
 import java.util.Set;
 
-public class CouponService {
+public final class CouponService {
     private static CouponService instance;
-    private CouponRepository couponRepository;
+    private final CouponRepository couponRepository;
     
     private CouponService() {
-        this.couponRepository = new CouponRepository();
+        couponRepository = new CouponRepository();
     }
     
     public static CouponService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new CouponService();
         }
         return instance;
@@ -24,31 +24,31 @@ public class CouponService {
         return couponRepository.getCoupons();
     }
     
-    public boolean addCoupon(Coupon c) {
-        return couponRepository.add(c);
+    public boolean addCoupon(final Coupon coupon) {
+        return couponRepository.add(coupon);
     }
     
-    public boolean removeCoupon(int id) {
+    public boolean removeCoupon(final int id) {
         return couponRepository.remove(id);
     }
     
-    public Coupon getCouponById(int id) {
+    public Coupon getCouponById(final int id) {
         return couponRepository.getCouponById(id);
     }
     
-    public Set<Coupon> getCouponsByDiscount(float discount) {
+    public Set<Coupon> getCouponsByDiscount(final float discount) {
         return couponRepository.getCouponsByDiscount(discount);
     }
     
-    public boolean setCouponDiscount(int id, float discount) {
+    public boolean setCouponDiscount(final int id, final float discount) {
         return couponRepository.setCouponDiscount(id, discount);
     }
     
-    public Set<Coupon> getCouponsByUsedState(boolean state) {
+    public Set<Coupon> getCouponsByUsedState(final boolean state) {
         return couponRepository.getCouponsByUsedState(state);
     }
     
-    public boolean setCouponUsedState(int id, boolean state) {
+    public boolean setCouponUsedState(final int id, final boolean state) {
         return couponRepository.setCouponUsedState(id, state);
     }
 }

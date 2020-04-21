@@ -1,11 +1,13 @@
 package root.model;
 
+import java.util.Objects;
+
 public class SoldProduct implements Comparable<SoldProduct> {
     private final int receiptId;
     private final int productId;
     private final int quantity;
     
-    public SoldProduct(int receiptId, int productId, int quantity) {
+    public SoldProduct(final int receiptId, final int productId, final int quantity) {
         this.receiptId = receiptId;
         this.productId = productId;
         this.quantity = quantity;
@@ -24,13 +26,17 @@ public class SoldProduct implements Comparable<SoldProduct> {
     }
     
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        SoldProduct that = (SoldProduct) o;
-        return receiptId == that.receiptId && productId == that.productId;
+    public int compareTo(final SoldProduct t) throws NullPointerException {
+        if (null == t) {
+            throw new NullPointerException();
+        }
+        if (receiptId < t.receiptId) {
+            return -1;
+        }
+        if (receiptId == t.receiptId) {
+            return Integer.compare(receiptId, t.productId);
+        }
+        return 1;
     }
     
     @Override
@@ -39,16 +45,17 @@ public class SoldProduct implements Comparable<SoldProduct> {
     }
     
     @Override
-    public int compareTo(SoldProduct soldProduct) throws NullPointerException {
-        if (soldProduct == null) {
-            throw new NullPointerException();
-        }
-        if (receiptId < soldProduct.receiptId) {
-            return -1;
-        }
-        if (receiptId == soldProduct.receiptId) {
-            return Integer.compare(receiptId, soldProduct.productId);
-        }
-        return 1;
+    public int hashCode() {
+        return Objects.hash(receiptId, productId, quantity);
+    }
+    
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (null == obj || getClass() != obj.getClass())
+            return false;
+        final SoldProduct soldProduct = (SoldProduct) obj;
+        return receiptId == soldProduct.receiptId && productId == soldProduct.productId;
     }
 }

@@ -5,16 +5,16 @@ import root.repository.ProductCategoryRepository;
 
 import java.util.Set;
 
-public class ProductCategoryService {
+public final class ProductCategoryService {
     private static ProductCategoryService instance;
-    private ProductCategoryRepository productCategoryRepository;
+    private final ProductCategoryRepository productCategoryRepository;
     
     private ProductCategoryService() {
         productCategoryRepository = new ProductCategoryRepository();
     }
     
     public static ProductCategoryService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new ProductCategoryService();
         }
         return instance;
@@ -24,27 +24,27 @@ public class ProductCategoryService {
         return productCategoryRepository.getProductCategories();
     }
     
-    public boolean addProductCategory(ProductCategory pc) {
+    public boolean addProductCategory(final ProductCategory pc) {
         return productCategoryRepository.add(pc);
     }
     
-    public boolean removeProductCategory(int id) {
+    public boolean removeProductCategory(final int id) {
         return productCategoryRepository.remove(id);
     }
     
-    public ProductCategory getProductCategoryById(int id) {
+    public ProductCategory getProductCategoryById(final int id) {
         return productCategoryRepository.getProductCategoryById(id);
     }
     
-    public ProductCategory getProductCategoryByName(String name) {
+    public ProductCategory getProductCategoryByName(final String name) {
         return productCategoryRepository.getProductCategoryByName(name);
     }
     
-    public boolean setProductCategoryName(int id, String name) {
+    public boolean setProductCategoryName(final int id, final String name) {
         return productCategoryRepository.setProductCategoryName(id, name);
     }
     
-    public boolean setProductCategoryName(String oldName, String newName) {
+    public boolean setProductCategoryName(final String oldName, final String newName) {
         return productCategoryRepository.setProductCategoryName(oldName, newName);
     }
 }

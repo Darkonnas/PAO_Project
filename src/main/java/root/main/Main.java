@@ -2,34 +2,26 @@ package root.main;
 
 import root.service.*;
 
-public class Main {
-    public static void main(String[] args) {
+class Main {
+    public static void main(final String[] args) {
         //Declaration
-        CashierService cashierService = CashierService.getInstance();
-        RegisterService registerService = RegisterService.getInstance();
-        ProductCategoryService productCategoryService = ProductCategoryService.getInstance();
-        ProductService productService = ProductService.getInstance();
-        CouponService couponService = CouponService.getInstance();
-        ReceiptService receiptService = ReceiptService.getInstance();
-        SoldProductService soldProductService = SoldProductService.getInstance();
-    
-        CashierIOService cashierIOService = CashierIOService.getInstance();
-        RegisterIOService registerIOService = RegisterIOService.getInstance();
-        ProductCategoryIOService productCategoryIOService = ProductCategoryIOService.getInstance();
-        ProductIOService productIOService = ProductIOService.getInstance();
-        CouponIOService couponIOService = CouponIOService.getInstance();
-        ReceiptIOService receiptIOService = ReceiptIOService.getInstance();
-        SoldProductIOService soldProductIOService = SoldProductIOService.getInstance();
-    
-        //Data loading
-        cashierIOService.loadCashiers();
-        registerIOService.loadRegisters();
-        productCategoryIOService.loadProductCategories();
-        productIOService.loadProducts();
-        couponIOService.loadCoupons();
-        receiptIOService.loadReceipts();
-        soldProductIOService.loadSoldProducts();
-    
+        final CashierService cashierService = CashierService.getInstance();
+        final RegisterService registerService = RegisterService.getInstance();
+        final ProductCategoryService productCategoryService = ProductCategoryService.getInstance();
+        final ProductService productService = ProductService.getInstance();
+        final CouponService couponService = CouponService.getInstance();
+        final ReceiptService receiptService = ReceiptService.getInstance();
+        final SoldProductService soldProductService = SoldProductService.getInstance();
+        
+        final CashierIOService cashierIOService = CashierIOService.getInstance();
+        final RegisterIOService registerIOService = RegisterIOService.getInstance();
+        final ProductCategoryIOService productCategoryIOService = ProductCategoryIOService.getInstance();
+        final ProductIOService productIOService = ProductIOService.getInstance();
+        final CouponIOService couponIOService = CouponIOService.getInstance();
+        final ReceiptIOService receiptIOService = ReceiptIOService.getInstance();
+        final SoldProductIOService soldProductIOService = SoldProductIOService.getInstance();
+        
+        
         //Actions
         System.out.println(cashierService.getCashiers());
         System.out.println(registerService.getRegisters());

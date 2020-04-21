@@ -6,16 +6,16 @@ import root.repository.RegisterRepository;
 
 import java.util.Set;
 
-public class RegisterService {
+public final class RegisterService {
     private static RegisterService instance;
-    private RegisterRepository registerRepository;
+    private final RegisterRepository registerRepository;
     
     private RegisterService() {
         registerRepository = new RegisterRepository();
     }
     
     public static RegisterService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new RegisterService();
         }
         return instance;
@@ -25,37 +25,37 @@ public class RegisterService {
         return registerRepository.getRegisters();
     }
     
-    public boolean addRegister(Register r) {
-        if (r.getClass() == AssistedRegister.class) {
-            AssistedRegister assistedRegister = (AssistedRegister) r;
-            if (assistedRegister.getCashierId() != -1 && CashierService.getInstance().getCashierById(assistedRegister.getCashierId()) == null) {
+    public boolean addRegister(final Register r) {
+        if (AssistedRegister.class == r.getClass()) {
+            final AssistedRegister assistedRegister = (AssistedRegister) r;
+            if (-1 != assistedRegister.getCashierId() && null == CashierService.getInstance().getCashierById(assistedRegister.getCashierId())) {
                 return false;
             }
         }
         return registerRepository.add(r);
     }
     
-    public boolean removeRegister(int id) {
+    public boolean removeRegister(final int id) {
         return registerRepository.remove(id);
     }
     
-    public Register getRegisterById(int id) {
+    public Register getRegisterById(final int id) {
         return registerRepository.getRegisterById(id);
     }
     
-    public Set<Register> getRegistersByActiveState(boolean state) {
+    public Set<Register> getRegistersByActiveState(final boolean state) {
         return registerRepository.getRegistersByActiveState(state);
     }
     
-    public boolean setRegisterActiveState(int id, boolean state) {
+    public boolean setRegisterActiveState(final int id, final boolean state) {
         return registerRepository.setRegisterActiveState(id, state);
     }
     
-    public Set<Register> getRegistersByInUseState(boolean state) {
+    public Set<Register> getRegistersByInUseState(final boolean state) {
         return registerRepository.getRegistersByInUseState(state);
     }
     
-    public boolean setRegisterInUseState(int id, boolean state) {
+    public boolean setRegisterInUseState(final int id, final boolean state) {
         return registerRepository.setRegisterInUseState(id, state);
     }
     
@@ -63,14 +63,14 @@ public class RegisterService {
         return registerRepository.getAssistedRegisters();
     }
     
-    public boolean assignCashier(int id, int cashierId) {
-        if (CashierService.getInstance().getCashierById(cashierId) == null) {
+    public boolean assignCashier(final int id, final int cashierId) {
+        if (null == CashierService.getInstance().getCashierById(cashierId)) {
             return false;
         }
         return registerRepository.assignCashier(id, cashierId);
     }
     
-    public boolean dropCashier(int id) {
+    public boolean dropCashier(final int id) {
         return registerRepository.dropCashier(id);
     }
     

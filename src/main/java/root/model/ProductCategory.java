@@ -1,12 +1,14 @@
 package root.model;
 
+import java.util.Objects;
+
 public class ProductCategory implements Comparable<ProductCategory> {
-    private static int availableId = 0;
+    private static int availableId;
     private final int id;
     private String name;
     
-    public ProductCategory(String name) {
-        this.id = availableId++;
+    public ProductCategory(final String name) {
+        id = availableId++;
         this.name = name;
     }
     
@@ -18,20 +20,16 @@ public class ProductCategory implements Comparable<ProductCategory> {
         return name;
     }
     
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
     
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+    public int compareTo(final ProductCategory t) throws NullPointerException {
+        if (null == t) {
+            throw new NullPointerException();
         }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductCategory productCategory = (ProductCategory) o;
-        return id == productCategory.id;
+        return Integer.compare(id, t.id);
     }
     
     @Override
@@ -40,10 +38,19 @@ public class ProductCategory implements Comparable<ProductCategory> {
     }
     
     @Override
-    public int compareTo(ProductCategory productCategory) throws NullPointerException {
-        if (productCategory == null) {
-            throw new NullPointerException();
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
         }
-        return Integer.compare(id, productCategory.id);
+        if (null == obj || getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductCategory productCategory = (ProductCategory) obj;
+        return id == productCategory.id;
     }
 }

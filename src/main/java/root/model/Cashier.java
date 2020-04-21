@@ -1,15 +1,16 @@
 package root.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Cashier implements Comparable<Cashier>, Serializable {
-    private static int availableId = 0;
+    private static int availableId;
     private final int id;
     private String firstName;
     private String lastName;
     
-    public Cashier(String firstName, String lastName) {
-        this.id = availableId++;
+    public Cashier(final String firstName, final String lastName) {
+        id = availableId++;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -22,7 +23,7 @@ public class Cashier implements Comparable<Cashier>, Serializable {
         return firstName;
     }
     
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
     
@@ -30,18 +31,16 @@ public class Cashier implements Comparable<Cashier>, Serializable {
         return lastName;
     }
     
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
     
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Cashier cashier = (Cashier) o;
-        return this.id == cashier.id;
+    public int compareTo(final Cashier t) throws NullPointerException {
+        if (null == t) {
+            throw new NullPointerException();
+        }
+        return Integer.compare(id, t.id);
     }
     
     @Override
@@ -50,10 +49,17 @@ public class Cashier implements Comparable<Cashier>, Serializable {
     }
     
     @Override
-    public int compareTo(Cashier c) throws NullPointerException {
-        if (c == null) {
-            throw new NullPointerException();
-        }
-        return Integer.compare(this.id, c.id);
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (null == obj || getClass() != obj.getClass())
+            return false;
+        final Cashier cashier = (Cashier) obj;
+        return id == cashier.id;
     }
 }

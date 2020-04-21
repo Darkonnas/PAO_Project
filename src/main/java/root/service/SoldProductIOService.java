@@ -6,9 +6,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class SoldProductIOService {
+public final class SoldProductIOService {
     private static final String DATA_PATH = "src/main/java/root/data/";
     private static final String FILE_HEADER = "receiptId,productId,quantity";
     private static SoldProductIOService instance;
@@ -17,36 +18,37 @@ public class SoldProductIOService {
     }
     
     public static SoldProductIOService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new SoldProductIOService();
         }
         return instance;
     }
     
-    public void loadSoldProducts() {
-        SoldProductService soldProductService = SoldProductService.getInstance();
+    public final List<SoldProduct> loadSoldProducts() {
+        final List<SoldProduct> soldProducts = new ArrayList<>();
         BufferedReader fileReader = null;
         try {
             String line;
             fileReader = new BufferedReader(new FileReader(DATA_PATH + "SoldProduct.csv"));
             fileReader.readLine();
-            while ((line = fileReader.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length > 0) {
-                    soldProductService.addSoldProduct(new SoldProduct(Integer.parseInt(fields[0]), Integer.parseInt(fields[1]), Integer.parseInt(fields[2])));
+            while (null != (line = fileReader.readLine())) {
+                final String[] fields = line.split("\\s*,");
+                if (0 < fields.length) {
+                    soldProducts.add(new SoldProduct(Integer.parseInt(fields[0]), Integer.parseInt(fields[1]), Integer.parseInt(fields[2])));
                 }
             }
-        } catch (IOException exception) {
+        } catch (final IOException exception) {
             exception.printStackTrace();
         } finally {
             try {
-                if (fileReader != null) {
+                if (null != fileReader) {
                     fileReader.close();
                 }
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 e.printStackTrace();
             }
         }
+        return soldProducts;
     }
     
     public void saveSoldProducts() {
@@ -54,21 +56,21 @@ public class SoldProductIOService {
         try {
             fileWriter = new FileWriter(DATA_PATH + "SoldProduct.csv");
             fileWriter.write(FILE_HEADER + '\n');
-            List<SoldProduct> soldProducts = SoldProductService.getInstance().getSoldProducts();
-            for (SoldProduct soldProduct : soldProducts) {
+            final List<SoldProduct> soldProducts = SoldProductService.getInstance().getSoldProducts();
+            for (final SoldProduct soldProduct : soldProducts) {
                 fileWriter.append(String.valueOf(soldProduct.getReceiptId())).append(",");
                 fileWriter.append(String.valueOf(soldProduct.getProductId())).append(",");
                 fileWriter.append(String.valueOf(soldProduct.getQuantity())).append("\n");
             }
-        } catch (IOException exception) {
+        } catch (final IOException exception) {
             exception.printStackTrace();
         } finally {
             try {
-                if (fileWriter != null) {
+                if (null != fileWriter) {
                     fileWriter.flush();
                     fileWriter.close();
                 }
-            } catch (IOException e) {
+            } catch (final IOException e) {
                 e.printStackTrace();
             }
         }

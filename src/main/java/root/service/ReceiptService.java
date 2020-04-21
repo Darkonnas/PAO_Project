@@ -6,16 +6,16 @@ import root.repository.ReceiptRepository;
 
 import java.util.Set;
 
-public class ReceiptService {
+public final class ReceiptService {
     private static ReceiptService instance;
-    private ReceiptRepository receiptRepository;
+    private final ReceiptRepository receiptRepository;
     
     private ReceiptService() {
         receiptRepository = new ReceiptRepository();
     }
     
     public static ReceiptService getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new ReceiptService();
         }
         return instance;
@@ -25,43 +25,43 @@ public class ReceiptService {
         return receiptRepository.getReceipts();
     }
     
-    public boolean addReceipt(Receipt r) {
-        if (RegisterService.getInstance().getRegisterById(r.getRegisterId()) == null) {
+    public boolean addReceipt(final Receipt receipt) {
+        if (null == RegisterService.getInstance().getRegisterById(receipt.getRegisterId())) {
             return false;
         }
-        if (r.getCashierId() != -1 && CashierService.getInstance().getCashierById(r.getCashierId()) == null) {
+        if (-1 != receipt.getCashierId() && null == CashierService.getInstance().getCashierById(receipt.getCashierId())) {
             return false;
         }
-        if (r.getCouponId() != -1) {
-            Coupon c = CouponService.getInstance().getCouponById(r.getCouponId());
-            if (c == null) {
+        if (-1 != receipt.getCouponId()) {
+            final Coupon coupon = CouponService.getInstance().getCouponById(receipt.getCouponId());
+            if (null == coupon) {
                 return false;
             }
-            if (c.isUsed()) {
+            if (coupon.isUsed()) {
                 return false;
             }
-            c.setUsed(true);
+            coupon.setUsed(true);
         }
-        return receiptRepository.add(r);
+        return receiptRepository.add(receipt);
     }
     
-    public boolean removeReceipt(int id) {
+    public boolean removeReceipt(final int id) {
         return receiptRepository.remove(id);
     }
     
-    public Receipt getReceiptById(int id) {
+    public Receipt getReceiptById(final int id) {
         return receiptRepository.getReceiptById(id);
     }
     
-    public Set<Receipt> getReceiptsByRegisterId(int registerId) {
+    public Set<Receipt> getReceiptsByRegisterId(final int registerId) {
         return receiptRepository.getReceiptsByRegisterId(registerId);
     }
     
-    public Set<Receipt> getReceiptsByCashierId(int cashierId) {
+    public Set<Receipt> getReceiptsByCashierId(final int cashierId) {
         return receiptRepository.getReceiptsByCashierId(cashierId);
     }
     
-    public Receipt getReceiptByCouponId(int id) {
+    public Receipt getReceiptByCouponId(final int id) {
         return receiptRepository.getReceiptByCouponId(id);
     }
 }

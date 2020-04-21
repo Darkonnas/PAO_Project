@@ -1,30 +1,32 @@
 package root.repository;
 
 import root.model.Product;
+import root.service.ProductIOService;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class ProductRepository {
-    private Set<Product> products;
+    private final Set<Product> products;
     
     public ProductRepository() {
-        products = new TreeSet<>();
+        products = ProductIOService.getInstance().loadProducts();
     }
     
     public Set<Product> getProducts() {
-        return products;
+        return Collections.unmodifiableSet(products);
     }
     
-    public boolean add(Product p) {
-        if (getProductById(p.getId()) != null) {
+    public boolean add(final Product p) {
+        if (null != getProductById(p.getId())) {
             return false;
         }
         return products.add(p);
     }
     
-    public Product getProductById(int id) {
-        for (Product p : products) {
+    public Product getProductById(final int id) {
+        for (final Product p : products) {
             if (id == p.getId()) {
                 return p;
             }
@@ -32,19 +34,19 @@ public class ProductRepository {
         return null;
     }
     
-    public boolean remove(int id) {
-        Product p = getProductById(id);
-        if (p == null) {
+    public boolean remove(final int id) {
+        final Product p = getProductById(id);
+        if (null == p) {
             return false;
         }
         return products.remove(p);
     }
     
-    public Set<Product> getProductsByCategoryId(int categoryId) {
+    public Set<Product> getProductsByCategoryId(final int categoryId) {
         Set<Product> result = null;
-        for (Product p : products) {
+        for (final Product p : products) {
             if (categoryId == p.getCategoryId()) {
-                if (result == null) {
+                if (null == result) {
                     result = new TreeSet<>();
                 }
                 result.add(p);
@@ -53,20 +55,20 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductCategoryId(int id, int categoryId) {
-        Product p = getProductById(id);
-        if (p == null) {
+    public boolean setProductCategoryId(final int id, final int categoryId) {
+        final Product p = getProductById(id);
+        if (null == p) {
             return false;
         }
         p.setCategoryId(categoryId);
         return true;
     }
     
-    public Set<Product> getProductsByName(String name) {
+    public Set<Product> getProductsByName(final String name) {
         Set<Product> result = null;
-        for (Product p : products) {
+        for (final Product p : products) {
             if (name.equals(p.getName())) {
-                if (result == null) {
+                if (null == result) {
                     result = new TreeSet<>();
                 }
                 result.add(p);
@@ -75,20 +77,20 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductName(int id, String name) {
-        Product p = getProductById(id);
-        if (p == null) {
+    public boolean setProductName(final int id, final String name) {
+        final Product p = getProductById(id);
+        if (null == p) {
             return false;
         }
         p.setName(name);
         return true;
     }
     
-    public Set<Product> getProductsByPrice(float price) {
+    public Set<Product> getProductsByPrice(final float price) {
         Set<Product> result = null;
-        for (Product p : products) {
-            if (Float.compare(price, p.getPrice()) == 0) {
-                if (result == null) {
+        for (final Product p : products) {
+            if (0 == Float.compare(price, p.getPrice())) {
+                if (null == result) {
                     result = new TreeSet<>();
                 }
                 result.add(p);
@@ -97,20 +99,20 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductPrice(int id, float price) {
-        Product pc = getProductById(id);
-        if (pc == null) {
+    public boolean setProductPrice(final int id, final float price) {
+        final Product pc = getProductById(id);
+        if (null == pc) {
             return false;
         }
         pc.setPrice(price);
         return true;
     }
     
-    public Set<Product> getProductsByDiscount(float discount) {
+    public Set<Product> getProductsByDiscount(final float discount) {
         Set<Product> result = null;
-        for (Product p : products) {
-            if (Float.compare(discount, p.getDiscount()) == 0) {
-                if (result == null) {
+        for (final Product p : products) {
+            if (0 == Float.compare(discount, p.getDiscount())) {
+                if (null == result) {
                     result = new TreeSet<>();
                 }
                 result.add(p);
@@ -119,20 +121,20 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductDiscount(int id, float discount) {
-        Product p = getProductById(id);
-        if (p == null) {
+    public boolean setProductDiscount(final int id, final float discount) {
+        final Product p = getProductById(id);
+        if (null == p) {
             return false;
         }
         p.setDiscount(discount);
         return true;
     }
     
-    public Set<Product> getProductsByQuantity(int quantity) {
+    public Set<Product> getProductsByQuantity(final int quantity) {
         Set<Product> result = null;
-        for (Product p : products) {
+        for (final Product p : products) {
             if (quantity == p.getQuantity()) {
-                if (result == null) {
+                if (null == result) {
                     result = new TreeSet<>();
                 }
                 result.add(p);
@@ -141,9 +143,9 @@ public class ProductRepository {
         return result;
     }
     
-    public boolean setProductQuantity(int id, int quantity) {
-        Product p = getProductById(id);
-        if (p == null) {
+    public boolean setProductQuantity(final int id, final int quantity) {
+        final Product p = getProductById(id);
+        if (null == p) {
             return false;
         }
         p.setQuantity(quantity);

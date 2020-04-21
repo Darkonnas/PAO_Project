@@ -43,7 +43,7 @@ Java Project for PAO Laboratory
 - fields: (receiptId FK + productId FK) PK, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via SoldProductService, SQL Linkage via SoldProductRepository:
-    - get all sold products, get sold products by receiptId/productId/quantity (returned as List<SoldProduct> implemented with Vector)
+    - get all sold products, get sold products by receiptId/productId/quantity (returned as List<SoldProduct> implemented with ArrayList)
     - add a sold product, remove a sold product
 - Via SoldProductIOService:
     - load sold products from *SoldProduct.csv*

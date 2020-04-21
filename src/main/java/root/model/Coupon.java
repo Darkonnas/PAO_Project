@@ -1,19 +1,21 @@
 package root.model;
 
+import java.util.Objects;
+
 public class Coupon implements Comparable<Coupon> {
-    private static int availableId = 0;
+    private static int availableId;
     private final int id;
     private float discount;
     private boolean used;
     
-    public Coupon(float discount) {
+    public Coupon(final float discount) {
         this(discount, false);
     }
     
-    public Coupon(float discount, boolean used) {
-        this.id = availableId++;
+    public Coupon(final float discount, final boolean used) {
+        id = availableId++;
         this.discount = discount;
-        this.used = false;
+        this.used = used;
     }
     
     public int getId() {
@@ -24,7 +26,7 @@ public class Coupon implements Comparable<Coupon> {
         return discount;
     }
     
-    public void setDiscount(float discount) {
+    public void setDiscount(final float discount) {
         this.discount = discount;
     }
     
@@ -32,18 +34,16 @@ public class Coupon implements Comparable<Coupon> {
         return used;
     }
     
-    public void setUsed(boolean used) {
+    public void setUsed(final boolean used) {
         this.used = used;
     }
     
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Coupon coupon = (Coupon) o;
-        return id == coupon.id;
+    public int compareTo(final Coupon t) throws NullPointerException {
+        if (null == t) {
+            throw new NullPointerException();
+        }
+        return Integer.compare(id, t.id);
     }
     
     @Override
@@ -52,10 +52,17 @@ public class Coupon implements Comparable<Coupon> {
     }
     
     @Override
-    public int compareTo(Coupon coupon) throws NullPointerException {
-        if (coupon == null) {
-            throw new NullPointerException();
-        }
-        return Integer.compare(id, coupon.id);
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+    
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (null == obj || getClass() != obj.getClass())
+            return false;
+        final Coupon coupon = (Coupon) obj;
+        return id == coupon.id;
     }
 }

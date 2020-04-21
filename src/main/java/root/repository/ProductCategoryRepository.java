@@ -1,31 +1,32 @@
 package root.repository;
 
 import root.model.ProductCategory;
+import root.service.ProductCategoryIOService;
 
+import java.util.Collections;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class ProductCategoryRepository {
-    private Set<ProductCategory> productCategories;
+    private final Set<ProductCategory> productCategories;
     
     public ProductCategoryRepository() {
-        productCategories = new TreeSet<>();
-    
+        productCategories = ProductCategoryIOService.getInstance().loadProductCategories();
+        
     }
     
     public Set<ProductCategory> getProductCategories() {
-        return productCategories;
+        return Collections.unmodifiableSet(productCategories);
     }
     
-    public boolean add(ProductCategory pc) {
-        if (getProductCategoryByName(pc.getName()) != null) {
+    public boolean add(final ProductCategory pc) {
+        if (null != getProductCategoryByName(pc.getName())) {
             return false;
         }
         return productCategories.add(pc);
     }
     
-    public ProductCategory getProductCategoryByName(String name) {
-        for (ProductCategory pc : productCategories) {
+    public ProductCategory getProductCategoryByName(final String name) {
+        for (final ProductCategory pc : productCategories) {
             if (name.equals(pc.getName())) {
                 return pc;
             }
@@ -33,16 +34,16 @@ public class ProductCategoryRepository {
         return null;
     }
     
-    public boolean remove(int id) {
-        ProductCategory pc = getProductCategoryById(id);
-        if (pc == null) {
+    public boolean remove(final int id) {
+        final ProductCategory pc = getProductCategoryById(id);
+        if (null == pc) {
             return false;
         }
         return productCategories.remove(pc);
     }
     
-    public ProductCategory getProductCategoryById(int id) {
-        for (ProductCategory pc : productCategories) {
+    public ProductCategory getProductCategoryById(final int id) {
+        for (final ProductCategory pc : productCategories) {
             if (id == pc.getId()) {
                 return pc;
             }
@@ -50,24 +51,24 @@ public class ProductCategoryRepository {
         return null;
     }
     
-    public boolean setProductCategoryName(int id, String name) {
-        ProductCategory pc = getProductCategoryById(id);
-        if (pc == null) {
+    public boolean setProductCategoryName(final int id, final String name) {
+        final ProductCategory pc = getProductCategoryById(id);
+        if (null == pc) {
             return false;
         }
-        if (getProductCategoryByName(name) != null) {
+        if (null != getProductCategoryByName(name)) {
             return false;
         }
         pc.setName(name);
         return true;
     }
     
-    public boolean setProductCategoryName(String oldName, String newName) {
-        ProductCategory pc = getProductCategoryByName(oldName);
-        if (pc == null) {
+    public boolean setProductCategoryName(final String oldName, final String newName) {
+        final ProductCategory pc = getProductCategoryByName(oldName);
+        if (null == pc) {
             return false;
         }
-        if (getProductCategoryByName(newName) != null) {
+        if (null != getProductCategoryByName(newName)) {
             return false;
         }
         pc.setName(newName);
