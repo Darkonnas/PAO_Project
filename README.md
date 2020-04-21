@@ -24,7 +24,8 @@ Java Project for PAO Laboratory
 - Via ProductIOService:
     - load products from *Product.csv*
     - save products to *Product.csv*
-  
+- Via LogService:
+    - log actions to *Log.csv*  
 
 ### The `ProductCategory` model:
 
@@ -37,6 +38,8 @@ Java Project for PAO Laboratory
 - Via ProductCategoryIOService:
     - load product categories from *ProductCategory.csv*
     - save product categories to *ProductCategory.csv*
+- Via LogService:
+    - log actions to *Log.csv*
             
 ### The `SoldProduct` model:
 
@@ -48,6 +51,8 @@ Java Project for PAO Laboratory
 - Via SoldProductIOService:
     - load sold products from *SoldProduct.csv*
     - save sold products to *SoldProduct.csv*
+- Via LogService:
+    - log actions to *Log.csv*
             
 ### The `Cashier` model:
 
@@ -60,6 +65,8 @@ Java Project for PAO Laboratory
 - Via CashierIOService:
     - load cashiers from *Cashier.csv*
     - save cashiers to *Cashier.csv*
+- Via LogService:
+    - log actions to *Log.csv*
             
 ### The `AssistedRegister` model:
 
@@ -74,6 +81,8 @@ Java Project for PAO Laboratory
 - Via RegisterIOService:
     - load registers from *Register.csv*
     - save registers to *Register.csv*
+- Via LogService:
+    - log actions to *Log.csv*
           
 ### The `SelfRegister` model:
 
@@ -87,6 +96,8 @@ Java Project for PAO Laboratory
 - Via RegisterIOService:
     - load registers from *Register.csv*
     - save registers to *Register.csv*
+- Via LogService:
+    - log actions to *Log.csv*
 
 ### The `Coupon` model:
 
@@ -99,6 +110,8 @@ Java Project for PAO Laboratory
 - Via CouponIOService:
     - load coupons from *Coupon.csv*
     - save coupons to *Coupon.csv*
+- Via LogService:
+    - log actions to *Log.csv*
 
 ### The `Receipt` model:
 
@@ -110,3 +123,5 @@ Java Project for PAO Laboratory
 - Via ReceiptIOService:
     - load receipts from *Receipt.csv*
     - save receipts to *Receipt.csv*
+- Via LogService:
+    - log actions to *Log.csv*
