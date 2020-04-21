@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class RegisterIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/Register.csv";
     private static final String FILE_HEADER = "cashierId,id,active,inUse";
     private static RegisterIOService instance;
     
@@ -31,7 +31,7 @@ public final class RegisterIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "Register.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -60,7 +60,7 @@ public final class RegisterIOService {
     public void saveRegisters() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "Register.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final Set<Register> registers = RegisterService.getInstance().getRegisters();
             for (final Register register : registers) {

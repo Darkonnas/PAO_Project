@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class CouponIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/Coupon.csv";
     private static final String FILE_HEADER = "id,firstName,lastName";
     private static CouponIOService instance;
     
@@ -29,7 +29,7 @@ public final class CouponIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "Coupon.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -54,7 +54,7 @@ public final class CouponIOService {
     public void saveCoupons() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "Coupon.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final Set<Coupon> coupons = CouponService.getInstance().getCoupons();
             for (final Coupon coupon : coupons) {

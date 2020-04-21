@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class CashierIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/Cashier.csv";
     private static final String FILE_HEADER = "id,firstName,lastName";
     private static CashierIOService instance;
     
@@ -29,7 +29,7 @@ public final class CashierIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "Cashier.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -54,7 +54,7 @@ public final class CashierIOService {
     public void saveCashiers() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "Cashier.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final Set<Cashier> cashiers = CashierService.getInstance().getCashiers();
             for (final Cashier cashier : cashiers) {

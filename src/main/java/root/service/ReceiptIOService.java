@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class ReceiptIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/Receipt.csv";
     private static final String FILE_HEADER = "id,registerId,cashierId,couponId";
     private static ReceiptIOService instance;
     
@@ -29,7 +29,7 @@ public final class ReceiptIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "Receipt.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -54,7 +54,7 @@ public final class ReceiptIOService {
     public void saveReceipts() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "Receipt.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final Set<Receipt> receipts = ReceiptService.getInstance().getReceipts();
             for (final Receipt receipt : receipts) {

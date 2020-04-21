@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SoldProductIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/SoldProduct.csv";
     private static final String FILE_HEADER = "receiptId,productId,quantity";
     private static SoldProductIOService instance;
     
@@ -29,7 +29,7 @@ public final class SoldProductIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "SoldProduct.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -54,7 +54,7 @@ public final class SoldProductIOService {
     public void saveSoldProducts() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "SoldProduct.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final List<SoldProduct> soldProducts = SoldProductService.getInstance().getSoldProducts();
             for (final SoldProduct soldProduct : soldProducts) {

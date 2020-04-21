@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public final class ProductCategoryIOService {
-    private static final String DATA_PATH = "src/main/java/root/data/";
+    private static final String FILE_PATH = "src/main/java/root/data/ProductCategory.csv";
     private static final String FILE_HEADER = "id,name";
     private static ProductCategoryIOService instance;
     
@@ -29,7 +29,7 @@ public final class ProductCategoryIOService {
         BufferedReader fileReader = null;
         try {
             String line;
-            fileReader = new BufferedReader(new FileReader(DATA_PATH + "ProductCategory.csv"));
+            fileReader = new BufferedReader(new FileReader(FILE_PATH));
             fileReader.readLine();
             while (null != (line = fileReader.readLine())) {
                 final String[] fields = line.split("\\s*,");
@@ -54,7 +54,7 @@ public final class ProductCategoryIOService {
     public void saveProductCategories() {
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(DATA_PATH + "ProductCategory.csv");
+            fileWriter = new FileWriter(FILE_PATH);
             fileWriter.write(FILE_HEADER + '\n');
             final Set<ProductCategory> productCategories = ProductCategoryService.getInstance().getProductCategories();
             for (final ProductCategory productCategory : productCategories) {
