@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -48,6 +49,7 @@ public final class ReceiptIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Loaded receipts", new Timestamp(System.currentTimeMillis()));
         return receipts;
     }
     
@@ -75,5 +77,6 @@ public final class ReceiptIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Saved receipts", new Timestamp(System.currentTimeMillis()));
     }
 }

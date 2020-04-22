@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public final class SoldProductIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Loaded sold products", new Timestamp(System.currentTimeMillis()));
         return soldProducts;
     }
     
@@ -74,5 +76,6 @@ public final class SoldProductIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Saved sold products", new Timestamp(System.currentTimeMillis()));
     }
 }

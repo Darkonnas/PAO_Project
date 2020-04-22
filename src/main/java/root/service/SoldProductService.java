@@ -22,7 +22,7 @@ public final class SoldProductService {
     }
     
     public List<SoldProduct> getSoldProducts() {
-        LogService.getInstance().log("Requested all sold products", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold products", new Timestamp(System.currentTimeMillis()));
         return soldProductRepository.getSoldProducts();
     }
     

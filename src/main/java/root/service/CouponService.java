@@ -22,7 +22,7 @@ public final class CouponService {
     }
     
     public Set<Coupon> getCoupons() {
-        LogService.getInstance().log("Requested all coupons", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested coupons", new Timestamp(System.currentTimeMillis()));
         return couponRepository.getCoupons();
     }
     

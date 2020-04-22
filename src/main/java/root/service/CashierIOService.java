@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -48,6 +49,7 @@ public final class CashierIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Loaded cashiers", new Timestamp(System.currentTimeMillis()));
         return cashiers;
     }
     
@@ -74,5 +76,6 @@ public final class CashierIOService {
                 e.printStackTrace();
             }
         }
+        LogService.getInstance().log("Saved cashiers", new Timestamp(System.currentTimeMillis()));
     }
 }

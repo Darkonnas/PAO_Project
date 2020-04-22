@@ -22,7 +22,7 @@ public final class ProductService {
     }
     
     public Set<Product> getProducts() {
-        LogService.getInstance().log("Requested all products", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested products", new Timestamp(System.currentTimeMillis()));
         return productRepository.getProducts();
     }
     

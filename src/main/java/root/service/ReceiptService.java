@@ -23,7 +23,7 @@ public final class ReceiptService {
     }
     
     public Set<Receipt> getReceipts() {
-        LogService.getInstance().log("Requested all receipts", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested receipts", new Timestamp(System.currentTimeMillis()));
         return receiptRepository.getReceipts();
     }
     

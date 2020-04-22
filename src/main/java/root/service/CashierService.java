@@ -22,7 +22,7 @@ public final class CashierService {
     }
     
     public Set<Cashier> getCashiers() {
-        LogService.getInstance().log("Requested all cashiers", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested cashiers", new Timestamp(System.currentTimeMillis()));
         return cashierRepository.getCashiers();
     }
     

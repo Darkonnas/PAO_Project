@@ -23,7 +23,7 @@ public final class RegisterService {
     }
     
     public Set<Register> getRegisters() {
-        LogService.getInstance().log("Requested all registers", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested registers", new Timestamp(System.currentTimeMillis()));
         return registerRepository.getRegisters();
     }
     
