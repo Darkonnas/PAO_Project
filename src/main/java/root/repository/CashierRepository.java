@@ -10,12 +10,12 @@ import java.util.*;
 
 public class CashierRepository extends Repository {
     
-    public final Set<Cashier> getCashiers() {
+    public Set<Cashier> getCashiers() {
         final Set<String> columns = new TreeSet<>();
         final Map<String, Object> projections = new HashMap<>();
-        
+    
         columns.add("*");
-        
+    
         return Collections.unmodifiableSet(query(columns, projections));
     }
     
