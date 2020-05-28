@@ -22,6 +22,7 @@ public class ProductCategoryRepository extends Repository {
         return insert(pc);
     }
     
+    @Override
     protected int insert(final Object obj) {
         final ProductCategory productCategory = (ProductCategory) obj;
         int inserted = 0;
