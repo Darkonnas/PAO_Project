@@ -1,77 +1,195 @@
 package root.repository;
 
 import root.model.ProductCategory;
-import root.service.ProductCategoryIOService;
 
-import java.util.Collections;
-import java.util.Set;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.*;
+import java.util.*;
 
-public class ProductCategoryRepository {
-    private final Set<ProductCategory> productCategories;
-    
-    public ProductCategoryRepository() {
-        productCategories = ProductCategoryIOService.getInstance().loadProductCategories();
-        
-    }
+public class ProductCategoryRepository extends Repository {
     
     public Set<ProductCategory> getProductCategories() {
-        return Collections.unmodifiableSet(productCategories);
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean add(final ProductCategory pc) {
-        if (null != getProductCategoryByName(pc.getName())) {
-            return false;
-        }
-        return productCategories.add(pc);
+    public int add(final ProductCategory pc) {
+        return insert(pc);
     }
     
-    public ProductCategory getProductCategoryByName(final String name) {
-        for (final ProductCategory pc : productCategories) {
-            if (name.equals(pc.getName())) {
-                return pc;
+    protected int insert(final Object obj) {
+        final ProductCategory productCategory = (ProductCategory) obj;
+        int inserted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                final String sql = String.format("INSERT INTO product_categories VALUES(%d, '%s')", productCategory.getId(), productCategory.getName());
+                try (final Statement statement = connection.createStatement()) {
+                    inserted = statement.executeUpdate(sql);
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
             }
+        } catch (final IOException e) {
+            e.printStackTrace();
         }
-        return null;
+        
+        return inserted;
     }
     
-    public boolean remove(final int id) {
-        final ProductCategory pc = getProductCategoryById(id);
-        if (null == pc) {
-            return false;
+    @Override
+    protected Set<ProductCategory> query(final Set<String> columns, final Map<String, ?> projections) {
+        final Set<ProductCategory> result = new TreeSet<>();
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("SELECT ");
+                for (final String column : columns) {
+                    sql.append(column).append(", ");
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(','))).append(" FROM product_categories");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    final ResultSet queryResult = statement.executeQuery(sql.toString());
+                    while (queryResult.next()) {
+                        result.add(new ProductCategory(queryResult.getInt(1), queryResult.getString(2)));
+                    }
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
         }
-        return productCategories.remove(pc);
+        
+        return result;
+    }
+    
+    @Override
+    protected int update(final Map<String, ?> updates, final Map<String, ?> projections) {
+        int updated = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("UPDATE product_categories SET ");
+                for (final String column : updates.keySet()) {
+                    if (null == updates.get(column))
+                        sql.append(String.format("%s = NULL, ", column));
+                    else
+                        sql.append(String.format("%s = '%s', ", column, updates.get(column)));
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(',')));
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    updated = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        
+        return updated;
+    }
+    
+    @Override
+    protected int delete(final Map<String, ?> projections) {
+        int deleted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("DELETE FROM product_categories");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    deleted = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        return deleted;
+    }
+    
+    public int remove(final int id) {
+        final Map<String, Object> projections = new HashMap<>();
+        projections.put("id", id);
+        
+        return delete(projections);
     }
     
     public ProductCategory getProductCategoryById(final int id) {
-        for (final ProductCategory pc : productCategories) {
-            if (id == pc.getId()) {
-                return pc;
-            }
-        }
-        return null;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("id", id);
+        
+        return query(columns, projections).stream().findFirst().get();
     }
     
-    public boolean setProductCategoryName(final int id, final String name) {
-        final ProductCategory pc = getProductCategoryById(id);
-        if (null == pc) {
-            return false;
-        }
-        if (null != getProductCategoryByName(name)) {
-            return false;
-        }
-        pc.setName(name);
-        return true;
+    public ProductCategory getProductCategoryByName(final String name) {
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("name", name);
+        
+        return query(columns, projections).stream().findFirst().get();
     }
     
-    public boolean setProductCategoryName(final String oldName, final String newName) {
-        final ProductCategory pc = getProductCategoryByName(oldName);
-        if (null == pc) {
-            return false;
-        }
-        if (null != getProductCategoryByName(newName)) {
-            return false;
-        }
-        pc.setName(newName);
-        return true;
+    
+    public int setProductCategoryName(final int id, final String name) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("name", name);
+        projections.put("id", id);
+        
+        return update(updates, projections);
+    }
+    
+    public int setProductCategoryName(final String oldName, final String newName) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("name", newName);
+        projections.put("name", oldName);
+        
+        return update(updates, projections);
     }
 }

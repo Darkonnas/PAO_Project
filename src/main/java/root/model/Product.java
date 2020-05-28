@@ -4,18 +4,14 @@ import java.util.Objects;
 
 public class Product implements Comparable<Product> {
     private final int id;
-    private int categoryId;
-    private String name;
-    private float price;
-    private float discount;
-    private int quantity;
+    private final int categoryId;
+    private final String name;
+    private final float price;
+    private final float discount;
+    private final int quantity;
     
-    public Product(final int categoryId, final String name, final float price, final int quantity) {
-        this(categoryId, name, price, 0.0F, quantity);
-    }
-    
-    public Product(final int categoryId, final String name, final float price, final float discount, final int quantity) {
-        id = categoryId + name.hashCode();
+    public Product(final int id, final int categoryId, final String name, final float price, final float discount, final int quantity) {
+        this.id = id;
         this.name = name;
         this.categoryId = categoryId;
         this.price = price;
@@ -31,48 +27,28 @@ public class Product implements Comparable<Product> {
         return categoryId;
     }
     
-    public void setCategoryId(final int categoryId) {
-        this.categoryId = categoryId;
-    }
-    
     public String getName() {
         return name;
-    }
-    
-    public void setName(final String name) {
-        this.name = name;
     }
     
     public float getPrice() {
         return price;
     }
     
-    public void setPrice(final float price) {
-        this.price = price;
-    }
-    
     public float getDiscount() {
         return discount;
-    }
-    
-    public void setDiscount(final float discount) {
-        this.discount = discount;
     }
     
     public int getQuantity() {
         return quantity;
     }
     
-    public void setQuantity(final int quantity) {
-        this.quantity = quantity;
-    }
-    
     @Override
-    public int compareTo(final Product t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Product o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

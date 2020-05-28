@@ -1,5 +1,5 @@
 # PAO_Project
-Java Project for PAO Laboratory
+Java Project for PAO Laboratory; Uses a MariaDB Database.
 
 ## Model list:
 
@@ -21,9 +21,6 @@ Java Project for PAO Laboratory
     - get all products, get products by id/name/category/price/discount/quantity (returned as Set<Product> implemented with TreeSet)
     - change product name/category/price/discount/quantity
     - add a product, remove a product
-- Via ProductIOService:
-    - load products from *Product.csv*
-    - save products to *Product.csv*
 - Via LogService:
     - log actions to *Log.csv*  
 
@@ -35,9 +32,6 @@ Java Project for PAO Laboratory
     - get all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
     - set category name 
     - add a category, remove a category
-- Via ProductCategoryIOService:
-    - load product categories from *ProductCategory.csv*
-    - save product categories to *ProductCategory.csv*
 - Via LogService:
     - log actions to *Log.csv*
             
@@ -46,11 +40,8 @@ Java Project for PAO Laboratory
 - fields: (receiptId FK + productId FK) PK, quantity
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via SoldProductService, SQL Linkage via SoldProductRepository:
-    - get all sold products, get sold products by receiptId/productId/quantity (returned as List<SoldProduct> implemented with ArrayList)
+    - get all sold products, get sold products by receiptId/productId/quantity (returned as Set<SoldProduct> implemented with HashSet)
     - add a sold product, remove a sold product
-- Via SoldProductIOService:
-    - load sold products from *SoldProduct.csv*
-    - save sold products to *SoldProduct.csv*
 - Via LogService:
     - log actions to *Log.csv*
             
@@ -62,9 +53,6 @@ Java Project for PAO Laboratory
     - get all cashiers, get cashiers by id/first_name/last_name (returned as Set<Cashier> implemented with TreeSet)
     - set cashier first_name, cashier set last_name
     - add a cashier, remove a cashier
-- Via CashierIOService:
-    - load cashiers from *Cashier.csv*
-    - save cashiers to *Cashier.csv*
 - Via LogService:
     - log actions to *Log.csv*
             
@@ -78,9 +66,6 @@ Java Project for PAO Laboratory
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
     - add a register, remove a register
-- Via RegisterIOService:
-    - load registers from *Register.csv*
-    - save registers to *Register.csv*
 - Via LogService:
     - log actions to *Log.csv*
           
@@ -93,9 +78,6 @@ Java Project for PAO Laboratory
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
     - set register active state/inUse state
     - add a register, remove a register
-- Via RegisterIOService:
-    - load registers from *Register.csv*
-    - save registers to *Register.csv*
 - Via LogService:
     - log actions to *Log.csv*
 
@@ -107,9 +89,6 @@ Java Project for PAO Laboratory
     - get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/discount/used state
     - set coupon discount/usedState
     - add a coupon, remove a coupon
-- Via CouponIOService:
-    - load coupons from *Coupon.csv*
-    - save coupons to *Coupon.csv*
 - Via LogService:
     - log actions to *Log.csv*
 
@@ -120,8 +99,5 @@ Java Project for PAO Laboratory
 - Via ReceiptService, SQL Linkage via ReceiptRepository:
     - get all receipts, get receipts by id/registerId/cashierId
     - add a receipt, remove a receipt
-- Via ReceiptIOService:
-    - load receipts from *Receipt.csv*
-    - save receipts to *Receipt.csv*
 - Via LogService:
     - log actions to *Log.csv*

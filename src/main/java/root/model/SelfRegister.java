@@ -3,19 +3,16 @@ package root.model;
 import java.util.Objects;
 
 public class SelfRegister extends Register {
-    public SelfRegister(final boolean active, final boolean inUse) {
-        super(active, inUse);
-    }
-    
-    public SelfRegister() {
+    public SelfRegister(final int id, final boolean active, final boolean inUse) {
+        super(id, active, inUse);
     }
     
     @Override
-    public int compareTo(final Register t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Register o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

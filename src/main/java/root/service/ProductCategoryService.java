@@ -26,12 +26,12 @@ public final class ProductCategoryService {
         return productCategoryRepository.getProductCategories();
     }
     
-    public boolean addProductCategory(final ProductCategory pc) {
+    public int addProductCategory(final ProductCategory pc) {
         LogService.getInstance().log("Added a product category", new Timestamp(System.currentTimeMillis()));
         return productCategoryRepository.add(pc);
     }
     
-    public boolean removeProductCategory(final int id) {
+    public int removeProductCategory(final int id) {
         LogService.getInstance().log("Removed a product category", new Timestamp(System.currentTimeMillis()));
         return productCategoryRepository.remove(id);
     }
@@ -46,12 +46,12 @@ public final class ProductCategoryService {
         return productCategoryRepository.getProductCategoryByName(name);
     }
     
-    public boolean setProductCategoryName(final int id, final String name) {
+    public int setProductCategoryName(final int id, final String name) {
         LogService.getInstance().log("Set product category name", new Timestamp(System.currentTimeMillis()));
         return productCategoryRepository.setProductCategoryName(id, name);
     }
     
-    public boolean setProductCategoryName(final String oldName, final String newName) {
+    public int setProductCategoryName(final String oldName, final String newName) {
         LogService.getInstance().log("Set product category name", new Timestamp(System.currentTimeMillis()));
         return productCategoryRepository.setProductCategoryName(oldName, newName);
     }

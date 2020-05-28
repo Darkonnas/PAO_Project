@@ -3,14 +3,13 @@ package root.model;
 import java.util.Objects;
 
 public class Receipt implements Comparable<Receipt> {
-    private static int availableId;
     private final int id;
     private final int registerId;
     private final int cashierId;
     private final int couponId;
     
-    public Receipt(final int registerId, final int cashierId, final int couponId) {
-        id = availableId++;
+    public Receipt(final int id, final int registerId, final int cashierId, final int couponId) {
+        this.id = id;
         this.registerId = registerId;
         this.cashierId = cashierId;
         this.couponId = couponId;
@@ -33,11 +32,11 @@ public class Receipt implements Comparable<Receipt> {
     }
     
     @Override
-    public int compareTo(final Receipt t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Receipt o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

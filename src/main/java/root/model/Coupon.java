@@ -3,17 +3,12 @@ package root.model;
 import java.util.Objects;
 
 public class Coupon implements Comparable<Coupon> {
-    private static int availableId;
     private final int id;
-    private float discount;
-    private boolean used;
+    private final float discount;
+    private final boolean used;
     
-    public Coupon(final float discount) {
-        this(discount, false);
-    }
-    
-    public Coupon(final float discount, final boolean used) {
-        id = availableId++;
+    public Coupon(final int id, final float discount, final boolean used) {
+        this.id = id;
         this.discount = discount;
         this.used = used;
     }
@@ -26,24 +21,16 @@ public class Coupon implements Comparable<Coupon> {
         return discount;
     }
     
-    public void setDiscount(final float discount) {
-        this.discount = discount;
-    }
-    
     public boolean isUsed() {
         return used;
     }
     
-    public void setUsed(final boolean used) {
-        this.used = used;
-    }
-    
     @Override
-    public int compareTo(final Coupon t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Coupon o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

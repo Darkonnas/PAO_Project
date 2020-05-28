@@ -1,6 +1,5 @@
 package root.service;
 
-import root.model.AssistedRegister;
 import root.model.Register;
 import root.repository.RegisterRepository;
 
@@ -27,18 +26,12 @@ public final class RegisterService {
         return registerRepository.getRegisters();
     }
     
-    public boolean addRegister(final Register r) {
-        if (AssistedRegister.class == r.getClass()) {
-            final AssistedRegister assistedRegister = (AssistedRegister) r;
-            if (-1 != assistedRegister.getCashierId() && null == CashierService.getInstance().getCashierById(assistedRegister.getCashierId())) {
-                return false;
-            }
-        }
+    public int addRegister(final Register r) {
         LogService.getInstance().log("Added a register", new Timestamp(System.currentTimeMillis()));
         return registerRepository.add(r);
     }
     
-    public boolean removeRegister(final int id) {
+    public int removeRegister(final int id) {
         LogService.getInstance().log("Removed a register", new Timestamp(System.currentTimeMillis()));
         return registerRepository.remove(id);
     }
@@ -53,7 +46,7 @@ public final class RegisterService {
         return registerRepository.getRegistersByActiveState(state);
     }
     
-    public boolean setRegisterActiveState(final int id, final boolean state) {
+    public int setRegisterActiveState(final int id, final boolean state) {
         LogService.getInstance().log("Set register active state", new Timestamp(System.currentTimeMillis()));
         return registerRepository.setRegisterActiveState(id, state);
     }
@@ -63,7 +56,7 @@ public final class RegisterService {
         return registerRepository.getRegistersByInUseState(state);
     }
     
-    public boolean setRegisterInUseState(final int id, final boolean state) {
+    public int setRegisterInUseState(final int id, final boolean state) {
         LogService.getInstance().log("Set register inUse state", new Timestamp(System.currentTimeMillis()));
         return registerRepository.setRegisterInUseState(id, state);
     }
@@ -73,15 +66,12 @@ public final class RegisterService {
         return registerRepository.getAssistedRegisters();
     }
     
-    public boolean assignCashier(final int id, final int cashierId) {
-        if (null == CashierService.getInstance().getCashierById(cashierId)) {
-            return false;
-        }
+    public int assignCashier(final int id, final int cashierId) {
         LogService.getInstance().log("Assigned assisted register cashier", new Timestamp(System.currentTimeMillis()));
         return registerRepository.assignCashier(id, cashierId);
     }
     
-    public boolean dropCashier(final int id) {
+    public int dropCashier(final int id) {
         LogService.getInstance().log("Dropped assisted register cashier", new Timestamp(System.currentTimeMillis()));
         return registerRepository.dropCashier(id);
     }

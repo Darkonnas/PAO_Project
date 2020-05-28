@@ -26,12 +26,12 @@ public final class CashierService {
         return cashierRepository.getCashiers();
     }
     
-    public boolean addCashier(final Cashier cashier) {
+    public int addCashier(final Cashier cashier) {
         LogService.getInstance().log("Added a cashier", new Timestamp(System.currentTimeMillis()));
         return cashierRepository.add(cashier);
     }
     
-    public boolean removeCashier(final int id) {
+    public int removeCashier(final int id) {
         LogService.getInstance().log("Removed a cashier", new Timestamp(System.currentTimeMillis()));
         return cashierRepository.remove(id);
     }
@@ -46,7 +46,7 @@ public final class CashierService {
         return cashierRepository.getCashiersByFirstName(firstName);
     }
     
-    public boolean setCashierFirstName(final int id, final String firstName) {
+    public int setCashierFirstName(final int id, final String firstName) {
         LogService.getInstance().log("Set cashier firstName", new Timestamp(System.currentTimeMillis()));
         return cashierRepository.setCashierFirstName(id, firstName);
     }
@@ -56,7 +56,7 @@ public final class CashierService {
         return cashierRepository.getCashiersByLastName(lastName);
     }
     
-    public boolean setCashierLastName(final int id, final String lastName) {
+    public int setCashierLastName(final int id, final String lastName) {
         LogService.getInstance().log("Set cashier lastName", new Timestamp(System.currentTimeMillis()));
         return cashierRepository.setCashierLastName(id, lastName);
     }

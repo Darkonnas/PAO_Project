@@ -26,15 +26,12 @@ public final class ProductService {
         return productRepository.getProducts();
     }
     
-    public boolean addProduct(final Product p) {
-        if (null == ProductCategoryService.getInstance().getProductCategoryById(p.getCategoryId())) {
-            return false;
-        }
+    public int addProduct(final Product p) {
         LogService.getInstance().log("Added a product", new Timestamp(System.currentTimeMillis()));
         return productRepository.add(p);
     }
     
-    public boolean removeProduct(final int id) {
+    public int removeProduct(final int id) {
         LogService.getInstance().log("Removed a product", new Timestamp(System.currentTimeMillis()));
         return productRepository.remove(id);
     }
@@ -49,10 +46,7 @@ public final class ProductService {
         return productRepository.getProductsByCategoryId(categoryId);
     }
     
-    public boolean setProductCategoryId(final int id, final int categoryId) {
-        if (null == ProductCategoryService.getInstance().getProductCategoryById(categoryId)) {
-            return false;
-        }
+    public int setProductCategoryId(final int id, final int categoryId) {
         LogService.getInstance().log("Set product categoryId", new Timestamp(System.currentTimeMillis()));
         return productRepository.setProductCategoryId(id, categoryId);
     }
@@ -62,7 +56,7 @@ public final class ProductService {
         return productRepository.getProductsByName(name);
     }
     
-    public boolean setProductName(final int id, final String name) {
+    public int setProductName(final int id, final String name) {
         LogService.getInstance().log("Set product name", new Timestamp(System.currentTimeMillis()));
         return productRepository.setProductName(id, name);
     }
@@ -72,7 +66,7 @@ public final class ProductService {
         return productRepository.getProductsByPrice(price);
     }
     
-    public boolean setProductPrice(final int id, final float price) {
+    public int setProductPrice(final int id, final float price) {
         LogService.getInstance().log("Set product price", new Timestamp(System.currentTimeMillis()));
         return productRepository.setProductPrice(id, price);
     }
@@ -82,7 +76,7 @@ public final class ProductService {
         return productRepository.getProductsByDiscount(discount);
     }
     
-    public boolean setProductDiscount(final int id, final float discount) {
+    public int setProductDiscount(final int id, final float discount) {
         LogService.getInstance().log("Set product discount", new Timestamp(System.currentTimeMillis()));
         return productRepository.setProductDiscount(id, discount);
     }
@@ -92,7 +86,7 @@ public final class ProductService {
         return productRepository.getProductsByQuantity(quantity);
     }
     
-    public boolean setProductQuantity(final int id, final int quantity) {
+    public int setProductQuantity(final int id, final int quantity) {
         LogService.getInstance().log("Set product quantity", new Timestamp(System.currentTimeMillis()));
         return productRepository.setProductQuantity(id, quantity);
     }

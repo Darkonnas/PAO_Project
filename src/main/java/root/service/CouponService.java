@@ -26,12 +26,12 @@ public final class CouponService {
         return couponRepository.getCoupons();
     }
     
-    public boolean addCoupon(final Coupon coupon) {
+    public int addCoupon(final Coupon coupon) {
         LogService.getInstance().log("Added a coupon", new Timestamp(System.currentTimeMillis()));
         return couponRepository.add(coupon);
     }
     
-    public boolean removeCoupon(final int id) {
+    public int removeCoupon(final int id) {
         LogService.getInstance().log("Removed a coupon", new Timestamp(System.currentTimeMillis()));
         return couponRepository.remove(id);
     }
@@ -46,7 +46,7 @@ public final class CouponService {
         return couponRepository.getCouponsByDiscount(discount);
     }
     
-    public boolean setCouponDiscount(final int id, final float discount) {
+    public int setCouponDiscount(final int id, final float discount) {
         LogService.getInstance().log("Set coupon discount", new Timestamp(System.currentTimeMillis()));
         return couponRepository.setCouponDiscount(id, discount);
     }
@@ -56,7 +56,7 @@ public final class CouponService {
         return couponRepository.getCouponsByUsedState(state);
     }
     
-    public boolean setCouponUsedState(final int id, final boolean state) {
+    public int setCouponUsedState(final int id, final boolean state) {
         LogService.getInstance().log("Set coupon used state", new Timestamp(System.currentTimeMillis()));
         return couponRepository.setCouponUsedState(id, state);
     }

@@ -1,17 +1,12 @@
 package root.model;
 
 public abstract class Register implements Comparable<Register> {
-    private static int availableId;
     final int id;
-    boolean active;
-    boolean inUse;
+    final boolean active;
+    final boolean inUse;
     
-    Register() {
-        this(false, false);
-    }
-    
-    Register(final boolean active, final boolean inUse) {
-        id = availableId++;
+    Register(final int id, final boolean active, final boolean inUse) {
+        this.id = id;
         this.active = active;
         this.inUse = inUse;
     }
@@ -24,16 +19,8 @@ public abstract class Register implements Comparable<Register> {
         return active;
     }
     
-    public void setActive(final boolean active) {
-        this.active = active;
-    }
-    
     public boolean isInUse() {
         return inUse;
-    }
-    
-    public void setInUse(final boolean inUse) {
-        this.inUse = inUse;
     }
     
     @Override

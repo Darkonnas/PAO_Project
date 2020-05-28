@@ -2,7 +2,7 @@ package root.model;
 
 import java.util.Objects;
 
-public class SoldProduct implements Comparable<SoldProduct> {
+public class SoldProduct {
     private final int receiptId;
     private final int productId;
     private final int quantity;
@@ -23,20 +23,6 @@ public class SoldProduct implements Comparable<SoldProduct> {
     
     public int getQuantity() {
         return quantity;
-    }
-    
-    @Override
-    public int compareTo(final SoldProduct t) throws NullPointerException {
-        if (null == t) {
-            throw new NullPointerException();
-        }
-        if (receiptId < t.receiptId) {
-            return -1;
-        }
-        if (receiptId == t.receiptId) {
-            return Integer.compare(receiptId, t.productId);
-        }
-        return 1;
     }
     
     @Override

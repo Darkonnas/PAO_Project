@@ -3,139 +3,267 @@ package root.repository;
 import root.model.AssistedRegister;
 import root.model.Register;
 import root.model.SelfRegister;
-import root.service.RegisterIOService;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.*;
+import java.util.*;
 
-public class RegisterRepository {
-    private final Set<Register> registers;
-    
-    public RegisterRepository() {
-        registers = RegisterIOService.getInstance().loadRegisters();
-    }
+public class RegisterRepository extends Repository {
     
     public Set<Register> getRegisters() {
-        return Collections.unmodifiableSet(registers);
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean add(final Register r) {
-        return registers.add(r);
+    public int add(final Register r) {
+        return insert(r);
     }
     
-    public boolean remove(final int id) {
-        final Register r = getRegisterById(id);
-        if (null == r) {
-            return false;
+    @Override
+    protected int insert(final Object obj) {
+        final Register register;
+        if (AssistedRegister.class == obj.getClass())
+            register = (AssistedRegister) obj;
+        else
+            register = (SelfRegister) obj;
+        int inserted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                final String sql;
+                if (AssistedRegister.class == register.getClass())
+                    sql = String.format("INSERT INTO registers VALUES(%s, %d, '%s', '%s')", -1 == ((AssistedRegister) register).getCashierId() ? null : ((AssistedRegister) register).getCashierId(), register.getId(), register.isActive(), register.isInUse());
+                else
+                    sql = String.format("INSERT INTO registers VALUES(%s, %d, '%s', '%s')", null, register.getId(), register.isActive(), register.isInUse());
+                try (final Statement statement = connection.createStatement()) {
+                    inserted = statement.executeUpdate(sql);
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
         }
-        return registers.remove(r);
+        
+        return inserted;
+    }
+    
+    @Override
+    protected Set<Register> query(final Set<String> columns, final Map<String, ?> projections) {
+        final Set<Register> result = new TreeSet<>();
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("SELECT ");
+                for (final String column : columns) {
+                    sql.append(column).append(", ");
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(','))).append(" FROM registers");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    final ResultSet queryResult = statement.executeQuery(sql.toString());
+                    while (queryResult.next()) {
+                        if (null == queryResult.getString(1) && "true".equals(queryResult.getString(3)))
+                            result.add(new SelfRegister(queryResult.getInt(2), queryResult.getBoolean(3), queryResult.getBoolean(4)));
+                        else
+                            result.add(new AssistedRegister(null == queryResult.getString(1) ? -1 : queryResult.getInt(1), queryResult.getInt(2), queryResult.getBoolean(3), queryResult.getBoolean(4)));
+                    }
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        
+        return result;
+    }
+    
+    @Override
+    protected int update(final Map<String, ?> updates, final Map<String, ?> projections) {
+        int updated = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("UPDATE registers SET ");
+                for (final String column : updates.keySet()) {
+                    if (null == updates.get(column))
+                        sql.append(String.format("%s = NULL, ", column));
+                    else
+                        sql.append(String.format("%s = '%s', ", column, updates.get(column)));
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(',')));
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    updated = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        
+        return updated;
+    }
+    
+    @Override
+    protected int delete(final Map<String, ?> projections) {
+        int deleted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("DELETE FROM registers");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    deleted = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        return deleted;
+    }
+    
+    public int remove(final int id) {
+        final Map<String, Object> projections = new HashMap<>();
+        projections.put("id", id);
+        
+        return delete(projections);
     }
     
     public Register getRegisterById(final int id) {
-        for (final Register r : registers) {
-            if (id == r.getId()) {
-                return r;
-            }
-        }
-        return null;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("id", id);
+        
+        return Collections.unmodifiableSet(query(columns, projections)).stream().findFirst().get();
     }
     
     public Set<Register> getRegistersByActiveState(final boolean state) {
-        Set<Register> result = null;
-        for (final Register r : registers) {
-            if (r.isActive() == state) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(r);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("active", state);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setRegisterActiveState(final int id, final boolean state) {
-        final Register r = getRegisterById(id);
-        if (null == r) {
-            return false;
-        }
-        r.setActive(state);
-        return true;
+    public int setRegisterActiveState(final int id, final boolean state) {
+        final Map<String, Object> columns = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.put("active", state);
+        projections.put("id", id);
+        
+        return update(columns, projections);
     }
     
     public Set<Register> getRegistersByInUseState(final boolean state) {
-        Set<Register> result = null;
-        for (final Register r : registers) {
-            if (r.isInUse() == state) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(r);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("in_use", state);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setRegisterInUseState(final int id, final boolean state) {
-        final Register r = getRegisterById(id);
-        if (null == r) {
-            return false;
+    public int setRegisterInUseState(final int id, final boolean state) {
+        final Map<String, Object> columns = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.put("in_use", state);
+        projections.put("id", id);
+        
+        return update(columns, projections);
+    }
+    
+    public int assignCashier(final int id, final int cashierId) {
+        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id)) {
+            final Map<String, Object> updates = new HashMap<>();
+            final Map<String, Object> projections = new HashMap<>();
+            updates.put("cashier_id", cashierId);
+            updates.put("active", true);
+            projections.put("id", id);
+            
+            return update(updates, projections);
+            
         }
-        r.setInUse(state);
-        return true;
+        return 0;
     }
     
     public Set<Register> getAssistedRegisters() {
-        Set<Register> result = null;
-        for (final Register r : registers) {
-            if (AssistedRegister.class == r.getClass()) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(r);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections1 = new HashMap<>();
+        final Map<String, Object> projections2 = new HashMap<>();
+        columns.add("*");
+        projections2.put("cashier_id", null);
+        projections2.put("active", true);
+        
+        final Set<Register> result = query(columns, projections1);
+        result.removeAll(query(columns, projections2));
+        
+        return Collections.unmodifiableSet(result);
     }
     
-    public boolean assignCashier(final int id, final int cashierId) {
-        final Register r = getRegisterById(id);
-        if (null == r || AssistedRegister.class != r.getClass()) {
-            return false;
+    public int dropCashier(final int id) {
+        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id && -1 != ((AssistedRegister) register).getCashierId())) {
+            final Map<String, Object> updates = new HashMap<>();
+            final Map<String, Object> projections = new HashMap<>();
+            updates.put("cashier_id", null);
+            updates.put("active", false);
+            projections.put("id", id);
+            
+            return update(updates, projections);
+            
         }
-        final AssistedRegister assistedRegister = (AssistedRegister) r;
-        if (-1 != assistedRegister.getCashierId()) {
-            return false;
-        }
-        assistedRegister.setCashierId(cashierId);
-        assistedRegister.setActive(true);
-        return true;
-    }
-    
-    public boolean dropCashier(final int id) {
-        final Register r = getRegisterById(id);
-        if (null == r || AssistedRegister.class != r.getClass()) {
-            return false;
-        }
-        final AssistedRegister assistedRegister = (AssistedRegister) r;
-        if (-1 == assistedRegister.getCashierId()) {
-            return false;
-        }
-        assistedRegister.setCashierId(-1);
-        assistedRegister.setActive(false);
-        return true;
+        return 0;
     }
     
     public Set<Register> getSelfRegisters() {
-        Set<Register> result = null;
-        for (final Register r : registers) {
-            if (SelfRegister.class == r.getClass()) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(r);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("cashier_id", null);
+        projections.put("active", true);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
 }

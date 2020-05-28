@@ -3,12 +3,11 @@ package root.model;
 import java.util.Objects;
 
 public class ProductCategory implements Comparable<ProductCategory> {
-    private static int availableId;
     private final int id;
-    private String name;
+    private final String name;
     
-    public ProductCategory(final String name) {
-        id = availableId++;
+    public ProductCategory(final int id, final String name) {
+        this.id = id;
         this.name = name;
     }
     
@@ -20,16 +19,12 @@ public class ProductCategory implements Comparable<ProductCategory> {
         return name;
     }
     
-    public void setName(final String name) {
-        this.name = name;
-    }
-    
     @Override
-    public int compareTo(final ProductCategory t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final ProductCategory o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Cashier implements Comparable<Cashier>, Serializable {
-    private static int availableId;
     private final int id;
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
     
-    public Cashier(final String firstName, final String lastName) {
-        id = availableId++;
+    public Cashier(final int id, final String firstName, final String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -23,24 +22,16 @@ public class Cashier implements Comparable<Cashier>, Serializable {
         return firstName;
     }
     
-    public void setFirstName(final String firstName) {
-        this.firstName = firstName;
-    }
-    
     public String getLastName() {
         return lastName;
     }
     
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
-    }
-    
     @Override
-    public int compareTo(final Cashier t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Cashier o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
     
     @Override

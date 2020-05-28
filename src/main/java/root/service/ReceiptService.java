@@ -1,6 +1,5 @@
 package root.service;
 
-import root.model.Coupon;
 import root.model.Receipt;
 import root.repository.ReceiptRepository;
 
@@ -27,28 +26,12 @@ public final class ReceiptService {
         return receiptRepository.getReceipts();
     }
     
-    public boolean addReceipt(final Receipt receipt) {
-        if (null == RegisterService.getInstance().getRegisterById(receipt.getRegisterId())) {
-            return false;
-        }
-        if (-1 != receipt.getCashierId() && null == CashierService.getInstance().getCashierById(receipt.getCashierId())) {
-            return false;
-        }
-        if (-1 != receipt.getCouponId()) {
-            final Coupon coupon = CouponService.getInstance().getCouponById(receipt.getCouponId());
-            if (null == coupon) {
-                return false;
-            }
-            if (coupon.isUsed()) {
-                return false;
-            }
-            coupon.setUsed(true);
-        }
+    public int addReceipt(final Receipt receipt) {
         LogService.getInstance().log("Added a receipt", new Timestamp(System.currentTimeMillis()));
         return receiptRepository.add(receipt);
     }
     
-    public boolean removeReceipt(final int id) {
+    public int removeReceipt(final int id) {
         LogService.getInstance().log("Removed a receipt", new Timestamp(System.currentTimeMillis()));
         return receiptRepository.remove(id);
     }

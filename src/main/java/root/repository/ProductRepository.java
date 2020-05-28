@@ -1,154 +1,257 @@
 package root.repository;
 
 import root.model.Product;
-import root.service.ProductIOService;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.*;
+import java.util.*;
 
-public class ProductRepository {
-    private final Set<Product> products;
-    
-    public ProductRepository() {
-        products = ProductIOService.getInstance().loadProducts();
-    }
+public class ProductRepository extends Repository {
     
     public Set<Product> getProducts() {
-        return Collections.unmodifiableSet(products);
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean add(final Product p) {
-        if (null != getProductById(p.getId())) {
-            return false;
+    public int add(final Product p) {
+        return insert(p);
+    }
+    
+    @Override
+    protected int insert(final Object obj) {
+        final Product product = (Product) obj;
+        int inserted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                final String sql = String.format("INSERT INTO products VALUES(%d, %d, '%s', %f, %f, %d)", product.getId(), product.getCategoryId(), product.getName(), product.getPrice(), product.getDiscount(), product.getQuantity());
+                try (final Statement statement = connection.createStatement()) {
+                    inserted = statement.executeUpdate(sql);
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
         }
-        return products.add(p);
+        
+        return inserted;
+    }
+    
+    @Override
+    protected Set<Product> query(final Set<String> columns, final Map<String, ?> projections) {
+        final Set<Product> result = new TreeSet<>();
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("SELECT ");
+                for (final String column : columns) {
+                    sql.append(column).append(", ");
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(','))).append(" FROM products");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    final ResultSet queryResult = statement.executeQuery(sql.toString());
+                    while (queryResult.next()) {
+                        result.add(new Product(queryResult.getInt(1), queryResult.getInt(2), queryResult.getString(3), queryResult.getFloat(4), queryResult.getFloat(5), queryResult.getInt(6)));
+                    }
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        
+        return result;
+    }
+    
+    @Override
+    protected int update(final Map<String, ?> updates, final Map<String, ?> projections) {
+        int updated = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("UPDATE products SET ");
+                for (final String column : updates.keySet()) {
+                    if (null == updates.get(column))
+                        sql.append(String.format("%s = NULL, ", column));
+                    else
+                        sql.append(String.format("%s = '%s', ", column, updates.get(column)));
+                }
+                sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(',')));
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    updated = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        
+        return updated;
+    }
+    
+    @Override
+    protected int delete(final Map<String, ?> projections) {
+        int deleted = 0;
+        try (final BufferedReader reader = new BufferedReader(new FileReader(CONFIG_PATH))) {
+            final Properties properties = new Properties();
+            properties.load(reader);
+            try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
+                StringBuilder sql = new StringBuilder("DELETE FROM products");
+                if (!projections.isEmpty()) {
+                    sql.append(" WHERE ");
+                    for (final String column : projections.keySet()) {
+                        if (null == projections.get(column))
+                            sql.append(String.format("%s IS NULL AND ", column));
+                        else
+                            sql.append(String.format("%s = '%s' AND ", column, projections.get(column)));
+                    }
+                    sql = new StringBuilder(sql.substring(0, sql.toString().lastIndexOf(" AND ")));
+                }
+                try (final Statement statement = connection.createStatement()) {
+                    deleted = statement.executeUpdate(sql.toString());
+                }
+            } catch (final SQLException exception) {
+                exception.printStackTrace();
+            }
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        return deleted;
+    }
+    
+    public int remove(final int id) {
+        final Map<String, Object> projections = new HashMap<>();
+        projections.put("id", id);
+        
+        return delete(projections);
     }
     
     public Product getProductById(final int id) {
-        for (final Product p : products) {
-            if (id == p.getId()) {
-                return p;
-            }
-        }
-        return null;
-    }
-    
-    public boolean remove(final int id) {
-        final Product p = getProductById(id);
-        if (null == p) {
-            return false;
-        }
-        return products.remove(p);
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        
+        return query(columns, projections).stream().findFirst().get();
     }
     
     public Set<Product> getProductsByCategoryId(final int categoryId) {
-        Set<Product> result = null;
-        for (final Product p : products) {
-            if (categoryId == p.getCategoryId()) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(p);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("category_id", categoryId);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setProductCategoryId(final int id, final int categoryId) {
-        final Product p = getProductById(id);
-        if (null == p) {
-            return false;
-        }
-        p.setCategoryId(categoryId);
-        return true;
+    public int setProductCategoryId(final int id, final int categoryId) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("category_id", categoryId);
+        projections.put("id", id);
+        
+        return update(updates, projections);
     }
     
     public Set<Product> getProductsByName(final String name) {
-        Set<Product> result = null;
-        for (final Product p : products) {
-            if (name.equals(p.getName())) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(p);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("name", name);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setProductName(final int id, final String name) {
-        final Product p = getProductById(id);
-        if (null == p) {
-            return false;
-        }
-        p.setName(name);
-        return true;
+    public int setProductName(final int id, final String name) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("name", name);
+        projections.put("id", id);
+        
+        return update(updates, projections);
     }
     
     public Set<Product> getProductsByPrice(final float price) {
-        Set<Product> result = null;
-        for (final Product p : products) {
-            if (0 == Float.compare(price, p.getPrice())) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(p);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("price", price);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setProductPrice(final int id, final float price) {
-        final Product pc = getProductById(id);
-        if (null == pc) {
-            return false;
-        }
-        pc.setPrice(price);
-        return true;
+    public int setProductPrice(final int id, final float price) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("price", price);
+        projections.put("id", id);
+        
+        return update(updates, projections);
     }
     
     public Set<Product> getProductsByDiscount(final float discount) {
-        Set<Product> result = null;
-        for (final Product p : products) {
-            if (0 == Float.compare(discount, p.getDiscount())) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(p);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("discount", discount);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setProductDiscount(final int id, final float discount) {
-        final Product p = getProductById(id);
-        if (null == p) {
-            return false;
-        }
-        p.setDiscount(discount);
-        return true;
+    public int setProductDiscount(final int id, final float discount) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("discount", discount);
+        projections.put("id", id);
+        
+        return update(updates, projections);
     }
     
     public Set<Product> getProductsByQuantity(final int quantity) {
-        Set<Product> result = null;
-        for (final Product p : products) {
-            if (quantity == p.getQuantity()) {
-                if (null == result) {
-                    result = new TreeSet<>();
-                }
-                result.add(p);
-            }
-        }
-        return result;
+        final Set<String> columns = new TreeSet<>();
+        final Map<String, Object> projections = new HashMap<>();
+        columns.add("*");
+        projections.put("quantity", quantity);
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public boolean setProductQuantity(final int id, final int quantity) {
-        final Product p = getProductById(id);
-        if (null == p) {
-            return false;
-        }
-        p.setQuantity(quantity);
-        return true;
+    public int setProductQuantity(final int id, final int quantity) {
+        final Map<String, Object> updates = new HashMap<>();
+        final Map<String, Object> projections = new HashMap<>();
+        updates.put("quantity", quantity);
+        projections.put("id", id);
+        
+        return update(updates, projections);
     }
 }

@@ -3,31 +3,15 @@ package root.model;
 import java.util.Objects;
 
 public class AssistedRegister extends Register {
-    private int cashierId;
+    private final int cashierId;
     
-    public AssistedRegister() {
-        this(-1);
-    }
-    
-    public AssistedRegister(final int cashierId) {
-        this.cashierId = cashierId;
-    }
-    
-    public AssistedRegister(final boolean active, final boolean inUse) {
-        this(-1, active, inUse);
-    }
-    
-    public AssistedRegister(final int cashierId, final boolean active, final boolean inUse) {
-        super(active, inUse);
+    public AssistedRegister(final int cashierId, final int id, final boolean active, final boolean inUse) {
+        super(id, active, inUse);
         this.cashierId = cashierId;
     }
     
     public int getCashierId() {
         return cashierId;
-    }
-    
-    public void setCashierId(final int cashierId) {
-        this.cashierId = cashierId;
     }
     
     @Override
@@ -53,10 +37,10 @@ public class AssistedRegister extends Register {
     }
     
     @Override
-    public int compareTo(final Register t) throws NullPointerException {
-        if (null == t) {
+    public int compareTo(final Register o) throws NullPointerException {
+        if (null == o) {
             throw new NullPointerException();
         }
-        return Integer.compare(id, t.id);
+        return Integer.compare(id, o.id);
     }
 }
