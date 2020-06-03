@@ -161,8 +161,12 @@ public class ProductRepository extends Repository {
         final Set<String> columns = new TreeSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
-        
-        return query(columns, projections).stream().findFirst().get();
+    
+        final Optional<Product> result = query(columns, projections).stream().findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public Set<Product> getProductsByCategoryId(final int categoryId) {

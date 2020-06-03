@@ -247,7 +247,7 @@ public final class RegisterActionsFrame extends JFrame {
             ActionResultFrame.getInstance().load("Assisted registers", service.getAssistedRegisters().toArray(), this);
         
         } else if (button.equals(assignCashierToAssistedButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the register you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -273,10 +273,10 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully assigned cashier with ID " + cashierId + "to the register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully assigned cashier with ID " + cashierId + " to the assisted register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(dropCashierFromAssistedButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the register you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -291,7 +291,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully dropped the cashier of the register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully dropped the cashier of the assisted register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displaySelfRegistersButton)) {
             setVisible(false);

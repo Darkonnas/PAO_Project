@@ -162,8 +162,12 @@ public class ProductCategoryRepository extends Repository {
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
-        
-        return query(columns, projections).stream().findFirst().get();
+    
+        final Optional<ProductCategory> result = query(columns, projections).stream().findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public ProductCategory getProductCategoryByName(final String name) {

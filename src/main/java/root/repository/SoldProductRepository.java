@@ -164,8 +164,12 @@ public class SoldProductRepository extends Repository {
         columns.add("*");
         projections.put("receipt_id", receiptId);
         projections.put("product_id", productId);
-        
-        return Collections.unmodifiableSet(query(columns, projections)).stream().findFirst().get();
+    
+        final Optional<SoldProduct> result = Collections.unmodifiableSet(query(columns, projections)).stream().findFirst();
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public Set<SoldProduct> getSoldProductsByReceiptId(final int receiptId) {

@@ -162,8 +162,13 @@ public class ReceiptRepository extends Repository {
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
-        
-        return query(columns, projections).stream().findFirst().get();
+    
+        final Optional<Receipt> result = query(columns, projections).stream().findFirst();
+    
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public Set<Receipt> getReceiptsByRegisterId(final int registerId) {

@@ -82,3 +82,7 @@ Requested register by id,3:06:2020 23:30:18,AWT-EventQueue-0
 Requested registers by active state,3:06:2020 23:31:49,AWT-EventQueue-0
 Requested registers by inUse state,3:06:2020 23:33:22,AWT-EventQueue-0
 Requested registers by inUse state,3:06:2020 23:33:26,AWT-EventQueue-0
+Requested assisted registers,3:06:2020 23:41:49,AWT-EventQueue-0
+Requested self registers,3:06:2020 23:41:53,AWT-EventQueue-0
+Assigned assisted register cashier,3:06:2020 23:42:07,AWT-EventQueue-0
+Dropped assisted register cashier,3:06:2020 23:42:18,AWT-EventQueue-0
