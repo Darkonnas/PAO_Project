@@ -175,8 +175,13 @@ public class RegisterRepository extends Repository {
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
-        
-        return Collections.unmodifiableSet(query(columns, projections)).stream().findFirst().get();
+    
+        final Optional<Register> result = Collections.unmodifiableSet(query(columns, projections)).stream().findFirst();
+    
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public Set<Register> getRegistersByActiveState(final boolean state) {

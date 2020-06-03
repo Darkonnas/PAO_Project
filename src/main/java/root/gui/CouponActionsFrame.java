@@ -44,6 +44,7 @@ public final class CouponActionsFrame extends JFrame {
         final CouponService service = CouponService.getInstance();
         final JButton button = (JButton) e.getSource();
         if (button.equals(displayAllCouponsButton)) {
+            setVisible(false);
             ActionResultFrame.getInstance().load("Coupons:", service.getCoupons().toArray(), this);
         } else if (button.equals(addCouponButton)) {
             String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to add:", "Enter addition parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -167,7 +168,7 @@ public final class CouponActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Successfully change the discount of the coupon with ID " + id + " to " + discount + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCouponsWithUsedStateButton)) {
-            final String input = JOptionPane.showInputDialog(this, "Coupon discount to be searched for:", "Enter search parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "Coupon used state to be searched for:", "Enter search parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }

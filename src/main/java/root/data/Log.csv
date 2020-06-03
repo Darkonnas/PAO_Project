@@ -68,3 +68,17 @@ Requested coupons by used state,3:06:2020 23:08:35,AWT-EventQueue-0
 Requested coupons by used state,3:06:2020 23:08:41,AWT-EventQueue-0
 Set coupon used state,3:06:2020 23:08:52,AWT-EventQueue-0
 Set coupon used state,3:06:2020 23:09:00,AWT-EventQueue-0
+Requested registers,3:06:2020 23:22:51,AWT-EventQueue-0
+Requested cashiers,3:06:2020 23:23:28,AWT-EventQueue-0
+Requested coupons,3:06:2020 23:23:32,AWT-EventQueue-0
+Requested coupons,3:06:2020 23:23:56,AWT-EventQueue-0
+Requested registers,3:06:2020 23:24:01,AWT-EventQueue-0
+Added a register,3:06:2020 23:25:03,AWT-EventQueue-0
+Added a register,3:06:2020 23:26:17,AWT-EventQueue-0
+Removed a register,3:06:2020 23:28:09,AWT-EventQueue-0
+Requested register by id,3:06:2020 23:30:05,AWT-EventQueue-0
+Requested register by id,3:06:2020 23:30:12,AWT-EventQueue-0
+Requested register by id,3:06:2020 23:30:18,AWT-EventQueue-0
+Requested registers by active state,3:06:2020 23:31:49,AWT-EventQueue-0
+Requested registers by inUse state,3:06:2020 23:33:22,AWT-EventQueue-0
+Requested registers by inUse state,3:06:2020 23:33:26,AWT-EventQueue-0
