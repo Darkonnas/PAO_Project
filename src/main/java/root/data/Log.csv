@@ -1,4 +1,4 @@
-commandDescription,timestamp,thread
+commandDescription,timestamp,thread_name
 Requested cashiers,3:06:2020 19:45:38,AWT-EventQueue-0
 Requested products,3:06:2020 20:01:24,AWT-EventQueue-0
 Requested sold products,3:06:2020 20:01:38,AWT-EventQueue-0
@@ -86,3 +86,4 @@ Requested assisted registers,3:06:2020 23:41:49,AWT-EventQueue-0
 Requested self registers,3:06:2020 23:41:53,AWT-EventQueue-0
 Assigned assisted register cashier,3:06:2020 23:42:07,AWT-EventQueue-0
 Dropped assisted register cashier,3:06:2020 23:42:18,AWT-EventQueue-0
+Requested cashiers,3:06:2020 23:57:46,AWT-EventQueue-0

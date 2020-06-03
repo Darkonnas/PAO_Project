@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public final class LogService {
     private static final String FILE_PATH = "src/main/java/root/data/Log.csv";
-    private static final String FILE_HEADER = "commandDescription,timestamp,thread";
+    private static final String FILE_HEADER = "commandDescription,timestamp,thread_name";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("d:MM:yyyy HH:mm:ss");
     private static LogService instance;
     
