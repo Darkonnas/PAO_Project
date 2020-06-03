@@ -35,7 +35,7 @@ public class Coupon implements Comparable<Coupon> {
     
     @Override
     public String toString() {
-        return "Coupon{" + "id=" + id + ", sale=" + discount + ", used=" + used + '}';
+        return "Coupon{" + "id=" + id + ", discount=" + discount + ", used=" + used + '}';
     }
     
     @Override

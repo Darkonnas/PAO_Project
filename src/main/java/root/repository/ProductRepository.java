@@ -30,7 +30,7 @@ public class ProductRepository extends Repository {
             final Properties properties = new Properties();
             properties.load(reader);
             try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
-                final String sql = String.format("INSERT INTO products VALUES(%d, %d, '%s', %f, %f, %d)", product.getId(), product.getCategoryId(), product.getName(), product.getPrice(), product.getDiscount(), product.getQuantity());
+                final String sql = String.format("INSERT INTO products VALUES(%d, %d, '%s', %s, %s, %d)", product.getId(), product.getCategoryId(), product.getName(), product.getPrice(), product.getDiscount(), product.getQuantity());
                 try (final Statement statement = connection.createStatement()) {
                     inserted = statement.executeUpdate(sql);
                 }

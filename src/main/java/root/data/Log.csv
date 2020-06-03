@@ -1,2 +1,70 @@
 commandDescription,timestamp,thread
 Requested cashiers,3:06:2020 19:45:38,AWT-EventQueue-0
+Requested products,3:06:2020 20:01:24,AWT-EventQueue-0
+Requested sold products,3:06:2020 20:01:38,AWT-EventQueue-0
+Requested cashiers,3:06:2020 20:05:49,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 20:57:35,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 20:58:28,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:02:56,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:03:49,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:05:18,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:06:05,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:09:43,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:10:45,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:11:30,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:13:50,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:15:00,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:33:02,AWT-EventQueue-0
+Requested cashier by id,3:06:2020 21:33:17,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:33:31,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:33:37,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:34:56,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:38:30,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:38:46,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:39:11,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:39:49,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:40:01,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:40:11,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:40:16,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:40:20,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:41:51,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:41:54,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:49:28,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 21:55:44,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:56:40,AWT-EventQueue-0
+Requested cashiers by firstName,3:06:2020 21:58:29,AWT-EventQueue-0
+Set cashier firstName,3:06:2020 22:01:15,AWT-EventQueue-0
+Requested cashiers by lastName,3:06:2020 22:01:22,AWT-EventQueue-0
+Requested cashiers by lastName,3:06:2020 22:01:29,AWT-EventQueue-0
+Set cashier lastName,3:06:2020 22:01:42,AWT-EventQueue-0
+Set cashier lastName,3:06:2020 22:02:00,AWT-EventQueue-0
+Set cashier lastName,3:06:2020 22:02:11,AWT-EventQueue-0
+Removed a cashier,3:06:2020 22:16:49,AWT-EventQueue-0
+Added a cashier,3:06:2020 22:17:45,AWT-EventQueue-0
+Set cashier lastName,3:06:2020 22:23:02,AWT-EventQueue-0
+Set cashier lastName,3:06:2020 22:23:31,AWT-EventQueue-0
+Removed a coupon,3:06:2020 22:35:57,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:36:16,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:36:58,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:38:11,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:38:36,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:40:43,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:41:59,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:43:40,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:43:56,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:46:29,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:48:03,AWT-EventQueue-0
+Added a coupon,3:06:2020 22:56:12,AWT-EventQueue-0
+Requested coupon by discount,3:06:2020 22:59:48,AWT-EventQueue-0
+Requested coupon by id,3:06:2020 22:59:59,AWT-EventQueue-0
+Requested coupon by id,3:06:2020 23:00:02,AWT-EventQueue-0
+Requested coupons,3:06:2020 23:06:24,AWT-EventQueue-0
+Requested coupon by id,3:06:2020 23:06:31,AWT-EventQueue-0
+Requested coupon by discount,3:06:2020 23:06:34,AWT-EventQueue-0
+Set coupon discount,3:06:2020 23:07:19,AWT-EventQueue-0
+Set coupon discount,3:06:2020 23:08:26,AWT-EventQueue-0
+Requested coupons by used state,3:06:2020 23:08:32,AWT-EventQueue-0
+Requested coupons by used state,3:06:2020 23:08:35,AWT-EventQueue-0
+Requested coupons by used state,3:06:2020 23:08:41,AWT-EventQueue-0
+Set coupon used state,3:06:2020 23:08:52,AWT-EventQueue-0
+Set coupon used state,3:06:2020 23:09:00,AWT-EventQueue-0

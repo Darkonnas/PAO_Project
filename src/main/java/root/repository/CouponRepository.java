@@ -30,7 +30,7 @@ public class CouponRepository extends Repository {
             final Properties properties = new Properties();
             properties.load(reader);
             try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
-                final String sql = String.format("INSERT INTO coupons VALUES(%d, %f, '%s')", coupon.getId(), coupon.getDiscount(), coupon.isUsed());
+                final String sql = String.format("INSERT INTO coupons VALUES(%d, %s, '%s')", coupon.getId(), coupon.getDiscount(), coupon.isUsed());
                 try (final Statement statement = connection.createStatement()) {
                     inserted = statement.executeUpdate(sql);
                 }
@@ -162,8 +162,13 @@ public class CouponRepository extends Repository {
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
-        
-        return query(columns, projections).stream().findFirst().get();
+    
+        final Optional<Coupon> result = query(columns, projections).stream().findFirst();
+    
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
     }
     
     public Set<Coupon> getCouponsByDiscount(final float discount) {

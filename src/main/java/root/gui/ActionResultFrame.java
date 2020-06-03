@@ -30,7 +30,7 @@ public final class ActionResultFrame extends JFrame {
     
     public static ActionResultFrame getInstance() {
         if (null == instance) {
-            instance = new ActionResultFrame("Register Management App v1.0");
+            instance = new ActionResultFrame("Action result");
         }
         return instance;
     }
