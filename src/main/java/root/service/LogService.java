@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public final class LogService {
     private static final String FILE_PATH = "src/main/java/root/data/Log.csv";
-    private static final String FILE_HEADER = "commandDescription,timestamp";
+    private static final String FILE_HEADER = "commandDescription,timestamp,thread";
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("d:MM:yyyy HH:mm:ss");
     private static LogService instance;
     
@@ -49,12 +49,13 @@ public final class LogService {
         return instance;
     }
     
-    public void log(final CharSequence action, final Timestamp timestamp) {
+    public void log(final CharSequence action, final Timestamp timestamp, final String threadName) {
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(FILE_PATH, true);
-            fileWriter.append(action).append(",");
-            fileWriter.append(DATE_FORMAT.format(timestamp)).append("\n");
+            fileWriter.append(action).append(',');
+            fileWriter.append(DATE_FORMAT.format(timestamp)).append(',');
+            fileWriter.append(threadName).append('\n');
         } catch (final IOException exception) {
             exception.printStackTrace();
         } finally {

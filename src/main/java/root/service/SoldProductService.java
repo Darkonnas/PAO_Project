@@ -22,37 +22,37 @@ public final class SoldProductService {
     }
     
     public Set<SoldProduct> getSoldProducts() {
-        LogService.getInstance().log("Requested sold products", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold products", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.getSoldProducts();
     }
     
     public int addSoldProduct(final SoldProduct sp) {
-        LogService.getInstance().log("Added a sold product", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Added a sold product", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.add(sp);
     }
     
     public int removeSoldProduct(final int receiptId, final int productId) {
-        LogService.getInstance().log("Removed a sold product", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Removed a sold product", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.remove(receiptId, productId);
     }
     
     public SoldProduct getSoldProductByReceiptIdAndProductId(final int receiptId, final int productId) {
-        LogService.getInstance().log("Requested sold product by receiptId and productId", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold product by receiptId and productId", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.getSoldProductByReceiptIdAndProductId(receiptId, productId);
     }
     
     public Set<SoldProduct> getSoldProductsByReceiptId(final int receiptId) {
-        LogService.getInstance().log("Requested sold products by receiptId", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold products by receiptId", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.getSoldProductsByReceiptId(receiptId);
     }
     
     public Set<SoldProduct> getSoldProductsByProductId(final int productId) {
-        LogService.getInstance().log("Requested sold products by productId", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold products by productId", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.getSoldProductsByProductId(productId);
     }
     
     public Set<SoldProduct> getSoldProductsByQuantity(final int quantity) {
-        LogService.getInstance().log("Requested sold products by quantity", new Timestamp(System.currentTimeMillis()));
+        LogService.getInstance().log("Requested sold products by quantity", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return soldProductRepository.getSoldProductsByQuantity(quantity);
     }
 }

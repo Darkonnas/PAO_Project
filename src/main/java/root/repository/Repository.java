@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Set;
 
 abstract class Repository {
-    protected static final String CONFIG_PATH = "src/main/java/root/config/database.config";
+    static final String CONFIG_PATH = "src/main/java/root/config/database.config";
     
     protected abstract int insert(Object obj);
     
