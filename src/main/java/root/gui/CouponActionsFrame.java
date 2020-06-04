@@ -73,10 +73,8 @@ public final class CouponActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean usedState;
-            try {
-                usedState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean usedState = Boolean.parseBoolean(input);
+            if (false == usedState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -172,10 +170,8 @@ public final class CouponActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean usedState;
-            try {
-                usedState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean usedState = Boolean.parseBoolean(input);
+            if (false == usedState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -199,10 +195,8 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new used state:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean usedState;
-            try {
-                usedState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean usedState = Boolean.parseBoolean(input);
+            if (false == usedState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }

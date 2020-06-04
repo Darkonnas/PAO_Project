@@ -87,10 +87,8 @@ public final class RegisterActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean activeState;
-            try {
-                activeState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean activeState = Boolean.parseBoolean(input);
+            if (false == activeState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -98,10 +96,8 @@ public final class RegisterActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean inUseState;
-            try {
-                inUseState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean inUseState = Boolean.parseBoolean(input);
+            if (false == inUseState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -157,10 +153,8 @@ public final class RegisterActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean activeState;
-            try {
-                activeState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean activeState = Boolean.parseBoolean(input);
+            if (false == activeState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -184,10 +178,8 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new active state:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean activeState;
-            try {
-                activeState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean activeState = Boolean.parseBoolean(input);
+            if (false == activeState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -202,10 +194,8 @@ public final class RegisterActionsFrame extends JFrame {
             if (null == input) {
                 return;
             }
-            final boolean inUseState;
-            try {
-                inUseState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean inUseState = Boolean.parseBoolean(input);
+            if (false == inUseState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -229,10 +219,8 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new in-use state:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean inUseState;
-            try {
-                inUseState = Boolean.parseBoolean(input);
-            } catch (final NumberFormatException nfe) {
+            final boolean inUseState = Boolean.parseBoolean(input);
+            if (false == inUseState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
