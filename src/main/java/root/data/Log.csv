@@ -87,3 +87,7 @@ Requested self registers,3:06:2020 23:41:53,AWT-EventQueue-0
 Assigned assisted register cashier,3:06:2020 23:42:07,AWT-EventQueue-0
 Dropped assisted register cashier,3:06:2020 23:42:18,AWT-EventQueue-0
 Requested cashiers,3:06:2020 23:57:46,AWT-EventQueue-0
+Requested cashiers,4:06:2020 20:01:53,AWT-EventQueue-0
+Requested cashier by id,4:06:2020 20:02:08,AWT-EventQueue-0
+Added a cashier,4:06:2020 20:03:02,AWT-EventQueue-0
+Removed a cashier,4:06:2020 20:03:16,AWT-EventQueue-0

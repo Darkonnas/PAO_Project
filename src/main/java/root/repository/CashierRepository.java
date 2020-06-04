@@ -11,7 +11,7 @@ import java.util.*;
 public class CashierRepository extends Repository {
     
     public Set<Cashier> getCashiers() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
     
         columns.add("*");
@@ -159,7 +159,7 @@ public class CashierRepository extends Repository {
     }
     
     public Cashier getCashierById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         projections.put("id", id);
         columns.add("*");
@@ -173,7 +173,7 @@ public class CashierRepository extends Repository {
     }
     
     public Set<Cashier> getCashiersByFirstName(final String firstName) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         projections.put("first_name", firstName);
         columns.add("*");
@@ -191,7 +191,7 @@ public class CashierRepository extends Repository {
     }
     
     public Set<Cashier> getCashiersByLastName(final String lastName) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         projections.put("last_name", lastName);
         columns.add("*");

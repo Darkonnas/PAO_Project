@@ -11,7 +11,7 @@ import java.util.*;
 public class ProductCategoryRepository extends Repository {
     
     public Set<ProductCategory> getProductCategories() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         
@@ -158,7 +158,7 @@ public class ProductCategoryRepository extends Repository {
     }
     
     public ProductCategory getProductCategoryById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
@@ -171,7 +171,7 @@ public class ProductCategoryRepository extends Repository {
     }
     
     public ProductCategory getProductCategoryByName(final String name) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("name", name);

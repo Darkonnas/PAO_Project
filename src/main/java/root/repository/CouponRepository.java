@@ -11,7 +11,7 @@ import java.util.*;
 public class CouponRepository extends Repository {
     
     public Set<Coupon> getCoupons() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         
@@ -158,7 +158,7 @@ public class CouponRepository extends Repository {
     }
     
     public Coupon getCouponById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
@@ -172,7 +172,7 @@ public class CouponRepository extends Repository {
     }
     
     public Set<Coupon> getCouponsByDiscount(final float discount) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("discount", discount);
@@ -190,7 +190,7 @@ public class CouponRepository extends Repository {
     }
     
     public Set<Coupon> getCouponsByUsedState(final boolean state) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("used", state);

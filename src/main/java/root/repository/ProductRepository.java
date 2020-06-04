@@ -11,7 +11,7 @@ import java.util.*;
 public class ProductRepository extends Repository {
     
     public Set<Product> getProducts() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         
@@ -158,7 +158,7 @@ public class ProductRepository extends Repository {
     }
     
     public Product getProductById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
     
@@ -170,7 +170,7 @@ public class ProductRepository extends Repository {
     }
     
     public Set<Product> getProductsByCategoryId(final int categoryId) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("category_id", categoryId);
@@ -188,7 +188,7 @@ public class ProductRepository extends Repository {
     }
     
     public Set<Product> getProductsByName(final String name) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("name", name);
@@ -206,7 +206,7 @@ public class ProductRepository extends Repository {
     }
     
     public Set<Product> getProductsByPrice(final float price) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("price", price);
@@ -224,7 +224,7 @@ public class ProductRepository extends Repository {
     }
     
     public Set<Product> getProductsByDiscount(final float discount) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("discount", discount);
@@ -242,7 +242,7 @@ public class ProductRepository extends Repository {
     }
     
     public Set<Product> getProductsByQuantity(final int quantity) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("quantity", quantity);

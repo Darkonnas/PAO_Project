@@ -13,7 +13,7 @@ import java.util.*;
 public class RegisterRepository extends Repository {
     
     public Set<Register> getRegisters() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         
@@ -171,7 +171,7 @@ public class RegisterRepository extends Repository {
     }
     
     public Register getRegisterById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
@@ -185,7 +185,7 @@ public class RegisterRepository extends Repository {
     }
     
     public Set<Register> getRegistersByActiveState(final boolean state) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("active", state);
@@ -203,7 +203,7 @@ public class RegisterRepository extends Repository {
     }
     
     public Set<Register> getRegistersByInUseState(final boolean state) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("in_use", state);
@@ -235,7 +235,7 @@ public class RegisterRepository extends Repository {
     }
     
     public Set<Register> getAssistedRegisters() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections1 = new HashMap<>();
         final Map<String, Object> projections2 = new HashMap<>();
         columns.add("*");
@@ -263,7 +263,7 @@ public class RegisterRepository extends Repository {
     }
     
     public Set<Register> getSelfRegisters() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("cashier_id", null);

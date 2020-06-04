@@ -11,7 +11,7 @@ import java.util.*;
 public class ReceiptRepository extends Repository {
     
     public Set<Receipt> getReceipts() {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         
@@ -158,7 +158,7 @@ public class ReceiptRepository extends Repository {
     }
     
     public Receipt getReceiptById(final int id) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("id", id);
@@ -172,7 +172,7 @@ public class ReceiptRepository extends Repository {
     }
     
     public Set<Receipt> getReceiptsByRegisterId(final int registerId) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("register_id", registerId);
@@ -181,7 +181,7 @@ public class ReceiptRepository extends Repository {
     }
     
     public Set<Receipt> getReceiptsByCashierId(final int cashierId) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("cashier_id", cashierId);
@@ -190,7 +190,7 @@ public class ReceiptRepository extends Repository {
     }
     
     public Receipt getReceiptByCouponId(final int couponId) {
-        final Set<String> columns = new TreeSet<>();
+        final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("coupon_id", couponId);
