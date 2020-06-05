@@ -30,7 +30,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via ProductCategoryService, SQL Linkage via ProductCategoryRepository:
     - get all categories, get categories by id/name (returned as Set<ProductCategory> implemented with TreeSet)
-    - set category name 
+    - change category name 
     - add a category, remove a category
 - Via LogService:
     - log actions to *Log.csv*
@@ -51,7 +51,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via CashierService, SQL Linkage via CashierRepository:
     - get all cashiers, get cashiers by id/first_name/last_name (returned as Set<Cashier> implemented with TreeSet)
-    - set cashier first_name, cashier set last_name
+    - change cashier first_name/ last_name
     - add a cashier, remove a cashier
 - Via LogService:
     - log actions to *Log.csv*
@@ -64,7 +64,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
     - get assisted registers (returned as Set<Register>, implemented with TreeSet)
     - assign a new cashier, drop the current cashier 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
-    - set register active state/inUse state
+    - change register active state/inUse state
     - add a register, remove a register
 - Via LogService:
     - log actions to *Log.csv*
@@ -76,7 +76,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 - Via RegisterService, SQL Linkage via RegisterRepository:
     - get self registers (returned as Set<Register>, implemented with TreeSet) 
     - get all registers, get registers by id/active state/inUse state (returned as Set<Register>, implemented with TreeSet)
-    - set register active state/inUse state
+    - change register active state/inUse state
     - add a register, remove a register
 - Via LogService:
     - log actions to *Log.csv*
@@ -87,7 +87,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 - methods: setters and getters, equals(), compareTo(), toString()
 - Via CouponService, SQL Linkage via CouponRepository:
     - get all coupons (returned as Set<Coupon>, implemented with TreeSet), get coupons by id/discount/used state
-    - set coupon discount/usedState
+    - change coupon discount/usedState
     - add a coupon, remove a coupon
 - Via LogService:
     - log actions to *Log.csv*

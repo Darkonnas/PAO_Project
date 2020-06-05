@@ -47,7 +47,7 @@ public final class CashierActionsFrame extends JFrame {
             setVisible(false);
             ActionResultFrame.getInstance().load("Cashiers:", service.getCashiers().toArray(), this);
         } else if (button.equals(addCashierButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to add:", "Enter addition parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -58,14 +58,14 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            String firstName = JOptionPane.showInputDialog(this, "The first name of the cashier you want to add:", "Enter addition parameter", JOptionPane.INFORMATION_MESSAGE);
+            String firstName = JOptionPane.showInputDialog(this, "The first name of the cashier you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == firstName) {
                 return;
             }
             if (firstName.isEmpty()) {
                 firstName = null;
             }
-            String lastName = JOptionPane.showInputDialog(this, "The last name of the cashier you want to add:", "Enter addition parameter", JOptionPane.INFORMATION_MESSAGE);
+            String lastName = JOptionPane.showInputDialog(this, "The last name of the cashier you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == lastName) {
                 return;
             }
@@ -79,7 +79,7 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Succesfully added the new cashier!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(removeCashierButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to remove:", "Enter deletion parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to remove:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -97,7 +97,7 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Succesfully removed the cashier with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCashierWithIDButton)) {
-            final String input = JOptionPane.showInputDialog(this, "Cashier ID to be searched for:", "Enter search parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "Cashier ID to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -115,7 +115,7 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "The cashier with ID " + id + " is " + result, "Action result", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCashiersWithFirstNameButton)) {
-            String firstName = JOptionPane.showInputDialog(this, "Cashier first name to be searched for:", "Enter search parameter", JOptionPane.INFORMATION_MESSAGE);
+            String firstName = JOptionPane.showInputDialog(this, "Cashier first name to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == firstName) {
                 return;
             }
@@ -130,7 +130,7 @@ public final class CashierActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Cashiers with first name '" + firstName + ":", result, this);
             }
         } else if (button.equals(modifyCashierFirstNameButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -141,7 +141,7 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            String newFirstName = JOptionPane.showInputDialog(this, "The new first name:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            String newFirstName = JOptionPane.showInputDialog(this, "The new first name:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == newFirstName) {
                 return;
             }
@@ -152,10 +152,10 @@ public final class CashierActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully change the first name of the cashier with ID " + id + " to " + newFirstName + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the first name of the cashier with ID " + id + " to " + newFirstName + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCashiersWithLastNameButton)) {
-            String lastName = JOptionPane.showInputDialog(this, "Cashier last name to be searched for:", "Enter search parameter", JOptionPane.INFORMATION_MESSAGE);
+            String lastName = JOptionPane.showInputDialog(this, "Cashier last name to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == lastName) {
                 return;
             }
@@ -170,7 +170,7 @@ public final class CashierActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Cashiers with last name '" + lastName + ":", result, this);
             }
         } else if (button.equals(modifyCashierLastNameButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you wish to modify:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -181,7 +181,7 @@ public final class CashierActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            String newLastName = JOptionPane.showInputDialog(this, "The new last name:", "Enter modification parameter", JOptionPane.INFORMATION_MESSAGE);
+            String newLastName = JOptionPane.showInputDialog(this, "The new last name:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == newLastName) {
                 return;
             }
@@ -192,7 +192,7 @@ public final class CashierActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully change the last name of the cashier with ID " + id + " to " + newLastName + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the last name of the cashier with ID " + id + " to " + newLastName + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(returnToActionCategorySelectionButton)) {
             setVisible(false);
