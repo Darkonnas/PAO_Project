@@ -54,7 +54,7 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -69,7 +69,7 @@ public final class CouponActionsFrame extends JFrame {
             final float discount;
             try {
                 discount = Float.parseFloat(input);
-                if (0 > discount) {
+                if (0 >= discount) {
                     JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -100,7 +100,7 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -122,7 +122,7 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -144,7 +144,7 @@ public final class CouponActionsFrame extends JFrame {
             final float discount;
             try {
                 discount = Float.parseFloat(input);
-                if (0 > discount) {
+                if (0 >= discount) {
                     JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -154,10 +154,10 @@ public final class CouponActionsFrame extends JFrame {
             }
             final Object[] result = service.getCouponsByDiscount(discount).toArray();
             if (0 == result.length) {
-                JOptionPane.showMessageDialog(this, "There are no coupons with discount '" + discount + "'!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There are no coupons with discount " + discount + "'!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 setVisible(false);
-                ActionResultFrame.getInstance().load("Coupons with discount '" + discount + ":", result, this);
+                ActionResultFrame.getInstance().load("Coupons with discount " + discount + ":", result, this);
             }
         } else if (button.equals(modifyCouponDiscountButton)) {
             String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -167,7 +167,7 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -179,7 +179,7 @@ public final class CouponActionsFrame extends JFrame {
             final float newDiscount;
             try {
                 newDiscount = Float.parseFloat(input);
-                if (0 > newDiscount) {
+                if (0 >= newDiscount) {
                     JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -218,7 +218,7 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
