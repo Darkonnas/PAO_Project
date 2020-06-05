@@ -57,30 +57,51 @@ public final class RegisterActionsFrame extends JFrame {
             setVisible(false);
             ActionResultFrame.getInstance().load("Registers", service.getRegisters().toArray(), this);
         } else if (button.equals(addRegisterButton)) {
-            String input = JOptionPane.showInputDialog(this, "The cashier ID of the register you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
-            if (null == input) {
-                return;
-            }
+            final int registerType = JOptionPane.showOptionDialog(this, "The type of register you want to add:", "Choose action parameter", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Assisted register", "Self register"}, null);
             final int cashierId;
-            if (input.isEmpty()) {
-                cashierId = -1;
-            } else {
-                try {
-                    cashierId = Integer.parseInt(input);
-                } catch (final NumberFormatException nfe) {
-                    JOptionPane.showMessageDialog(this, "Cashier ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            switch (registerType) {
+                case 0: {
+                    final String input = JOptionPane.showInputDialog(this, "The cashier ID of the assisted register you want to add (leave blank if not assigned):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+                    if (null == input) {
+                        return;
+                    }
+                    if (input.isEmpty()) {
+                        cashierId = -1;
+                    } else {
+                        try {
+                            cashierId = Integer.parseInt(input);
+                            if (0 > cashierId) {
+                                JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                        } catch (final NumberFormatException nfe) {
+                            JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+                    }
+                    break;
+                }
+                case 1: {
+                    cashierId = -1;
+                    break;
+                }
+                default: {
                     return;
                 }
             }
-            input = JOptionPane.showInputDialog(this, "The ID of the register you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the register you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The active state of the register you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -102,10 +123,10 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final int result;
-            if (cashierId == -1) {
-                result = service.addRegister(new SelfRegister(id, activeState, inUseState));
-            } else {
+            if (0 == registerType) {
                 result = service.addRegister(new AssistedRegister(cashierId, id, activeState, inUseState));
+            } else {
+                result = service.addRegister(new SelfRegister(id, activeState, inUseState));
             }
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -120,8 +141,12 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.removeRegister(id);
@@ -138,8 +163,12 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Register result = service.getRegisterById(id);
@@ -166,28 +195,32 @@ public final class RegisterActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Registers with active state '" + activeState + "':", result, this);
             }
         } else if (button.equals(modifyRegisterActiveStateButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the register you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the register you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new active state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean activeState = Boolean.parseBoolean(input);
-            if (false == activeState && !input.equalsIgnoreCase("false")) {
+            final boolean newActiveState = Boolean.parseBoolean(input);
+            if (false == newActiveState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            final int result = service.setRegisterActiveState(id, activeState);
+            final int result = service.setRegisterActiveState(id, newActiveState);
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the coupon with ID " + id + " to " + activeState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the coupon with ID " + id + " to " + newActiveState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayRegistersWithInUseStateButton)) {
             final String input = JOptionPane.showInputDialog(this, "Register in-use state to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -207,43 +240,51 @@ public final class RegisterActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Registers with in-use state '" + inUseState + "':", result, this);
             }
         } else if (button.equals(modifyRegisterInUseStateButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new in-use state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean inUseState = Boolean.parseBoolean(input);
-            if (false == inUseState && !input.equalsIgnoreCase("false")) {
+            final boolean newInUseState = Boolean.parseBoolean(input);
+            if (false == newInUseState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            final int result = service.setRegisterInUseState(id, inUseState);
+            final int result = service.setRegisterInUseState(id, newInUseState);
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the coupon with ID " + id + " to " + inUseState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the coupon with ID " + id + " to " + newInUseState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayAssistedRegistersButton)) {
             setVisible(false);
             ActionResultFrame.getInstance().load("Assisted registers", service.getAssistedRegisters().toArray(), this);
         
         } else if (button.equals(assignCashierToAssistedButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to assign:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -253,8 +294,12 @@ public final class RegisterActionsFrame extends JFrame {
             final int cashierId;
             try {
                 cashierId = Integer.parseInt(input);
+                if (0 > cashierId) {
+                    JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Cashier ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.assignCashier(id, cashierId);
@@ -264,15 +309,19 @@ public final class RegisterActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Successfully assigned cashier with ID " + cashierId + " to the assisted register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(dropCashierFromAssistedButton)) {
-            final String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "The ID of the assisted register you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.dropCashier(id);

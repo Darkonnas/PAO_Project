@@ -54,8 +54,12 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The discount of the coupon you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -65,8 +69,12 @@ public final class CouponActionsFrame extends JFrame {
             final float discount;
             try {
                 discount = Float.parseFloat(input);
+                if (0 > discount) {
+                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be an floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The used state of the coupon you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -92,8 +100,12 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.removeCoupon(id);
@@ -110,8 +122,12 @@ public final class CouponActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Coupon result = service.getCouponById(id);
@@ -128,8 +144,12 @@ public final class CouponActionsFrame extends JFrame {
             final float discount;
             try {
                 discount = Float.parseFloat(input);
+                if (0 > discount) {
+                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be an floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Object[] result = service.getCouponsByDiscount(discount).toArray();
@@ -140,30 +160,38 @@ public final class CouponActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Coupons with discount '" + discount + ":", result, this);
             }
         } else if (button.equals(modifyCouponDiscountButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new discount:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
-            final float discount;
+            final float newDiscount;
             try {
-                discount = Float.parseFloat(input);
+                newDiscount = Float.parseFloat(input);
+                if (0 > newDiscount) {
+                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be an floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            final int result = service.setCouponDiscount(id, discount);
+            final int result = service.setCouponDiscount(id, newDiscount);
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the discount of the coupon with ID " + id + " to " + discount + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the discount of the coupon with ID " + id + " to " + newDiscount + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCouponsWithUsedStateButton)) {
             final String input = JOptionPane.showInputDialog(this, "Coupon used state to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -183,28 +211,32 @@ public final class CouponActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Coupons with used state '" + usedState + "':", result, this);
             }
         } else if (button.equals(modifyCouponUsedStateButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you wish to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
             final int id;
             try {
                 id = Integer.parseInt(input);
+                if (0 > id) {
+                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new used state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
-            final boolean usedState = Boolean.parseBoolean(input);
-            if (false == usedState && !input.equalsIgnoreCase("false")) {
+            final boolean newUsedState = Boolean.parseBoolean(input);
+            if (false == newUsedState && !input.equalsIgnoreCase("false")) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            final int result = service.setCouponUsedState(id, usedState);
+            final int result = service.setCouponUsedState(id, newUsedState);
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the used state of the coupon with ID " + id + " to " + usedState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the used state of the coupon with ID " + id + " to " + newUsedState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(returnToActionCategorySelectionButton)) {
             setVisible(false);
