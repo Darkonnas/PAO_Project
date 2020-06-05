@@ -181,7 +181,7 @@ public final class ReceiptActionsFrame extends JFrame {
             }
             final Object[] result = service.getReceiptsByRegisterId(registerId).toArray();
             if (0 == result.length) {
-                JOptionPane.showMessageDialog(this, "There are no receipts with register ID " + registerId + "'!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There are no receipts with register ID " + registerId + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 setVisible(false);
                 ActionResultFrame.getInstance().load("Receipts with register ID " + registerId + ":", result, this);
@@ -208,7 +208,7 @@ public final class ReceiptActionsFrame extends JFrame {
             }
             final Object[] result = service.getReceiptsByCashierId(cashierId).toArray();
             if (0 == result.length) {
-                JOptionPane.showMessageDialog(this, "There are no receipts with cashier ID " + cashierId + "'!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There are no receipts with cashier ID " + cashierId + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 setVisible(false);
                 if (null == cashierId) {
@@ -240,7 +240,7 @@ public final class ReceiptActionsFrame extends JFrame {
             }
             final Object[] result = service.getReceiptsByCouponId(couponID).toArray();
             if (0 == result.length) {
-                JOptionPane.showMessageDialog(this, "There are no receipts with coupon ID " + couponID + "'!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There are no receipts with coupon ID " + couponID + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 setVisible(false);
                 if (null == couponID) {

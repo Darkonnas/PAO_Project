@@ -70,11 +70,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 discount = Float.parseFloat(input);
                 if (0 >= discount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The used state of the coupon you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -145,16 +145,16 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 discount = Float.parseFloat(input);
                 if (0 >= discount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Object[] result = service.getCouponsByDiscount(discount).toArray();
             if (0 == result.length) {
-                JOptionPane.showMessageDialog(this, "There are no coupons with discount " + discount + "'!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There are no coupons with discount " + discount + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 setVisible(false);
                 ActionResultFrame.getInstance().load("Coupons with discount " + discount + ":", result, this);
@@ -180,11 +180,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 newDiscount = Float.parseFloat(input);
                 if (0 >= newDiscount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.setCouponDiscount(id, newDiscount);
