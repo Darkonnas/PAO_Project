@@ -1,6 +1,7 @@
 package root.repository;
 
 import root.model.Receipt;
+import root.service.CouponService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,7 +20,7 @@ public class ReceiptRepository extends Repository {
     }
     
     public int add(final Receipt r) {
-        return insert(r);
+        return insert(r) + CouponService.getInstance().setCouponUsedState(r.getCouponId(), true);
     }
     
     @Override
