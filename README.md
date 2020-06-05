@@ -38,7 +38,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 ### The `SoldProduct` model:
 
 - fields: (receiptId FK + productId FK) PK, quantity
-- methods: setters and getters, equals(), compareTo(), toString()
+- methods: setters and getters, equals(), toString()
 - Via SoldProductService, SQL Linkage via SoldProductRepository:
     - get all sold products, get sold products by receiptId/productId/quantity (returned as Set<SoldProduct> implemented with HashSet)
     - add a sold product, remove a sold product
@@ -97,7 +97,7 @@ Java Project for PAO Laboratory; Uses a MariaDB Database.
 - fields: id PK, registerId FK, cashierId OPTIONAL FK, couponId OPTIONAL FK
 - methods: setters and getters, equals(), compareTo(), to String()
 - Via ReceiptService, SQL Linkage via ReceiptRepository:
-    - get all receipts, get receipts by id/registerId/cashierId
+    - get all receipts, get receipts by id/registerId/cashierId/couponId
     - add a receipt, remove a receipt
 - Via LogService:
     - log actions to *Log.csv*
