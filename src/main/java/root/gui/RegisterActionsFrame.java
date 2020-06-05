@@ -70,7 +70,7 @@ public final class RegisterActionsFrame extends JFrame {
                     } else {
                         try {
                             cashierId = Integer.parseInt(input);
-                            if (0 > cashierId) {
+                            if (0 >= cashierId) {
                                 JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                                 return;
                             }
@@ -96,7 +96,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -141,7 +141,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -163,7 +163,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -202,7 +202,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -247,7 +247,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -279,7 +279,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -294,7 +294,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int cashierId;
             try {
                 cashierId = Integer.parseInt(input);
-                if (0 > cashierId) {
+                if (0 >= cashierId) {
                     JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -316,7 +316,7 @@ public final class RegisterActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }

@@ -54,7 +54,7 @@ public final class CashierActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -90,7 +90,7 @@ public final class CashierActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -112,7 +112,7 @@ public final class CashierActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -149,7 +149,7 @@ public final class CashierActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -193,7 +193,7 @@ public final class CashierActionsFrame extends JFrame {
             final int id;
             try {
                 id = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 >= id) {
                     JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
