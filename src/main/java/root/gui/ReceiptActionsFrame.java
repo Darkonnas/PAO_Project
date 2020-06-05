@@ -117,7 +117,7 @@ public final class ReceiptActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully added the new receipt!", "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully added the new receipt!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(removeReceiptButton)) {
             final String input = JOptionPane.showInputDialog(this, "The ID of the receipt you want to remove:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -139,7 +139,7 @@ public final class ReceiptActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully removed the receipt with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully removed the receipt with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayReceiptWithIdButton)) {
             final String input = JOptionPane.showInputDialog(this, "Receipt ID to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);

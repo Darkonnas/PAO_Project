@@ -90,7 +90,7 @@ public final class CouponActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully added the new coupon!", "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully added the new coupon!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(removeCouponButton)) {
             final String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to remove:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -112,7 +112,7 @@ public final class CouponActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully removed the coupon with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully removed the coupon with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCouponWithIdButton)) {
             final String input = JOptionPane.showInputDialog(this, "Coupon ID to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);

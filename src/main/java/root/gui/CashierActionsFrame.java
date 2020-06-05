@@ -80,7 +80,7 @@ public final class CashierActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully added the new cashier!", "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully added the new cashier!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(removeCashierButton)) {
             final String input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to remove:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -102,7 +102,7 @@ public final class CashierActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully removed the cashier with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully removed the cashier with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayCashierWithIDButton)) {
             final String input = JOptionPane.showInputDialog(this, "Cashier ID to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);

@@ -131,7 +131,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully added the new register!", "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully added the new register!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(removeRegisterButton)) {
             final String input = JOptionPane.showInputDialog(this, "The ID of the register you want to remove:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -153,7 +153,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (result == 0) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Succesfully removed the register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully removed the register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayRegisterWithIdButton)) {
             final String input = JOptionPane.showInputDialog(this, "Register ID to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
