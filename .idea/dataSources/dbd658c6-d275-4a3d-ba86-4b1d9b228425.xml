@@ -1045,287 +1045,273 @@
     </user>
     <table id="334" parent="4" name="cashiers"/>
     <table id="335" parent="4" name="coupons"/>
-    <table id="336" parent="4" name="logs"/>
-    <table id="337" parent="4" name="product_categories"/>
-    <table id="338" parent="4" name="products"/>
-    <table id="339" parent="4" name="receipts"/>
-    <table id="340" parent="4" name="registers"/>
-    <table id="341" parent="4" name="sold_products"/>
-    <column id="342" parent="334" name="id">
+    <table id="336" parent="4" name="product_categories"/>
+    <table id="337" parent="4" name="products"/>
+    <table id="338" parent="4" name="receipts"/>
+    <table id="339" parent="4" name="registers"/>
+    <table id="340" parent="4" name="sold_products"/>
+    <column id="341" parent="334" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="334" name="first_name">
+    <column id="342" parent="334" name="first_name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="334" name="last_name">
+    <column id="343" parent="334" name="last_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="345" parent="334" name="PRIMARY">
+    <key id="344" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="346" parent="335" name="id">
+    <column id="345" parent="335" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="347" parent="335" name="discount">
+    <column id="346" parent="335" name="discount">
       <Position>2</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="335" name="used">
+    <column id="347" parent="335" name="used">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="349" parent="335" name="PRIMARY">
+    <key id="348" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="350" parent="336" name="commandDescription">
+    <column id="349" parent="336" name="id">
       <Position>1</Position>
-      <DataType>text|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="336" name="timestamp">
+    <column id="350" parent="336" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
+    <key id="351" parent="336" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
     <column id="352" parent="337" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="337" name="name">
-      <Position>2</Position>
-      <DataType>text|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="354" parent="337" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="355" parent="338" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="356" parent="338" name="category_id">
+    <column id="353" parent="337" name="category_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="357" parent="338" name="name">
+    <column id="354" parent="337" name="name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="358" parent="338" name="price">
+    <column id="355" parent="337" name="price">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="359" parent="338" name="discount">
+    <column id="356" parent="337" name="discount">
       <Position>5</Position>
       <DataType>double|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="360" parent="338" name="quantity">
+    <column id="357" parent="337" name="quantity">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="361" parent="338" name="fk_prod_cat">
+    <index id="358" parent="337" name="fk_prod_cat">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="362" parent="338" name="PRIMARY">
+    <key id="359" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="363" parent="338" name="fk_prod_cat">
+    <foreign-key id="360" parent="337" name="fk_prod_cat">
       <ColNames>category_id</ColNames>
       <RefTableName>product_categories</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="364" parent="339" name="id">
+    <column id="361" parent="338" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="339" name="register_id">
+    <column id="362" parent="338" name="register_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="339" name="cashier_id">
+    <column id="363" parent="338" name="cashier_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="367" parent="339" name="coupon_id">
+    <column id="364" parent="338" name="coupon_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="368" parent="339" name="fk_rec_coup">
+    <index id="365" parent="338" name="fk_rec_coup">
       <ColNames>coupon_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="369" parent="339" name="fk_rec_reg">
+    <index id="366" parent="338" name="fk_rec_reg">
       <ColNames>register_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="370" parent="339" name="fk_rec_cash">
+    <index id="367" parent="338" name="fk_rec_cash">
       <ColNames>cashier_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="371" parent="339" name="PRIMARY">
+    <key id="368" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="372" parent="339" name="fk_rec_coup">
+    <key id="369" parent="338" name="fk_rec_coup">
       <ColNames>coupon_id</ColNames>
       <UnderlyingIndexName>fk_rec_coup</UnderlyingIndexName>
     </key>
-    <foreign-key id="373" parent="339" name="fk_rec_reg">
+    <foreign-key id="370" parent="338" name="fk_rec_reg">
       <ColNames>register_id</ColNames>
       <RefTableName>registers</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="374" parent="339" name="fk_rec_cash">
+    <foreign-key id="371" parent="338" name="fk_rec_cash">
       <ColNames>cashier_id</ColNames>
       <RefTableName>cashiers</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="375" parent="339" name="fk_rec_coup">
+    <foreign-key id="372" parent="338" name="fk_rec_coup">
       <ColNames>coupon_id</ColNames>
       <RefTableName>coupons</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="376" parent="340" name="cashier_id">
+    <column id="373" parent="339" name="cashier_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="377" parent="340" name="id">
+    <column id="374" parent="339" name="id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="340" name="active">
+    <column id="375" parent="339" name="active">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="340" name="in_use">
+    <column id="376" parent="339" name="in_use">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="380" parent="340" name="fk_reg_cash">
+    <index id="377" parent="339" name="fk_reg_cash">
       <ColNames>cashier_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="381" parent="340" name="PRIMARY">
+    <key id="378" parent="339" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="382" parent="340" name="fk_reg_cash">
+    <key id="379" parent="339" name="fk_reg_cash">
       <ColNames>cashier_id</ColNames>
       <UnderlyingIndexName>fk_reg_cash</UnderlyingIndexName>
     </key>
-    <foreign-key id="383" parent="340" name="fk_reg_cash">
+    <foreign-key id="380" parent="339" name="fk_reg_cash">
       <ColNames>cashier_id</ColNames>
       <RefTableName>cashiers</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="384" parent="341" name="receipt_id">
+    <column id="381" parent="340" name="receipt_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="385" parent="341" name="product_id">
+    <column id="382" parent="340" name="product_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="386" parent="341" name="quantity">
+    <column id="383" parent="340" name="quantity">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="387" parent="341" name="fk_sold_rec">
+    <index id="384" parent="340" name="fk_sold_rec">
       <ColNames>receipt_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="388" parent="341" name="fk_sold_prod">
+    <index id="385" parent="340" name="fk_sold_prod">
       <ColNames>product_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="389" parent="341" name="PRIMARY">
+    <key id="386" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>receipt_id
 product_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="390" parent="341" name="fk_sold_rec">
+    <foreign-key id="387" parent="340" name="fk_sold_rec">
       <ColNames>receipt_id</ColNames>
       <RefTableName>receipts</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="391" parent="341" name="fk_sold_prod">
+    <foreign-key id="388" parent="340" name="fk_sold_prod">
       <ColNames>product_id</ColNames>
       <RefTableName>products</RefTableName>
       <RefColNames>id</RefColNames>
