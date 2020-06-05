@@ -66,7 +66,7 @@ public final class RegisterService {
         return registerRepository.getAssistedRegisters();
     }
     
-    public int assignCashier(final int id, final int cashierId) {
+    public int assignCashier(final int id, final Integer cashierId) {
         LogService.getInstance().log("Assigned assisted register cashier", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return registerRepository.assignCashier(id, cashierId);
     }

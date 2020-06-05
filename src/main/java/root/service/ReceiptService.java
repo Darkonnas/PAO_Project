@@ -46,13 +46,13 @@ public final class ReceiptService {
         return receiptRepository.getReceiptsByRegisterId(registerId);
     }
     
-    public Set<Receipt> getReceiptsByCashierId(final int cashierId) {
+    public Set<Receipt> getReceiptsByCashierId(final Integer cashierId) {
         LogService.getInstance().log("Requested receipts by cashier id", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return receiptRepository.getReceiptsByCashierId(cashierId);
     }
     
-    public Receipt getReceiptByCouponId(final int id) {
-        LogService.getInstance().log("Requested receipt by couponId", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
-        return receiptRepository.getReceiptByCouponId(id);
+    public Set<Receipt> getReceiptsByCouponId(final Integer id) {
+        LogService.getInstance().log("Requested receipts by couponId", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
+        return receiptRepository.getReceiptsByCouponId(id);
     }
 }

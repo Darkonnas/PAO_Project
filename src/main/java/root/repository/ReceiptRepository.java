@@ -30,7 +30,7 @@ public class ReceiptRepository extends Repository {
             final Properties properties = new Properties();
             properties.load(reader);
             try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
-                final String sql = String.format("INSERT INTO receipts VALUES(%d, %d, %s, %s)", receipt.getId(), receipt.getRegisterId(), -1 == receipt.getCashierId() ? null : receipt.getCashierId(), -1 == receipt.getCouponId() ? null : receipt.getCouponId());
+                final String sql = String.format("INSERT INTO receipts VALUES(%d, %d, %s, %s)", receipt.getId(), receipt.getRegisterId(), receipt.getCashierId(), receipt.getCouponId());
                 try (final Statement statement = connection.createStatement()) {
                     inserted = statement.executeUpdate(sql);
                 }
@@ -69,7 +69,7 @@ public class ReceiptRepository extends Repository {
                 try (final Statement statement = connection.createStatement()) {
                     final ResultSet queryResult = statement.executeQuery(sql.toString());
                     while (queryResult.next()) {
-                        result.add(new Receipt(queryResult.getInt(1), queryResult.getInt(2), null == queryResult.getString(3) ? -1 : queryResult.getInt(3), null == queryResult.getString(4) ? -1 : queryResult.getInt(4)));
+                        result.add(new Receipt(queryResult.getInt(1), queryResult.getInt(2), queryResult.getInt(3), queryResult.getInt(4)));
                     }
                 }
             } catch (final SQLException exception) {
@@ -180,21 +180,21 @@ public class ReceiptRepository extends Repository {
         return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public Set<Receipt> getReceiptsByCashierId(final int cashierId) {
+    public Set<Receipt> getReceiptsByCashierId(final Integer cashierId) {
         final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("cashier_id", cashierId);
-    
+        
         return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public Receipt getReceiptByCouponId(final int couponId) {
+    public Set<Receipt> getReceiptsByCouponId(final Integer couponId) {
         final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("coupon_id", couponId);
-    
-        return query(columns, projections).stream().findFirst().get();
+        
+        return Collections.unmodifiableSet(query(columns, projections));
     }
 }

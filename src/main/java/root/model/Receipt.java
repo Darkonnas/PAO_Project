@@ -5,10 +5,10 @@ import java.util.Objects;
 public class Receipt implements Comparable<Receipt> {
     private final int id;
     private final int registerId;
-    private final int cashierId;
-    private final int couponId;
+    private final Integer cashierId;
+    private final Integer couponId;
     
-    public Receipt(final int id, final int registerId, final int cashierId, final int couponId) {
+    public Receipt(final int id, final int registerId, final Integer cashierId, final Integer couponId) {
         this.id = id;
         this.registerId = registerId;
         this.cashierId = cashierId;
@@ -23,11 +23,11 @@ public class Receipt implements Comparable<Receipt> {
         return registerId;
     }
     
-    public int getCashierId() {
+    public Integer getCashierId() {
         return cashierId;
     }
     
-    public int getCouponId() {
+    public Integer getCouponId() {
         return couponId;
     }
     

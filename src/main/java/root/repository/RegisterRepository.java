@@ -38,7 +38,7 @@ public class RegisterRepository extends Repository {
             try (final Connection connection = DriverManager.getConnection(properties.getProperty("connection.url"), properties.getProperty("connection.username"), properties.getProperty("connection.password"))) {
                 final String sql;
                 if (AssistedRegister.class == register.getClass())
-                    sql = String.format("INSERT INTO registers VALUES(%s, %d, '%s', '%s')", -1 == ((AssistedRegister) register).getCashierId() ? null : ((AssistedRegister) register).getCashierId(), register.getId(), register.isActive(), register.isInUse());
+                    sql = String.format("INSERT INTO registers VALUES(%s, %d, '%s', '%s')", ((AssistedRegister) register).getCashierId(), register.getId(), register.isActive(), register.isInUse());
                 else
                     sql = String.format("INSERT INTO registers VALUES(%s, %d, '%s', '%s')", null, register.getId(), register.isActive(), register.isInUse());
                 try (final Statement statement = connection.createStatement()) {
@@ -82,7 +82,7 @@ public class RegisterRepository extends Repository {
                         if (null == queryResult.getString(1) && "true".equals(queryResult.getString(3)))
                             result.add(new SelfRegister(queryResult.getInt(2), queryResult.getBoolean(3), queryResult.getBoolean(4)));
                         else
-                            result.add(new AssistedRegister(null == queryResult.getString(1) ? -1 : queryResult.getInt(1), queryResult.getInt(2), queryResult.getBoolean(3), queryResult.getBoolean(4)));
+                            result.add(new AssistedRegister(queryResult.getInt(1), queryResult.getInt(2), queryResult.getBoolean(3), queryResult.getBoolean(4)));
                     }
                 }
             } catch (final SQLException exception) {
@@ -221,15 +221,15 @@ public class RegisterRepository extends Repository {
     }
     
     public int assignCashier(final int id, final int cashierId) {
-        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id)) {
+        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id && null == ((AssistedRegister) register).getCashierId())) {
             final Map<String, Object> updates = new HashMap<>();
             final Map<String, Object> projections = new HashMap<>();
             updates.put("cashier_id", cashierId);
             updates.put("active", true);
             projections.put("id", id);
-            
+        
             return update(updates, projections);
-            
+        
         }
         return 0;
     }
@@ -249,15 +249,15 @@ public class RegisterRepository extends Repository {
     }
     
     public int dropCashier(final int id) {
-        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id && -1 != ((AssistedRegister) register).getCashierId())) {
+        if (getAssistedRegisters().stream().anyMatch(register -> register.getId() == id && null != ((AssistedRegister) register).getCashierId())) {
             final Map<String, Object> updates = new HashMap<>();
             final Map<String, Object> projections = new HashMap<>();
             updates.put("cashier_id", null);
             updates.put("active", false);
             projections.put("id", id);
-            
+        
             return update(updates, projections);
-            
+        
         }
         return 0;
     }

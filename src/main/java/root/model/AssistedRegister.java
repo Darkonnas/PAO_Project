@@ -3,14 +3,14 @@ package root.model;
 import java.util.Objects;
 
 public class AssistedRegister extends Register {
-    private final int cashierId;
+    private final Integer cashierId;
     
-    public AssistedRegister(final int cashierId, final int id, final boolean active, final boolean inUse) {
+    public AssistedRegister(final Integer cashierId, final int id, final boolean active, final boolean inUse) {
         super(id, active, inUse);
         this.cashierId = cashierId;
     }
     
-    public int getCashierId() {
+    public Integer getCashierId() {
         return cashierId;
     }
     
