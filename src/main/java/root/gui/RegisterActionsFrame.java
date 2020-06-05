@@ -71,11 +71,11 @@ public final class RegisterActionsFrame extends JFrame {
                         try {
                             cashierId = Integer.parseInt(input);
                             if (0 >= cashierId) {
-                                JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(this, "Cashier ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                                 return;
                             }
                         } catch (final NumberFormatException nfe) {
-                            JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Cashier ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                             return;
                         }
                     }
@@ -97,11 +97,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The active state of the register you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -142,11 +142,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.removeRegister(id);
@@ -164,11 +164,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Register result = service.getRegisterById(id);
@@ -203,11 +203,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new active state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -248,11 +248,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new in-use state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -280,11 +280,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The ID of the cashier you want to assign:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -295,11 +295,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 cashierId = Integer.parseInt(input);
                 if (0 >= cashierId) {
-                    JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Cashier ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Cashier ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cashier ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.assignCashier(id, cashierId);
@@ -317,11 +317,11 @@ public final class RegisterActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.dropCashier(id);

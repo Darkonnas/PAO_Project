@@ -55,11 +55,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The discount of the coupon you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -70,11 +70,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 discount = Float.parseFloat(input);
                 if (0 >= discount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The used state of the coupon you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -101,11 +101,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.removeCoupon(id);
@@ -123,11 +123,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Coupon result = service.getCouponById(id);
@@ -145,11 +145,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 discount = Float.parseFloat(input);
                 if (0 >= discount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Object[] result = service.getCouponsByDiscount(discount).toArray();
@@ -168,11 +168,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new discount:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -180,11 +180,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 newDiscount = Float.parseFloat(input);
                 if (0 >= newDiscount) {
-                    JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "Discount must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Discount must be a strictly positive floatin point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.setCouponDiscount(id, newDiscount);
@@ -219,11 +219,11 @@ public final class CouponActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new used state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);

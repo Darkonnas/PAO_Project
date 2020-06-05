@@ -55,11 +55,11 @@ public final class CashierActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             String firstName = JOptionPane.showInputDialog(this, "The first name of the cashier you want to add:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -91,11 +91,11 @@ public final class CashierActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.removeCashier(id);
@@ -113,11 +113,11 @@ public final class CashierActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final Cashier result = service.getCashierById(id);
@@ -150,11 +150,11 @@ public final class CashierActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             String newFirstName = JOptionPane.showInputDialog(this, "The new first name:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -194,11 +194,11 @@ public final class CashierActionsFrame extends JFrame {
             try {
                 id = Integer.parseInt(input);
                 if (0 >= id) {
-                    JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             } catch (final NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(this, "ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             String newLastName = JOptionPane.showInputDialog(this, "The new last name:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
