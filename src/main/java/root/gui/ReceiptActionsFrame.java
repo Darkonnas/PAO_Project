@@ -114,7 +114,7 @@ public final class ReceiptActionsFrame extends JFrame {
                 }
             }
             final int result = service.addReceipt(new Receipt(id, registerId, cashierId, couponId));
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully added the new receipt!", "Success", JOptionPane.PLAIN_MESSAGE);
@@ -136,7 +136,7 @@ public final class ReceiptActionsFrame extends JFrame {
                 return;
             }
             final int result = service.removeReceipt(id);
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully removed the receipt with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);

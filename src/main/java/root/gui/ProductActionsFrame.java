@@ -146,7 +146,7 @@ public final class ProductActionsFrame extends JFrame {
                 return;
             }
             final int result = service.addProduct(new Product(id, categoryId, name, price, discount, quantity));
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully added the new product!", "Success", JOptionPane.PLAIN_MESSAGE);
@@ -168,7 +168,7 @@ public final class ProductActionsFrame extends JFrame {
                 return;
             }
             final int result = service.removeProduct(id);
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully removed the product with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);

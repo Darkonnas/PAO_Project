@@ -163,12 +163,7 @@ public class CouponRepository extends Repository {
         columns.add("*");
         projections.put("id", id);
     
-        final Optional<Coupon> result = query(columns, projections).stream().findFirst();
-    
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        return query(columns, projections).stream().findFirst().orElse(null);
     }
     
     public Set<Coupon> getCouponsByDiscount(final float discount) {

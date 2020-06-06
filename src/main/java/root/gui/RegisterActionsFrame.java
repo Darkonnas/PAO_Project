@@ -109,7 +109,7 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final boolean activeState = Boolean.parseBoolean(input);
-            if (false == activeState && !input.equalsIgnoreCase("false")) {
+            if (!activeState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -118,7 +118,7 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final boolean inUseState = Boolean.parseBoolean(input);
-            if (false == inUseState && !input.equalsIgnoreCase("false")) {
+            if (!inUseState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -128,7 +128,7 @@ public final class RegisterActionsFrame extends JFrame {
             } else {
                 result = service.addRegister(new SelfRegister(id, activeState, inUseState));
             }
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully added the new register!", "Success", JOptionPane.PLAIN_MESSAGE);
@@ -150,7 +150,7 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final int result = service.removeRegister(id);
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully removed the register with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
@@ -183,7 +183,7 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final boolean activeState = Boolean.parseBoolean(input);
-            if (false == activeState && !input.equalsIgnoreCase("false")) {
+            if (!activeState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -212,7 +212,7 @@ public final class RegisterActionsFrame extends JFrame {
             }
             input = JOptionPane.showInputDialog(this, "The new active state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             final boolean newActiveState = Boolean.parseBoolean(input);
-            if (false == newActiveState && !input.equalsIgnoreCase("false")) {
+            if (!newActiveState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -228,7 +228,7 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             final boolean inUseState = Boolean.parseBoolean(input);
-            if (false == inUseState && !input.equalsIgnoreCase("false")) {
+            if (!inUseState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -257,7 +257,7 @@ public final class RegisterActionsFrame extends JFrame {
             }
             input = JOptionPane.showInputDialog(this, "The new in-use state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             final boolean newInUseState = Boolean.parseBoolean(input);
-            if (false == newInUseState && !input.equalsIgnoreCase("false")) {
+            if (!newInUseState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }

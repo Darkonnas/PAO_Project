@@ -164,12 +164,7 @@ public class CashierRepository extends Repository {
         projections.put("id", id);
         columns.add("*");
     
-        final Optional<Cashier> result = Collections.unmodifiableSet(query(columns, projections)).stream().findFirst();
-    
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        return query(columns, projections).stream().findFirst().orElse(null);
     }
     
     public Set<Cashier> getCashiersByFirstName(final String firstName) {

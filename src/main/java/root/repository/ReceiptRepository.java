@@ -164,12 +164,7 @@ public class ReceiptRepository extends Repository {
         columns.add("*");
         projections.put("id", id);
     
-        final Optional<Receipt> result = query(columns, projections).stream().findFirst();
-    
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        return query(columns, projections).stream().findFirst().orElse(null);
     }
     
     public Set<Receipt> getReceiptsByRegisterId(final int registerId) {

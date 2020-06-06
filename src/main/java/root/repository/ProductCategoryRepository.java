@@ -163,11 +163,7 @@ public class ProductCategoryRepository extends Repository {
         columns.add("*");
         projections.put("id", id);
     
-        final Optional<ProductCategory> result = query(columns, projections).stream().findFirst();
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        return query(columns, projections).stream().findFirst().orElse(null);
     }
     
     public ProductCategory getProductCategoryByName(final String name) {
@@ -175,8 +171,8 @@ public class ProductCategoryRepository extends Repository {
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
         projections.put("name", name);
-        
-        return query(columns, projections).stream().findFirst().get();
+    
+        return query(columns, projections).stream().findFirst().orElse(null);
     }
     
     

@@ -82,12 +82,12 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             final boolean usedState = Boolean.parseBoolean(input);
-            if (false == usedState && !input.equalsIgnoreCase("false")) {
+            if (!usedState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             final int result = service.addCoupon(new Coupon(id, discount, usedState));
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully added the new coupon!", "Success", JOptionPane.PLAIN_MESSAGE);
@@ -109,7 +109,7 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             final int result = service.removeCoupon(id);
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully removed the coupon with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
@@ -199,7 +199,7 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             final boolean usedState = Boolean.parseBoolean(input);
-            if (false == usedState && !input.equalsIgnoreCase("false")) {
+            if (!usedState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -228,7 +228,7 @@ public final class CouponActionsFrame extends JFrame {
             }
             input = JOptionPane.showInputDialog(this, "The new used state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             final boolean newUsedState = Boolean.parseBoolean(input);
-            if (false == newUsedState && !input.equalsIgnoreCase("false")) {
+            if (!newUsedState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }

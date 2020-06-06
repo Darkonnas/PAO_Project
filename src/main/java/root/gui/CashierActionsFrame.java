@@ -77,7 +77,7 @@ public final class CashierActionsFrame extends JFrame {
                 lastName = null;
             }
             final int result = service.addCashier(new Cashier(id, firstName, lastName));
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully added the new cashier!", "Success", JOptionPane.PLAIN_MESSAGE);
@@ -99,7 +99,7 @@ public final class CashierActionsFrame extends JFrame {
                 return;
             }
             final int result = service.removeCashier(id);
-            if (result == 0) {
+            if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Successfully removed the cashier with ID " + id + '!', "Success", JOptionPane.PLAIN_MESSAGE);
