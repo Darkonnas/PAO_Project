@@ -91,3 +91,145 @@ Requested cashiers,4:06:2020 20:01:53,AWT-EventQueue-0
 Requested cashier by id,4:06:2020 20:02:08,AWT-EventQueue-0
 Added a cashier,4:06:2020 20:03:02,AWT-EventQueue-0
 Removed a cashier,4:06:2020 20:03:16,AWT-EventQueue-0
+Requested cashiers,5:06:2020 12:46:15,AWT-EventQueue-0
+Requested register by id,5:06:2020 12:47:20,AWT-EventQueue-0
+Requested register by id,5:06:2020 12:47:27,AWT-EventQueue-0
+Requested assisted registers,5:06:2020 12:47:41,AWT-EventQueue-0
+Requested cashiers,5:06:2020 23:02:53,AWT-EventQueue-0
+Requested coupons,5:06:2020 23:02:59,AWT-EventQueue-0
+Requested registers,5:06:2020 23:03:06,AWT-EventQueue-0
+Requested receipts,6:06:2020 00:18:46,AWT-EventQueue-0
+Requested receipt by id,6:06:2020 00:18:49,AWT-EventQueue-0
+Added a receipt,6:06:2020 00:30:59,AWT-EventQueue-0
+Removed a receipt,6:06:2020 00:31:10,AWT-EventQueue-0
+Added a receipt,6:06:2020 00:31:21,AWT-EventQueue-0
+Added a receipt,6:06:2020 00:31:37,AWT-EventQueue-0
+Requested receipt by id,6:06:2020 00:32:05,AWT-EventQueue-0
+Requested receipts by register id,6:06:2020 00:32:12,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 00:33:22,AWT-EventQueue-0
+Added a receipt,6:06:2020 00:40:45,AWT-EventQueue-0
+Removed a receipt,6:06:2020 00:40:56,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 00:41:02,AWT-EventQueue-0
+Requested receipts,6:06:2020 00:43:34,AWT-EventQueue-0
+Requested receipts by register id,6:06:2020 00:55:25,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 00:55:28,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 00:55:30,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 00:56:34,AWT-EventQueue-0
+Requested registers,6:06:2020 01:01:17,AWT-EventQueue-0
+Requested assisted registers,6:06:2020 01:01:29,AWT-EventQueue-0
+Requested self registers,6:06:2020 01:01:31,AWT-EventQueue-0
+Requested assisted registers,6:06:2020 01:01:41,AWT-EventQueue-0
+Assigned assisted register cashier,6:06:2020 01:02:06,AWT-EventQueue-0
+Requested receipts,6:06:2020 01:02:23,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 01:02:30,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 01:02:40,AWT-EventQueue-0
+Requested cashiers by lastName,6:06:2020 01:03:33,AWT-EventQueue-0
+Requested cashier by id,6:06:2020 01:03:38,AWT-EventQueue-0
+Requested coupons by used state,6:06:2020 01:04:16,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 01:05:45,AWT-EventQueue-0
+Requested receipts by couponId,6:06:2020 01:14:54,AWT-EventQueue-0
+Requested receipts by cashier id,6:06:2020 01:15:02,AWT-EventQueue-0
+Requested products,6:06:2020 01:28:53,AWT-EventQueue-0
+Requested products,6:06:2020 01:30:01,AWT-EventQueue-0
+Requested products,6:06:2020 02:02:42,AWT-EventQueue-0
+Added a product,6:06:2020 02:03:45,AWT-EventQueue-0
+Removed a product,6:06:2020 02:04:32,AWT-EventQueue-0
+Added a product,6:06:2020 02:05:11,AWT-EventQueue-0
+Removed a product,6:06:2020 02:05:29,AWT-EventQueue-0
+Requested product by id,6:06:2020 02:10:26,AWT-EventQueue-0
+Requested products,6:06:2020 02:10:53,AWT-EventQueue-0
+Requested product by id,6:06:2020 02:13:37,AWT-EventQueue-0
+Requested product by id,6:06:2020 02:14:15,AWT-EventQueue-0
+Requested product by id,6:06:2020 02:15:10,AWT-EventQueue-0
+Requested product by id,6:06:2020 02:15:29,AWT-EventQueue-0
+Requested products by categoryId,6:06:2020 02:19:44,AWT-EventQueue-0
+Requested products by price,6:06:2020 02:35:50,AWT-EventQueue-0
+Requested products by discount,6:06:2020 02:35:55,AWT-EventQueue-0
+Requested products by discount,6:06:2020 02:36:03,AWT-EventQueue-0
+Requested products by discount,6:06:2020 02:36:08,AWT-EventQueue-0
+Requested products,6:06:2020 02:36:14,AWT-EventQueue-0
+Set product discount,6:06:2020 02:38:13,AWT-EventQueue-0
+Set product discount,6:06:2020 02:38:30,AWT-EventQueue-0
+Added a receipt,6:06:2020 02:47:51,AWT-EventQueue-0
+Set coupon used state,6:06:2020 02:47:51,AWT-EventQueue-0
+Removed a receipt,6:06:2020 02:48:09,AWT-EventQueue-0
+Requested cashiers,6:06:2020 03:27:40,AWT-EventQueue-0
+Added a cashier,6:06:2020 03:28:09,AWT-EventQueue-0
+Added a cashier,6:06:2020 03:28:33,AWT-EventQueue-0
+Removed a cashier,6:06:2020 03:31:26,AWT-EventQueue-0
+Removed a cashier,6:06:2020 03:31:29,AWT-EventQueue-0
+Requested cashier by id,6:06:2020 03:31:37,AWT-EventQueue-0
+Requested cashiers by firstName,6:06:2020 03:31:42,AWT-EventQueue-0
+Set cashier firstName,6:06:2020 03:31:52,AWT-EventQueue-0
+Set cashier firstName,6:06:2020 03:32:16,AWT-EventQueue-0
+Set cashier firstName,6:06:2020 03:32:24,AWT-EventQueue-0
+Requested cashiers by lastName,6:06:2020 03:32:49,AWT-EventQueue-0
+Requested cashiers by firstName,6:06:2020 03:32:56,AWT-EventQueue-0
+Set cashier lastName,6:06:2020 03:33:05,AWT-EventQueue-0
+Set cashier lastName,6:06:2020 03:33:09,AWT-EventQueue-0
+Requested registers,6:06:2020 03:34:53,AWT-EventQueue-0
+Added a register,6:06:2020 03:35:12,AWT-EventQueue-0
+Added a register,6:06:2020 03:35:30,AWT-EventQueue-0
+Added a register,6:06:2020 03:35:44,AWT-EventQueue-0
+Added a register,6:06:2020 03:36:39,AWT-EventQueue-0
+Added a register,6:06:2020 03:36:51,AWT-EventQueue-0
+Added a register,6:06:2020 03:38:45,AWT-EventQueue-0
+Removed a register,6:06:2020 03:38:58,AWT-EventQueue-0
+Removed a register,6:06:2020 03:39:01,AWT-EventQueue-0
+Removed a register,6:06:2020 03:39:03,AWT-EventQueue-0
+Requested cashiers,6:06:2020 03:47:59,AWT-EventQueue-0
+Requested cashiers,6:06:2020 03:48:35,AWT-EventQueue-0
+Requested register by id,6:06:2020 03:50:15,AWT-EventQueue-0
+Requested registers by active state,6:06:2020 03:50:26,AWT-EventQueue-0
+Set register active state,6:06:2020 03:53:00,AWT-EventQueue-0
+Set register active state,6:06:2020 03:53:07,AWT-EventQueue-0
+Requested registers by inUse state,6:06:2020 03:53:13,AWT-EventQueue-0
+Requested registers by inUse state,6:06:2020 03:53:16,AWT-EventQueue-0
+Set register inUse state,6:06:2020 03:53:47,AWT-EventQueue-0
+Requested self registers,6:06:2020 03:55:44,AWT-EventQueue-0
+Requested assisted registers,6:06:2020 03:55:47,AWT-EventQueue-0
+Requested self registers,6:06:2020 03:55:50,AWT-EventQueue-0
+Requested coupons,6:06:2020 03:56:04,AWT-EventQueue-0
+Added a coupon,6:06:2020 03:56:33,AWT-EventQueue-0
+Removed a coupon,6:06:2020 03:56:40,AWT-EventQueue-0
+Requested coupon by id,6:06:2020 03:56:47,AWT-EventQueue-0
+Requested coupons by used state,6:06:2020 04:00:42,AWT-EventQueue-0
+Requested coupons by used state,6:06:2020 04:00:49,AWT-EventQueue-0
+Set coupon discount,6:06:2020 04:01:02,AWT-EventQueue-0
+Set coupon discount,6:06:2020 04:01:09,AWT-EventQueue-0
+Set coupon used state,6:06:2020 04:01:16,AWT-EventQueue-0
+Set coupon used state,6:06:2020 04:01:22,AWT-EventQueue-0
+Requested receipts,6:06:2020 04:06:00,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:06:41,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:09:24,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:10:02,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:11:54,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:14:00,AWT-EventQueue-0
+Added a register,6:06:2020 04:15:35,AWT-EventQueue-0
+Removed a register,6:06:2020 04:15:51,AWT-EventQueue-0
+Added a register,6:06:2020 04:16:03,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:17:20,AWT-EventQueue-0
+Set coupon used state,6:06:2020 04:18:16,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:18:31,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:19:40,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:20:46,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:20:53,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:21:10,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:21:14,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:22:19,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:22:22,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:23:21,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:23:26,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:24:08,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:25:25,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:27:09,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:29:25,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:29:33,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:33:28,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:33:37,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:34:25,AWT-EventQueue-0
+Set coupon used state,6:06:2020 04:34:25,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:36:38,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:36:45,AWT-EventQueue-0
+Added a receipt,6:06:2020 04:36:58,AWT-EventQueue-0
+Removed a receipt,6:06:2020 04:37:17,AWT-EventQueue-0
