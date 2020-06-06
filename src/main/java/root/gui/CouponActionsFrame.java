@@ -176,6 +176,9 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new discount:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            if (null == input) {
+                return;
+            }
             final float newDiscount;
             try {
                 newDiscount = Float.parseFloat(input);
@@ -227,6 +230,9 @@ public final class CouponActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new used state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            if (null == input) {
+                return;
+            }
             final boolean newUsedState = Boolean.parseBoolean(input);
             if (!newUsedState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The used state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -236,7 +242,7 @@ public final class CouponActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the used state of the coupon with ID " + id + " to " + newUsedState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the used state of the coupon with ID " + id + " to '" + newUsedState + "'!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(returnToActionCategorySelectionButton)) {
             setVisible(false);

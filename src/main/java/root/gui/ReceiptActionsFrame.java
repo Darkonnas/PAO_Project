@@ -67,7 +67,7 @@ public final class ReceiptActionsFrame extends JFrame {
             final int registerId;
             try {
                 registerId = Integer.parseInt(input);
-                if (0 >= id) {
+                if (0 >= registerId) {
                     JOptionPane.showMessageDialog(this, "Register ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -85,7 +85,7 @@ public final class ReceiptActionsFrame extends JFrame {
             } else {
                 try {
                     cashierId = Integer.parseInt(input);
-                    if (0 >= id) {
+                    if (0 >= cashierId) {
                         JOptionPane.showMessageDialog(this, "Cashier ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
@@ -104,7 +104,7 @@ public final class ReceiptActionsFrame extends JFrame {
             } else {
                 try {
                     couponId = Integer.parseInt(input);
-                    if (0 >= id) {
+                    if (0 >= couponId) {
                         JOptionPane.showMessageDialog(this, "Coupon ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
@@ -187,7 +187,7 @@ public final class ReceiptActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Receipts with register ID " + registerId + ":", result, this);
             }
         } else if (button.equals(displayReceiptsWithCashierIdButton)) {
-            final String input = JOptionPane.showInputDialog(this, "Receipt cashier ID (leave blank for no cashier ID) to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "Receipt cashier ID (leave empty for no cashier ID) to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -219,7 +219,7 @@ public final class ReceiptActionsFrame extends JFrame {
                 }
             }
         } else if (button.equals(displayReceiptsWithCouponIdButton)) {
-            final String input = JOptionPane.showInputDialog(this, "Receipt coupon ID (leave blank for no coupon ID) to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "Receipt coupon ID (leave empty for no coupon ID) to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }

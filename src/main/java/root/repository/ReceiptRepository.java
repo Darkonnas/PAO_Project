@@ -20,7 +20,11 @@ public class ReceiptRepository extends Repository {
     }
     
     public int add(final Receipt r) {
-        return insert(r) + CouponService.getInstance().setCouponUsedState(r.getCouponId(), true);
+        final int result = insert(r);
+        if (0 < result && null != r.getCouponId()) {
+            return result + CouponService.getInstance().setCouponUsedState(r.getCouponId(), true);
+        }
+        return result;
     }
     
     @Override

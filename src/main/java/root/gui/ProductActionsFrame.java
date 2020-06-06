@@ -81,7 +81,7 @@ public final class ProductActionsFrame extends JFrame {
             final int categoryId;
             try {
                 categoryId = Integer.parseInt(input);
-                if (0 >= id) {
+                if (0 >= categoryId) {
                     JOptionPane.showMessageDialog(this, "Category ID must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -111,7 +111,7 @@ public final class ProductActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Price must be a positive floating point number!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            input = JOptionPane.showInputDialog(this, "The discount of the product you want to add (leave blank if no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            input = JOptionPane.showInputDialog(this, "The discount of the product you want to add (leave empty if no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -137,7 +137,7 @@ public final class ProductActionsFrame extends JFrame {
             final int quantity;
             try {
                 quantity = Integer.parseInt(input);
-                if (0 > id) {
+                if (0 > quantity) {
                     JOptionPane.showMessageDialog(this, "Quantity must be a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
@@ -354,7 +354,7 @@ public final class ProductActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "Successfully modified the price of the product with ID " + id + " to " + newPrice + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayProductsWithDiscountButton)) {
-            final String input = JOptionPane.showInputDialog(this, "Product discount to be searched for (leave blank for no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            final String input = JOptionPane.showInputDialog(this, "Product discount to be searched for (leave empty for no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -396,7 +396,7 @@ public final class ProductActionsFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "ID must be a strictly positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            input = JOptionPane.showInputDialog(this, "The new discount  (leave blank for no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            input = JOptionPane.showInputDialog(this, "The new discount  (leave empty for no discount):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             final Float newDiscount;
             if (input.isEmpty()) {
                 newDiscount = null;

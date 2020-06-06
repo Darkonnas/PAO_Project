@@ -58,15 +58,15 @@ public final class RegisterActionsFrame extends JFrame {
             ActionResultFrame.getInstance().load("Registers", service.getRegisters().toArray(), this);
         } else if (button.equals(addRegisterButton)) {
             final int registerType = JOptionPane.showOptionDialog(this, "The type of register you want to add:", "Choose action parameter", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Assisted register", "Self register"}, null);
-            final int cashierId;
+            final Integer cashierId;
             switch (registerType) {
                 case 0: {
-                    final String input = JOptionPane.showInputDialog(this, "The cashier ID of the assisted register you want to add (leave blank if not assigned):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+                    final String input = JOptionPane.showInputDialog(this, "The cashier ID of the assisted register you want to add (leave empty if not assigned):", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
                     if (null == input) {
                         return;
                     }
                     if (input.isEmpty()) {
-                        cashierId = -1;
+                        cashierId = null;
                     } else {
                         try {
                             cashierId = Integer.parseInt(input);
@@ -82,7 +82,7 @@ public final class RegisterActionsFrame extends JFrame {
                     break;
                 }
                 case 1: {
-                    cashierId = -1;
+                    cashierId = null;
                     break;
                 }
                 default: {
@@ -211,6 +211,9 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new active state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            if (null == input) {
+                return;
+            }
             final boolean newActiveState = Boolean.parseBoolean(input);
             if (!newActiveState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The active state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -220,7 +223,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the register with ID " + id + " to " + newActiveState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the register with ID " + id + " to '" + newActiveState + "'!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayRegistersWithInUseStateButton)) {
             final String input = JOptionPane.showInputDialog(this, "Register in-use state to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -256,6 +259,9 @@ public final class RegisterActionsFrame extends JFrame {
                 return;
             }
             input = JOptionPane.showInputDialog(this, "The new in-use state:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            if (null == input) {
+                return;
+            }
             final boolean newInUseState = Boolean.parseBoolean(input);
             if (!newInUseState && !"false".equalsIgnoreCase(input)) {
                 JOptionPane.showMessageDialog(this, "The in-use state must be either true or false!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -265,7 +271,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the register with ID " + id + " to " + newInUseState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the register with ID " + id + " to '" + newInUseState + "'!", "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayAssistedRegistersButton)) {
             setVisible(false);
