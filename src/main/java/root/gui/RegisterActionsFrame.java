@@ -220,7 +220,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the coupon with ID " + id + " to " + newActiveState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the active state of the register with ID " + id + " to " + newActiveState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayRegistersWithInUseStateButton)) {
             final String input = JOptionPane.showInputDialog(this, "Register in-use state to be searched for:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
@@ -240,7 +240,7 @@ public final class RegisterActionsFrame extends JFrame {
                 ActionResultFrame.getInstance().load("Registers with in-use state '" + inUseState + "':", result, this);
             }
         } else if (button.equals(modifyRegisterInUseStateButton)) {
-            String input = JOptionPane.showInputDialog(this, "The ID of the coupon you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
+            String input = JOptionPane.showInputDialog(this, "The ID of the register you want to modify:", "Enter action parameter", JOptionPane.INFORMATION_MESSAGE);
             if (null == input) {
                 return;
             }
@@ -265,7 +265,7 @@ public final class RegisterActionsFrame extends JFrame {
             if (0 == result) {
                 JOptionPane.showMessageDialog(this, "There was an error processing your request!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the coupon with ID " + id + " to " + newInUseState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Successfully modified the in-use state of the register with ID " + id + " to " + newInUseState + '!', "Success", JOptionPane.PLAIN_MESSAGE);
             }
         } else if (button.equals(displayAssistedRegistersButton)) {
             setVisible(false);

@@ -159,7 +159,7 @@ public final class ReceiptActionsFrame extends JFrame {
             }
             final Receipt result = service.getReceiptById(id);
             if (null == result) {
-                JOptionPane.showMessageDialog(this, "There is no coupon with ID " + id + '!', "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "There is no receipt with ID " + id + '!', "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "The receipt with ID " + id + " is " + result, "Action result", JOptionPane.PLAIN_MESSAGE);
             }
