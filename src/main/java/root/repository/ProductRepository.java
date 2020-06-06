@@ -161,6 +161,7 @@ public class ProductRepository extends Repository {
         final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
+        projections.put("id", id);
     
         final Optional<Product> result = query(columns, projections).stream().findFirst();
         if (result.isPresent()) {
@@ -223,7 +224,7 @@ public class ProductRepository extends Repository {
         return update(updates, projections);
     }
     
-    public Set<Product> getProductsByDiscount(final float discount) {
+    public Set<Product> getProductsByDiscount(final Float discount) {
         final Set<String> columns = new HashSet<>();
         final Map<String, Object> projections = new HashMap<>();
         columns.add("*");
@@ -232,7 +233,7 @@ public class ProductRepository extends Repository {
         return Collections.unmodifiableSet(query(columns, projections));
     }
     
-    public int setProductDiscount(final int id, final float discount) {
+    public int setProductDiscount(final int id, final Float discount) {
         final Map<String, Object> updates = new HashMap<>();
         final Map<String, Object> projections = new HashMap<>();
         updates.put("discount", discount);

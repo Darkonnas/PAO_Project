@@ -7,10 +7,10 @@ public class Product implements Comparable<Product> {
     private final int categoryId;
     private final String name;
     private final float price;
-    private final float discount;
+    private final Float discount;
     private final int quantity;
     
-    public Product(final int id, final int categoryId, final String name, final float price, final float discount, final int quantity) {
+    public Product(final int id, final int categoryId, final String name, final float price, final Float discount, final int quantity) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
@@ -35,7 +35,7 @@ public class Product implements Comparable<Product> {
         return price;
     }
     
-    public float getDiscount() {
+    public Float getDiscount() {
         return discount;
     }
     

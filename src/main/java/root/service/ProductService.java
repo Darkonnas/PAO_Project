@@ -71,12 +71,12 @@ public final class ProductService {
         return productRepository.setProductPrice(id, price);
     }
     
-    public Set<Product> getProductsByDiscount(final float discount) {
+    public Set<Product> getProductsByDiscount(final Float discount) {
         LogService.getInstance().log("Requested products by discount", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return productRepository.getProductsByDiscount(discount);
     }
     
-    public int setProductDiscount(final int id, final float discount) {
+    public int setProductDiscount(final int id, final Float discount) {
         LogService.getInstance().log("Set product discount", new Timestamp(System.currentTimeMillis()), Thread.currentThread().getName());
         return productRepository.setProductDiscount(id, discount);
     }
